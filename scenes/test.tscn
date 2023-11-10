@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5o7aeyay2g1l"]
+
+[ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_2huee"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
+size = Vector3(10, 1, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adj7c"]
+albedo_color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_671dl"]
+points = PackedVector3Array(-5, -0.5, -3, -5, 0.5, -3, 5, -0.5, -3, -5, -0.5, 3, -5, 0.5, 3, 5, 0.5, -3, 5, -0.5, 3, 5, 0.5, 3)
+
+[node name="Test" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_tc1sk")
+surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("ConvexPolygonShape3D_671dl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.262694, 0.577851, -0.77271, 1.19632e-10, 0.800836, 0.598884, 0.964879, -0.157323, 0.210375, -5.41966, 2.24672, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_2huee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.999981, 0.00400329, -0.00466281, 0.0012685, 0.607933, 0.793987, 0.00601323, -0.793978, 0.607916, -0.0534222, 4.91945, 3.92424)

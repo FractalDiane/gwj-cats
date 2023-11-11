@@ -1,0 +1,177 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0eetw6linq75"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_l77yj"]
+
+[node name="main_menu" type="Control" node_paths=PackedStringArray("mmenu", "omenu", "fullToggle", "musicSlider", "soundSlider")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l77yj")
+mmenu = NodePath("main")
+omenu = NodePath("options")
+fullToggle = NodePath("options/fullscreenToggle")
+musicSlider = NodePath("options/musicSlider")
+soundSlider = NodePath("options/soundSlider")
+
+[node name="main" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="title" type="RichTextLabel" parent="main"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 775.0
+offset_top = 239.0
+offset_right = 1098.0
+offset_bottom = 322.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center][wave]Catductor"
+
+[node name="playButton" type="Button" parent="main"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 840.0
+offset_top = 364.0
+offset_right = 1040.0
+offset_bottom = 444.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Play"
+
+[node name="optionsButton" type="Button" parent="main"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 842.0
+offset_top = 480.0
+offset_right = 1042.0
+offset_bottom = 560.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="quitButton" type="Button" parent="main"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 842.0
+offset_top = 599.0
+offset_right = 1042.0
+offset_bottom = 679.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="options" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="optionsLabel" type="RichTextLabel" parent="options"]
+layout_mode = 1
+offset_left = -144.0
+offset_top = -262.0
+offset_right = 159.0
+offset_bottom = -155.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Options"
+
+[node name="fullscreenLabel" type="Label" parent="options"]
+layout_mode = 2
+offset_left = -181.0
+offset_top = -99.0
+offset_right = 29.0
+offset_bottom = -54.0
+theme_override_font_sizes/font_size = 30
+text = "Fullscreen?"
+
+[node name="fullscreenToggle" type="CheckButton" parent="options"]
+layout_mode = 2
+offset_left = 33.0
+offset_top = -99.0
+offset_right = 77.0
+offset_bottom = -54.0
+
+[node name="musicLabel" type="Label" parent="options"]
+layout_mode = 2
+offset_left = -181.0
+offset_top = -50.0
+offset_right = 29.0
+offset_bottom = -5.0
+theme_override_font_sizes/font_size = 30
+text = "Music Volume"
+
+[node name="musicSlider" type="HSlider" parent="options"]
+layout_mode = 2
+offset_left = 53.0
+offset_top = -36.0
+offset_right = 261.0
+offset_bottom = -20.0
+max_value = 1.0
+step = 0.001
+
+[node name="soundLabel" type="Label" parent="options"]
+layout_mode = 2
+offset_left = -181.0
+offset_top = -1.0
+offset_right = 29.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 30
+text = "Sound Volume"
+
+[node name="soundSlider" type="HSlider" parent="options"]
+layout_mode = 2
+offset_left = 54.0
+offset_top = 14.0
+offset_right = 262.0
+offset_bottom = 30.0
+max_value = 1.0
+step = 0.001
+
+[node name="backButton" type="Button" parent="options"]
+layout_mode = 0
+offset_left = -93.0
+offset_top = 87.0
+offset_right = 107.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[connection signal="pressed" from="main/playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="main/optionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="main/quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="toggled" from="options/fullscreenToggle" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="options/musicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="options/soundSlider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="pressed" from="options/backButton" to="." method="_on_back_button_pressed"]

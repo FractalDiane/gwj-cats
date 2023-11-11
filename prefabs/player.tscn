@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://chy3lw67e8wwc"]
+[gd_scene load_steps=6 format=3 uid="uid://chy3lw67e8wwc"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7cs77"]
+[ext_resource type="Script" path="res://scripts/components/interaction_activator_component.gd" id="2_21wra"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_whvwl"]
 size = Vector3(0.3, 0.5, 0.3)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_57nl7"]
 points = PackedVector3Array(-0.15, -0.25, -0.15, -0.15, -0.25, 0.15, -0.15, 0.25, -0.15, 0.15, -0.25, -0.15, 0.15, -0.25, 0.15, -0.15, 0.25, 0.15, 0.15, 0.25, -0.15, 0.15, 0.25, 0.15)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_53pu2"]
+radius = 1.0
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_7cs77")
@@ -16,3 +20,16 @@ mesh = SubResource("BoxMesh_whvwl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_57nl7")
+
+[node name="InteractionActivatorComponent" type="Node3D" parent="."]
+script = ExtResource("2_21wra")
+
+[node name="InteractArea" type="Area3D" parent="InteractionActivatorComponent"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionActivatorComponent/InteractArea"]
+shape = SubResource("SphereShape3D_53pu2")
+
+[connection signal="area_entered" from="InteractionActivatorComponent/InteractArea" to="InteractionActivatorComponent" method="_on_interact_area_area_entered"]
+[connection signal="area_exited" from="InteractionActivatorComponent/InteractArea" to="InteractionActivatorComponent" method="_on_interact_area_area_exited"]

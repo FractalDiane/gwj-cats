@@ -1,17 +1,26 @@
+class_name Player
 extends CharacterBody3D
 
-@export var camera: Camera3D = null
+@export var camera: PlayerCamera = null
 
 const SPEED := 2.5
 #const JUMP_VELOCITY := 4.5
 
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var interaction_component := $InteractionActivatorComponent as InteractionActivatorComponent
 
-func _ready():
-	pass
-	
+#var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-func _physics_process(delta: float):
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(&"debug_left"):
+		camera.move_car(PlayerCamera.Direction.Left)
+	elif Input.is_action_just_pressed(&"debug_right"):
+		camera.move_car(PlayerCamera.Direction.Right)
+		
+	if Input.is_action_just_pressed("interact"):
+		interaction_component.try_interact()
+
+
+func _physics_process(delta: float) -> void:
 	#if not is_on_floor():
 	#	velocity.y -= gravity * delta
 

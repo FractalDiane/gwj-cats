@@ -2,6 +2,7 @@ extends Control
 
 @export var mmenu: Control
 @export var omenu: Control
+@export var cmenu: Control
 
 @export var fullToggle: CheckButton
 @export var musicSlider: HSlider
@@ -45,3 +46,11 @@ func _on_sound_slider_value_changed(value):
 func _on_back_button_pressed():
 	mmenu.visible = true
 	omenu.visible = false
+
+func _on_credits_button_pressed():
+	mmenu.visible = false
+	cmenu.visible = true
+
+func _on_credits_back_button_pressed():
+	mmenu.visible = true
+	cmenu.visible = false

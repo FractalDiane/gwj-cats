@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://3wpoosgsjjnd"]
+
+[ext_resource type="Texture2D" uid="uid://bw5r160k8uhp" path="res://sprites/pawsed/1.png" id="1_3g8e4"]
+[ext_resource type="Texture2D" uid="uid://b26l5vnk41sgc" path="res://sprites/pawsed/2.png" id="2_5l8i7"]
+[ext_resource type="Texture2D" uid="uid://d4idpwx0t3kx2" path="res://sprites/pawsed/3.png" id="3_4yjcd"]
+[ext_resource type="Texture2D" uid="uid://dbf14wous11s8" path="res://sprites/pawsed/4.png" id="4_6t3np"]
+[ext_resource type="Texture2D" uid="uid://yf2ctwkyyoqq" path="res://sprites/pawsed/5.png" id="5_5hfrx"]
+[ext_resource type="Script" path="res://scripts/pawsed_text.gd" id="6_mlnkq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l8nu2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3g8e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5l8i7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4yjcd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6t3np")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5hfrx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="pawsed_text" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_l8nu2")
+frame = 1
+script = ExtResource("6_mlnkq")

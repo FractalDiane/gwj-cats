@@ -1,13 +1,14 @@
 extends Node2D
 
 const invalid_ticket_probability := 0.1
-const ticket_files := [preload("res://ticket_checking_invalid_ticket.png"),
-					   preload("res://ticket_checking_valid_ticket.png")]
-const hand_files := [preload("res://ticket_checking_hand_1.png"), 
-					 preload("res://ticket_checking_hand_2.png"),
-					 preload("res://ticket_checking_hand_3.png")]
-# if you make 600 divisible by hand_velocity rose is happy :)
-const hand_velocity := 4
+const ticket_files := [preload("res://sprites/ticket_checking/ticket_checking_invalid_ticket.png"),
+					   preload("res://sprites/ticket_checking/ticket_checking_valid_ticket.png")]
+const hand_files := [preload("res://sprites/ticket_checking/ticket_checking_hand_1.png"), 
+					 preload("res://sprites/ticket_checking/ticket_checking_hand_2.png"),
+					 preload("res://sprites/ticket_checking/ticket_checking_hand_3.png")]
+# if you make hand_initial_offset divisible by hand_velocity rose is happy :)
+const hand_velocity := 6
+const hand_initial_offset := 600
 
 var hand_sprite: Sprite2D
 var ticket_sprite: Sprite2D
@@ -32,9 +33,9 @@ var animation_started := false
 var animation_finished := false
 var relative_hand_pos := 0
 func _animate_ticket():
-	hand_sprite.position.y -= 600
-	ticket_sprite.position.y -= 600
-	relative_hand_pos -= 600
+	hand_sprite.position.y -= hand_initial_offset
+	ticket_sprite.position.y -= hand_initial_offset
+	relative_hand_pos -= hand_initial_offset
 	animation_started = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

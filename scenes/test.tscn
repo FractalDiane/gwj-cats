@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_mdwb4"]
 [ext_resource type="Script" path="res://scripts/minigame_object.gd" id="3_5gm6w"]
 [ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="3_mhsad"]
-[ext_resource type="PackedScene" path="res://prefabs/trans_volume.tscn" id="4_f8hb4"]
+[ext_resource type="PackedScene" uid="uid://bk4008dytdk5b" path="res://prefabs/trans_volume.tscn" id="4_f8hb4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
 size = Vector3(10, 1, 6)

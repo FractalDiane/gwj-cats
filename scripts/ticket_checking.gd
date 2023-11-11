@@ -1,11 +1,11 @@
 extends Node2D
 
 const invalid_ticket_probability := 0.1
-const ticket_files := [preload("res://sprites/ticket_checking/ticket_checking_invalid_ticket.png"),
-					   preload("res://sprites/ticket_checking/ticket_checking_valid_ticket.png")]
-const hand_files := [preload("res://sprites/ticket_checking/ticket_checking_hand_1.png"), 
-					 preload("res://sprites/ticket_checking/ticket_checking_hand_2.png"),
-					 preload("res://sprites/ticket_checking/ticket_checking_hand_3.png")]
+const ticket_files := [preload("res://ticket_checking_invalid_ticket.png"),
+					   preload("res://ticket_checking_valid_ticket.png")]
+const hand_files := [preload("res://ticket_checking_hand_1.png"), 
+					 preload("res://ticket_checking_hand_2.png"),
+					 preload("res://ticket_checking_hand_3.png")]
 # if you make 600 divisible by hand_velocity rose is happy :)
 const hand_velocity := 4
 

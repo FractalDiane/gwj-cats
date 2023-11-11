@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5o7aeyay2g1l"]
+[gd_scene load_steps=15 format=3 uid="uid://b5o7aeyay2g1l"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_2huee"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_mdwb4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bk4008dytdk5b" path="res://prefabs/trans_volume.tscn" id="4_f8hb4"]
 [ext_resource type="PackedScene" path="res://prefabs/components/jump_point.tscn" id="6_7g1dt"]
 [ext_resource type="Script" path="res://scripts/paws_chair.gd" id="6_83pfg"]
+[ext_resource type="PackedScene" uid="uid://c2kexkbdwxc0c" path="res://prefabs/managers/level_manager.tscn" id="8_crm2y"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
 size = Vector3(10, 1, 6)
@@ -94,3 +95,5 @@ shape = SubResource("ConvexPolygonShape3D_81eac")
 
 [node name="JumpPoint" parent="PawsChair" instance=ExtResource("6_7g1dt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113867, 0)
+
+[node name="LevelManager" parent="." instance=ExtResource("8_crm2y")]

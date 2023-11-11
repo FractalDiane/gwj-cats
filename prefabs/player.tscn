@@ -13,6 +13,8 @@ points = PackedVector3Array(-0.15, -0.25, -0.15, -0.15, -0.25, 0.15, -0.15, 0.25
 radius = 1.0
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2049
+collision_mask = 2049
 script = ExtResource("1_7cs77")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -5,7 +5,7 @@ var focused_object: InteractionReceiverComponent = null
 
 func try_interact() -> void:
 	if focused_object != null:
-		print("INTERACTED WITH %s" % focused_object.get_parent().name)
+		focused_object.interact()
 
 
 func _on_interact_area_area_entered(area: Area3D):

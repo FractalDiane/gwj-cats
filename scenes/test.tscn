@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5o7aeyay2g1l"]
+[gd_scene load_steps=10 format=3 uid="uid://b5o7aeyay2g1l"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_2huee"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_mdwb4"]
 [ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="3_mhsad"]
+[ext_resource type="PackedScene" uid="uid://bk4008dytdk5b" path="res://prefabs/trans_volume.tscn" id="4_f8hb4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
 size = Vector3(10, 1, 6)
@@ -72,3 +73,6 @@ mesh = SubResource("BoxMesh_jm3yc")
 shape = SubResource("ConvexPolygonShape3D_qh3qs")
 
 [node name="InteractionReceiverComponent" parent="TestThingy" instance=ExtResource("3_mhsad")]
+
+[node name="TransVolume" parent="." instance=ExtResource("4_f8hb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64584, 0, 0)

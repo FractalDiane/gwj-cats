@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5o7aeyay2g1l"]
+[gd_scene load_steps=6 format=3 uid="uid://b5o7aeyay2g1l"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_2huee"]
+[ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="2_bwfkb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
 size = Vector3(10, 1, 6)
@@ -31,3 +32,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999981, 0.00400329, -0.00466281, 0.0012685, 0.607933, 0.793987, 0.00601323, -0.793978, 0.607916, -0.0534222, 4.91945, 3.92424)
+
+[node name="hanging_plant" parent="." instance=ExtResource("2_bwfkb")]
+transform = Transform3D(-0.374073, 0, -0.927399, 0, 1, 0, 0.927399, 0, -0.374073, 2.96385, 2.31377, -2.24747)

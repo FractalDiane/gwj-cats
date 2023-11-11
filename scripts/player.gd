@@ -18,9 +18,9 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed(&"debug_left"):
-		camera.move_car(PlayerCamera.Direction.Left)
+		camera.move_car(PlayerCamera.Direction.Left, self)
 	elif Input.is_action_just_pressed(&"debug_right"):
-		camera.move_car(PlayerCamera.Direction.Right)
+		camera.move_car(PlayerCamera.Direction.Right, self)
 		
 	if Input.is_action_just_pressed("interact"):
 		interaction_component.try_interact()

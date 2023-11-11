@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5o7aeyay2g1l"]
+[gd_scene load_steps=9 format=3 uid="uid://b5o7aeyay2g1l"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_2huee"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_mdwb4"]
@@ -10,9 +10,6 @@ size = Vector3(10, 1, 6)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adj7c"]
 albedo_color = Color(0.184314, 0.184314, 0.184314, 1)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_671dl"]
-points = PackedVector3Array(-5, -0.5, -3, -5, 0.5, -3, 5, -0.5, -3, -5, -0.5, 3, -5, 0.5, 3, 5, 0.5, -3, 5, -0.5, 3, 5, 0.5, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jm3yc"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -28,9 +25,6 @@ points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.
 mesh = SubResource("BoxMesh_tc1sk")
 surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("ConvexPolygonShape3D_671dl")
-
 [node name="Floor2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
@@ -38,18 +32,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 mesh = SubResource("BoxMesh_tc1sk")
 surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
-shape = SubResource("ConvexPolygonShape3D_671dl")
-
 [node name="Floor3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor3"]
 mesh = SubResource("BoxMesh_tc1sk")
 surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3"]
-shape = SubResource("ConvexPolygonShape3D_671dl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.262694, 0.577851, -0.77271, 1.19632e-10, 0.800836, 0.598884, 0.964879, -0.157323, 0.210375, -5.41966, 2.24672, 0)
@@ -75,4 +63,7 @@ shape = SubResource("ConvexPolygonShape3D_qh3qs")
 [node name="InteractionReceiverComponent" parent="TestThingy" instance=ExtResource("3_mhsad")]
 
 [node name="TransVolume" parent="." instance=ExtResource("4_f8hb4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64584, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5075, 0, 0)
+
+[node name="TransVolume2" parent="." instance=ExtResource("4_f8hb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.49832, 0, 0)

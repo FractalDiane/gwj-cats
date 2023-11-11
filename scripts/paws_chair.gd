@@ -9,3 +9,9 @@ func _ready() -> void:
 
 func _on_interacted(player: Player) -> void:
 	player.jump_to_jump_point(jump_point, false)
+	LevelManager.push_time_pause_source()
+	player.jump_point_exited.connect(_on_player_leave, CONNECT_ONE_SHOT)
+	
+
+func _on_player_leave() -> void:
+	LevelManager.pop_time_pause_source()

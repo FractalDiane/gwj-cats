@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody3D
 
+signal jump_point_exited()
+
 @export var camera: PlayerCamera = null
 
 const SPEED := 2.5
@@ -88,3 +90,5 @@ func _on_camera_move_finished() -> void:
 func _on_jump_finished(ending_jump: bool) -> void:
 	block_movement = false
 	on_jump_point = not ending_jump
+	if ending_jump:
+		jump_point_exited.emit()

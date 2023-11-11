@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxhm56qierpoq"]
+
+[ext_resource type="Script" path="res://addons/shell_fur/shell_fur_manager.gd" id="1_3obis"]
+[ext_resource type="Texture2D" uid="uid://7mo4qdn60bjk" path="res://addons/shell_fur/noise_patterns/very_rough.png" id="2_0iy2r"]
+[ext_resource type="PackedScene" uid="uid://efgeqmc7pdra" path="res://meshes/armature_test.blend" id="3_hgreh"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0netv"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_0netv")
+
+[node name="ShellFur" type="Node3D" parent="MeshInstance3D"]
+script = ExtResource("1_3obis")
+shader_type = 1
+custom_shader = null
+layers = 40
+pattern_selector = 3
+pattern_texture = ExtResource("2_0iy2r")
+pattern_uv_scale = 5.0
+cast_shadow = false
+mat_transmission = Color(0.3, 0.3, 0.3, 1)
+mat_ao = 1.0
+mat_ao_light_affect = 0.0
+mat_roughness = 1.0
+mat_albedo_base_color = Color(0.43, 0.35, 0.29, 1)
+mat_albedo_tip_color = Color(0.78, 0.63, 0.52, 1)
+mat_albedo_uv_scale = Vector3(1, 1, 0)
+mat_albedo_texture = null
+mat_shape_length = 0.5
+mat_shape_length_rand = 0.3
+mat_shape_density = 1.0
+mat_shape_thickness_base = 0.75
+mat_shape_thickness_tip = 0.3
+mat_shape_thickness_rand = 0.0
+mat_shape_growth = 1.0
+mat_shape_growth_rand = 0.0
+mat_shape_ldtg_uv_scale = Vector3(1, 1, 0)
+mat_shape_ldtg_texture = null
+physics_custom_physics_pivot = NodePath("")
+physics_gravity = 0.1
+physics_spring = 4.0
+physics_damping = 0.1
+physics_wind_strength = 0.0
+physics_wind_speed = 1.0
+physics_wind_scale = 1.0
+physics_wind_angle = 0.0
+styling_blendshape = 0
+lod_LOD0_distance = 10.0
+lod_LOD1_distance = 100.0
+
+[node name="armature_test" parent="." instance=ExtResource("3_hgreh")]
+
+[node name="Skeleton3D" parent="armature_test/Armature" index="0"]
+bones/1/rotation = Quaternion(0.542461, 0, 0, 0.840081)
+
+[node name="Cylinder" parent="armature_test/Armature/Skeleton3D" index="0"]
+layers = 0
+
+[node name="ShellFur" parent="armature_test/Armature/Skeleton3D/Cylinder" index="0"]
+script = ExtResource("1_3obis")
+shader_type = 1
+custom_shader = null
+layers = 40
+pattern_selector = 3
+pattern_texture = ExtResource("2_0iy2r")
+pattern_uv_scale = 5.0
+cast_shadow = false
+mat_transmission = Color(0.3, 0.3, 0.3, 1)
+mat_ao = 1.0
+mat_ao_light_affect = 0.0
+mat_roughness = 1.0
+mat_albedo_base_color = Color(0.709804, 0.584314, 0.505882, 1)
+mat_albedo_tip_color = Color(0.78, 0.63, 0.52, 1)
+mat_albedo_uv_scale = Vector3(1, 1, 0)
+mat_albedo_texture = null
+mat_shape_length = 0.183
+mat_shape_length_rand = 0.038
+mat_shape_density = 1.0
+mat_shape_thickness_base = 1.0
+mat_shape_thickness_tip = 0.506
+mat_shape_thickness_rand = 0.0
+mat_shape_growth = 1.0
+mat_shape_growth_rand = 0.0
+mat_shape_ldtg_uv_scale = Vector3(1, 1, 0)
+mat_shape_ldtg_texture = null
+physics_custom_physics_pivot = NodePath("")
+physics_gravity = 0.1
+physics_spring = 4.0
+physics_damping = 0.1
+physics_wind_strength = 0.0
+physics_wind_speed = 1.0
+physics_wind_scale = 1.0
+physics_wind_angle = 0.0
+styling_blendshape = 0
+lod_LOD0_distance = 10.0
+lod_LOD1_distance = 100.0
+
+[editable path="armature_test"]

@@ -14,6 +14,10 @@ config/name="CATS"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/shell_fur/plugin.cfg")
+
 [input]
 
 move_up={

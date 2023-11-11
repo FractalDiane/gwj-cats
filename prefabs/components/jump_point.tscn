@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3lwmorn0gik4"]
+
+[ext_resource type="Script" path="res://scripts/components/jump_point.gd" id="1_0rcty"]
+
+[node name="JumpPoint" type="Marker3D"]
+script = ExtResource("1_0rcty")

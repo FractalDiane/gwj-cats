@@ -1,8 +1,14 @@
 extends Node
 
+var current_level: Level = null
+
 var sources_pausing_time := 0
 
 @onready var level_timer := $LevelTimer as Timer
+
+func start_level(level: Level) -> void:
+	current_level = level
+
 
 func push_time_pause_source() -> void:
 	sources_pausing_time += 1

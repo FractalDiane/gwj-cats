@@ -1,4 +1,8 @@
-extends Node2D
+extends Minigame
+
+###########################################################################################
+### special taskDone return: data=1 if player overfilled boiler and exploded themselves ###
+###########################################################################################
 
 var overlay_textures: Array[Texture2D] = [
 	preload("res://sprites/coal game/overlay_closed.png"),
@@ -9,7 +13,7 @@ var scoop_textures: Array[Texture2D] = [
 	preload("res://sprites/coal game/shovel_coal.png")
 ]
 
-var taskDone: bool
+# var taskDone: bool
 
 @export var coalNeeded: int
 @export var coalToExplode: int
@@ -20,7 +24,6 @@ var hatchOpen : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	taskDone = false
 	coalAmount = 0
 	hasCoal = false
 	hatchOpen = false
@@ -48,9 +51,9 @@ func _on_lever_button_pressed():
 	$lever_button.disabled = hatchOpen
 	$lever_button_alt.disabled = !hatchOpen
 	
-	if (coalAmount >= coalNeeded and !taskDone):
-		taskDone = true
+	if (coalAmount >= coalNeeded):
 		$debugtext.text = "task done ! (return task successful)"
+		minigame_done.emit(true, 0)
 
 
 func _on_furnace_button_pressed():
@@ -61,5 +64,6 @@ func _on_furnace_button_pressed():
 		
 		if (coalAmount == coalToExplode):
 			$debugtext.text = "get exploded idiot (return task fail/set death flag or something)"
+			minigame_done.emit(false, 1)
 		
 		_on_coal_button_pressed()

@@ -5,15 +5,16 @@ extends Node3D
 @onready var interaction_component := $InteractionReceiverComponent as InteractionReceiverComponent
 
 func _ready():
-	interaction_component.interacted_with.connect(launch_minigame)
+	interaction_component.interacted_with.connect(_on_interacted)
 
 
-func _process(delta):
-	pass
+func _on_interacted(_player: Player) -> void:
+	launch_minigame()
 
 
 func launch_minigame() -> void:
-	var scene := load(minigame_scene)
-	if scene != null:
-		var minigame := (scene as PackedScene).instantiate()
-		get_tree().current_scene.add_child(minigame)
+	if not minigame_scene.is_empty():
+		var scene := load(minigame_scene)
+		if scene != null:
+			var minigame := (scene as PackedScene).instantiate()
+			get_tree().current_scene.add_child(minigame)

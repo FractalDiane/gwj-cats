@@ -1,8 +1,7 @@
 class_name InteractionReceiverComponent
 extends Node3D
 
-signal interacted_with()
+signal interacted_with(player: Player)
 
-func interact() -> void:
-	print("INTERACTED WITH %s" % get_parent().name)
-	interacted_with.emit()
+func interact(player: Player) -> void:
+	interacted_with.emit(player)

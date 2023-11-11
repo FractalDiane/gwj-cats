@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://chy3lw67e8wwc"]
+[gd_scene load_steps=7 format=3 uid="uid://chy3lw67e8wwc"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7cs77"]
 [ext_resource type="Script" path="res://scripts/components/interaction_activator_component.gd" id="2_21wra"]
@@ -12,10 +12,13 @@ points = PackedVector3Array(-0.15, -0.25, -0.15, -0.15, -0.25, 0.15, -0.15, 0.25
 [sub_resource type="SphereShape3D" id="SphereShape3D_53pu2"]
 radius = 1.0
 
+[sub_resource type="PrismMesh" id="PrismMesh_whget"]
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2049
 collision_mask = 2049
 script = ExtResource("1_7cs77")
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_whvwl")
@@ -32,6 +35,13 @@ collision_mask = 256
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionActivatorComponent/InteractArea"]
 shape = SubResource("SphereShape3D_53pu2")
+
+[node name="GroundPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.249494, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, -0.00135016, 0.100222, 0.295178)
+mesh = SubResource("PrismMesh_whget")
 
 [connection signal="area_entered" from="InteractionActivatorComponent/InteractArea" to="InteractionActivatorComponent" method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractionActivatorComponent/InteractArea" to="InteractionActivatorComponent" method="_on_interact_area_area_exited"]

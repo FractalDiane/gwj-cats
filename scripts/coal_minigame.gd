@@ -12,6 +12,7 @@ var scoop_textures: Array[Texture2D] = [
 var taskDone: bool
 
 @export var coalNeeded: int
+@export var coalToExplode: int
 
 var coalAmount : int
 var hasCoal: bool
@@ -49,13 +50,16 @@ func _on_lever_button_pressed():
 	
 	if (coalAmount >= coalNeeded and !taskDone):
 		taskDone = true
-		print("task done !")
+		$debugtext.text = "task done ! (return task successful)"
 
 
 func _on_furnace_button_pressed():
 	if (hatchOpen and hasCoal):
-		if (coalAmount < coalNeeded):
+		if (coalAmount < coalToExplode):
 			coalAmount += 1
 		$debugtext.text = "coal: " + str(coalAmount) + " of " + str(coalNeeded)
+		
+		if (coalAmount == coalToExplode):
+			$debugtext.text = "get exploded idiot (return task fail/set death flag or something)"
 		
 		_on_coal_button_pressed()

@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://mvnfu40martx"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_s4q3c"]
+[ext_resource type="PackedScene" uid="uid://3wpoosgsjjnd" path="res://scenes/pawsed_text.tscn" id="1_uygkx"]
+
+[node name="pause_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s4q3c")
+
+[node name="pawsed_text" parent="." instance=ExtResource("1_uygkx")]
+position = Vector2(355, 197)
+scale = Vector2(0.2, 0.2)
+
+[node name="quitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 546.0
+offset_right = 248.0
+offset_bottom = 596.0
+theme_override_font_sizes/font_size = 30
+text = "quit"
+
+[node name="resumeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 366.0
+offset_right = 299.0
+offset_bottom = 416.0
+theme_override_font_sizes/font_size = 30
+text = "resume"
+
+[connection signal="pressed" from="quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="resumeButton" to="." method="_on_resume_button_pressed"]

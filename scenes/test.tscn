@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5o7aeyay2g1l"]
+[gd_scene load_steps=10 format=3 uid="uid://b5o7aeyay2g1l"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_2huee"]
-[ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="2_bwfkb"]
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_mdwb4"]
+[ext_resource type="Script" path="res://scripts/minigame_object.gd" id="3_5gm6w"]
+[ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="3_mhsad"]
+[ext_resource type="PackedScene" uid="uid://bk4008dytdk5b" path="res://prefabs/trans_volume.tscn" id="4_f8hb4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
 size = Vector3(10, 1, 6)
@@ -9,8 +12,11 @@ size = Vector3(10, 1, 6)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adj7c"]
 albedo_color = Color(0.184314, 0.184314, 0.184314, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_671dl"]
-points = PackedVector3Array(-5, -0.5, -3, -5, 0.5, -3, 5, -0.5, -3, -5, -0.5, 3, -5, 0.5, 3, 5, 0.5, -3, 5, -0.5, 3, 5, 0.5, 3)
+[sub_resource type="BoxMesh" id="BoxMesh_jm3yc"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qh3qs"]
+points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
 
 [node name="Test" type="Node3D"]
 
@@ -20,18 +26,46 @@ points = PackedVector3Array(-5, -0.5, -3, -5, 0.5, -3, 5, -0.5, -3, -5, -0.5, 3,
 mesh = SubResource("BoxMesh_tc1sk")
 surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("ConvexPolygonShape3D_671dl")
+[node name="Floor2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor2"]
+mesh = SubResource("BoxMesh_tc1sk")
+surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
+
+[node name="Floor3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor3"]
+mesh = SubResource("BoxMesh_tc1sk")
+surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.262694, 0.577851, -0.77271, 1.19632e-10, 0.800836, 0.598884, 0.964879, -0.157323, 0.210375, -5.41966, 2.24672, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_2huee")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_2huee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+camera = NodePath("../PlayerCamera")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.999981, 0.00400329, -0.00466281, 0.0012685, 0.607933, 0.793987, 0.00601323, -0.793978, 0.607916, -0.0534222, 4.91945, 3.92424)
+transform = Transform3D(0.999976, 0.00554601, -0.00424025, 0, 0.607376, 0.794414, 0.00698126, -0.794395, 0.607361, -0.0534222, 4.91945, 3.92424)
+script = ExtResource("2_mdwb4")
 
-[node name="hanging_plant" parent="." instance=ExtResource("2_bwfkb")]
-transform = Transform3D(-0.374073, 0, -0.927399, 0, 1, 0, 0.927399, 0, -0.374073, 2.96385, 2.31377, -2.24747)
+[node name="TestThingy" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63606, 0.573184, -0.953491)
+script = ExtResource("3_5gm6w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestThingy"]
+mesh = SubResource("BoxMesh_jm3yc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestThingy"]
+shape = SubResource("ConvexPolygonShape3D_qh3qs")
+
+[node name="InteractionReceiverComponent" parent="TestThingy" instance=ExtResource("3_mhsad")]
+
+[node name="TransVolume" parent="." instance=ExtResource("4_f8hb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5075, 0, 0)
+
+[node name="TransVolume2" parent="." instance=ExtResource("4_f8hb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.49832, 0, 0)

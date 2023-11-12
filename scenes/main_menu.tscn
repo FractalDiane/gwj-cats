@@ -18,6 +18,7 @@ musicSlider = NodePath("options/musicSlider")
 soundSlider = NodePath("options/soundSlider")
 
 [node name="main" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -179,7 +180,6 @@ theme_override_font_sizes/font_size = 30
 text = "Back"
 
 [node name="credits" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -215,14 +215,16 @@ text = "[center]Hazel Kennedy - 3D Art, Rigging, Animation
 Diane Sparks - Programming, Music
 Calli Kiler - Programming
 Rose Zhang - Programming
-sam hansen - 2D Art, 3D Art, Programming"
+sam hansen - 2D Art, 3D Art, Programming
+
+Alina Kim - All Meows"
 
 [node name="creditsBackButton" type="Button" parent="credits"]
 layout_mode = 0
 offset_left = -98.0
-offset_top = 151.0
+offset_top = 245.0
 offset_right = 102.0
-offset_bottom = 231.0
+offset_bottom = 325.0
 theme_override_font_sizes/font_size = 30
 text = "Back"
 

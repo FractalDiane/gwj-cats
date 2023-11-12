@@ -30,6 +30,7 @@ window/stretch/aspect="keep_height"
 [filesystem]
 
 import/blender/enabled=false
+import/fbx/enabled=false
 
 [input]
 

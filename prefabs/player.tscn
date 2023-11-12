@@ -1,16 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://chy3lw67e8wwc"]
+[gd_scene load_steps=8 format=3 uid="uid://chy3lw67e8wwc"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7cs77"]
 [ext_resource type="Script" path="res://scripts/components/interaction_activator_component.gd" id="2_21wra"]
+[ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="3_dnmks"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_whvwl"]
 size = Vector3(0.3, 0.5, 0.3)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_57nl7"]
-points = PackedVector3Array(-0.15, -0.25, -0.15, -0.15, -0.25, 0.15, -0.15, 0.25, -0.15, 0.15, -0.25, -0.15, 0.15, -0.25, 0.15, -0.15, 0.25, 0.15, 0.15, 0.25, -0.15, 0.15, 0.25, 0.15)
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8cbw"]
+size = Vector3(0.197086, 0.453607, 0.497915)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_53pu2"]
-radius = 1.0
+radius = 0.8
 
 [sub_resource type="PrismMesh" id="PrismMesh_whget"]
 
@@ -21,10 +22,12 @@ script = ExtResource("1_7cs77")
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_whvwl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_57nl7")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0300596, 0, 0.0244713)
+shape = SubResource("BoxShape3D_y8cbw")
 
 [node name="InteractionActivatorComponent" type="Node3D" parent="."]
 script = ExtResource("2_21wra")
@@ -37,11 +40,15 @@ collision_mask = 256
 shape = SubResource("SphereShape3D_53pu2")
 
 [node name="GroundPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.249494, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.226835, 0)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, -0.00135016, 0.100222, 0.295178)
+visible = false
 mesh = SubResource("PrismMesh_whget")
+
+[node name="cat" parent="." instance=ExtResource("3_dnmks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0301514, 0, 0.014535)
 
 [connection signal="area_entered" from="InteractionActivatorComponent/InteractArea" to="InteractionActivatorComponent" method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractionActivatorComponent/InteractArea" to="InteractionActivatorComponent" method="_on_interact_area_area_exited"]

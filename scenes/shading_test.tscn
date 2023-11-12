@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://coi1d2u0wj34n"]
+[gd_scene load_steps=4 format=3 uid="uid://coi1d2u0wj34n"]
+
+[ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_revxj"]
+[ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_gojjk"]
+[ext_resource type="PackedScene" uid="uid://dlrdmtqyyn0qb" path="res://meshes/main_size_reference.glb" id="3_sevxw"]
 
 [node name="Node3D" type="Node3D"]
+
+[node name="hanging_plant" parent="." instance=ExtResource("1_revxj")]
+
+[node name="cat" parent="." instance=ExtResource("2_gojjk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.102766, 0, 0)
+
+[node name="main_size_reference" parent="." instance=ExtResource("3_sevxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.02867, 0)

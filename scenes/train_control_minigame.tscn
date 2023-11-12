@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dih47irn1cbxp"]
+[gd_scene load_steps=4 format=3 uid="uid://bsx6neoa0wswh"]
 
-[ext_resource type="Script" path="res://scenes/train_control_minigame.gd" id="1_h66v3"]
+[ext_resource type="Script" path="res://scripts/train_control_minigame.gd" id="1_uofs7"]
 [ext_resource type="Texture2D" uid="uid://cxfcdyxm5ladc" path="res://sprites/train_control_minigame/train_control_unlocked.png" id="2_hyp3v"]
 [ext_resource type="Texture2D" uid="uid://dhps71fnh7fa4" path="res://sprites/train_control_minigame/train_control_background.png" id="3_nbtpl"]
 
 [node name="train_control_minigame" type="Node2D"]
-script = ExtResource("1_h66v3")
+script = ExtResource("1_uofs7")
 
 [node name="lever_right_button" type="Button" parent="."]
 light_mask = 0

@@ -1,4 +1,4 @@
-extends Node2D
+extends Minigame
 
 const invalid_ticket_probability := 0.1
 const ticket_files := [preload("res://sprites/ticket_checking/ticket_checking_invalid_ticket.png"),
@@ -69,9 +69,11 @@ func _on_nay_button_pressed():
 	
 	
 func succeed():
-	print("ticket checking: do whatever handoff to show success")
-	get_tree().quit()
+	# print("ticket checking: do whatever handoff to show success")
+	# get_tree().quit()
+	minigame_done.emit(true, 0)
 
 func fail():
-	print("ticket checking: do whatever handoff to communicate failure")
-	get_tree().quit()
+	# print("ticket checking: do whatever handoff to communicate failure")
+	# get_tree().quit()
+	minigame_done.emit(false, 0)

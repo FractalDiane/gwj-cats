@@ -1,8 +1,7 @@
 extends Control
 
-@export var mmenu: Control
+@export var rmenu: Control
 @export var omenu: Control
-@export var cmenu: Control
 
 @export var fullToggle: CheckButton
 @export var musicSlider: HSlider
@@ -24,11 +23,11 @@ func _ready():
 func _on_quit_button_pressed():
 	get_tree().quit()
 
-func _on_play_button_pressed():
+func _on_resume_button_pressed():
 	pass # Replace with function body.
 
 func _on_options_button_pressed():
-	mmenu.visible = false
+	rmenu.visible = false
 	omenu.visible = true
 
 func _on_check_button_toggled(button_pressed):
@@ -43,14 +42,6 @@ func _on_music_slider_value_changed(value):
 func _on_sound_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(soundBusIndex, linear_to_db(value))
 
-func _on_back_button_pressed():
-	mmenu.visible = true
+func _on_button_pressed():
 	omenu.visible = false
-
-func _on_credits_button_pressed():
-	mmenu.visible = false
-	cmenu.visible = true
-
-func _on_credits_back_button_pressed():
-	mmenu.visible = true
-	cmenu.visible = false
+	rmenu.visible = true

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dih47irn1cbxp"]
+
+[ext_resource type="Script" path="res://scenes/train_control_minigame.gd" id="1_h66v3"]
+[ext_resource type="Texture2D" uid="uid://cxfcdyxm5ladc" path="res://sprites/train_control_minigame/train_control_unlocked.png" id="2_hyp3v"]
+[ext_resource type="Texture2D" uid="uid://dhps71fnh7fa4" path="res://sprites/train_control_minigame/train_control_background.png" id="3_nbtpl"]
+
+[node name="train_control_minigame" type="Node2D"]
+script = ExtResource("1_h66v3")
+
+[node name="lever_right_button" type="Button" parent="."]
+light_mask = 0
+visibility_layer = 0
+offset_left = 689.0
+offset_top = 436.0
+offset_right = 994.0
+offset_bottom = 896.0
+
+[node name="lever_left_button" type="Button" parent="."]
+light_mask = 0
+visibility_layer = 0
+offset_left = 316.0
+offset_top = 460.0
+offset_right = 651.0
+offset_bottom = 856.0
+
+[node name="lever" type="Sprite2D" parent="."]
+position = Vector2(690, 825)
+texture = ExtResource("2_hyp3v")
+
+[node name="lever_pivot_point" type="Node2D" parent="."]
+position = Vector2(690, 825)
+scale = Vector2(30, 30)
+
+[node name="TrainControlBackground" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("3_nbtpl")
+
+[connection signal="pressed" from="lever_right_button" to="." method="_on_lever_right_button_pressed"]
+[connection signal="pressed" from="lever_left_button" to="." method="_on_lever_left_button_pressed"]

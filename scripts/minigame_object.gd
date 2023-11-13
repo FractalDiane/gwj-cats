@@ -48,7 +48,8 @@ func _minigame_done(success: bool, data: int):
 	minigame.queue_free()
 	minigame = null
 	
-	Globals.minigame_overlay_ref.visible = false
+	if (Globals.minigame_overlay_ref != null):
+		Globals.minigame_overlay_ref.visible = false
 	
 	print("minigame success: " + str(success) + ", minigame data: " + str(data))
 	
@@ -63,6 +64,12 @@ func _minigame_done(success: bool, data: int):
 		guy.position = get_viewport().get_mouse_position()
 		guy.scale.x = 20
 		guy.scale.y = 4
+		
+		var ydntym := load("res://audio/you_did_not_take_your_meds.wav")
+		var papyrus := AudioStreamPlayer.new()
+		get_tree().current_scene.add_child(papyrus)
+		papyrus.stream = ydntym
+		papyrus.play()
 	"""
 	
 	task_done.emit(success, data)

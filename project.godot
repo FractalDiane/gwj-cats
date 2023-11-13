@@ -88,6 +88,7 @@ input_click={
 }
 
 [physics]
+
 2d/default_gravity=3000.0
 
 [rendering]

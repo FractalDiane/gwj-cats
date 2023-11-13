@@ -28,5 +28,16 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"leafsDark": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/tree_leaves_dark.tres"
+},
+"woodBarkDark": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/tree_wood_bark_dark.tres"
+}
+}
+}
 gltf/embedded_image_handling=1

@@ -106,7 +106,7 @@ albedo_texture = ExtResource("5_gyvs0")
 albedo_texture = ExtResource("6_n3ruj")
 uv1_scale = Vector3(2.36, 1.298, 1.18)
 
-[node name="Node3D" type="Node3D"]
+[node name="train_car_passenger" type="Node3D"]
 
 [node name="hanging_plant" parent="." instance=ExtResource("1_qb1e3")]
 transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, 3.28809, 2.78208, -1.70461)

@@ -28,5 +28,16 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"woodBark": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/tree_wood_bark.tres"
+},
+"woodInner": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/tree_wood_inner.tres"
+}
+}
+}
 gltf/embedded_image_handling=1

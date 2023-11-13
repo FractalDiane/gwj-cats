@@ -3,27 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_qb1e3"]
 [ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_8u44m"]
 [ext_resource type="PackedScene" uid="uid://dlrdmtqyyn0qb" path="res://meshes/main_size_reference.glb" id="3_83dx8"]
-
-[sub_resource type="Environment" id="Environment_tsshv"]
-background_mode = 1
-background_color = Color(0.890196, 0.67451, 0.603922, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.890196, 0.67451, 0.603922, 1)
-reflected_light_source = 2
-tonemap_mode = 2
-ssao_enabled = true
-ssao_radius = 0.78
-ssao_intensity = 0.67
-ssao_power = 2.7991
-ssil_enabled = true
-ssil_radius = 0.54
-ssil_intensity = 1.44
-ssil_sharpness = 1.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.1
-volumetric_fog_albedo = Color(0.819608, 0.772549, 0.784314, 1)
-volumetric_fog_emission = Color(0.419608, 0.223529, 0.392157, 1)
-volumetric_fog_anisotropy = 0.4
+[ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="4_3m8i8"]
 
 [sub_resource type="Shader" id="Shader_8qn7n"]
 code = "// Sobel Edge Detection Shader written by absentSpaghetti
@@ -123,11 +103,20 @@ transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0,
 [node name="hanging_plant2" parent="." instance=ExtResource("1_qb1e3")]
 transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, -3.19264, 2.78208, -1.70461)
 
+[node name="Plant1" parent="hanging_plant2/Hanging Pot" index="0"]
+transform = Transform3D(0.995512, 0.0934275, 0.0150725, -0.0919296, 0.992517, -0.0803672, -0.0224683, 0.0786209, 0.996651, 0.000998378, -0.438903, -0.000218868)
+
+[node name="Plant2" parent="hanging_plant2/Hanging Pot" index="1"]
+transform = Transform3D(0.999367, 0.0168918, 0.0313087, -0.0165876, 0.999813, -0.00995095, -0.0314709, 0.00942531, 0.99946, -0.0242646, -0.437188, -0.0835934)
+
+[node name="Plant3" parent="hanging_plant2/Hanging Pot" index="2"]
+transform = Transform3D(0.999503, 0.0162827, -0.0270108, -0.0165688, 0.999809, -0.0104021, 0.0268363, 0.0108445, 0.999581, 0.0643862, -0.437188, -0.00164018)
+
+[node name="Plant4" parent="hanging_plant2/Hanging Pot" index="3"]
+transform = Transform3D(0.996719, -0.0583296, -0.0561165, 0.055845, 0.997431, -0.0448709, 0.0585896, 0.0415898, 0.997415, 0, -0.433921, 0)
+
 [node name="cat" parent="." instance=ExtResource("2_8u44m")]
 transform = Transform3D(0.483481, 0, -0.875355, 0, 1, 0, 0.875355, 0, 0.483481, 0, 0.300352, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_tsshv")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.66529e-07, 0, -1, 0, 2.13918, 0, 6.09747, 0, -4.37114e-08, -1.47562, 0, 0)
@@ -140,3 +129,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
+
+[node name="ShadingContainer" parent="." instance=ExtResource("4_3m8i8")]
+
+[editable path="hanging_plant2"]

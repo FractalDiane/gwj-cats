@@ -1,0 +1,194 @@
+[gd_scene load_steps=17 format=3 uid="uid://6nn1e7smr27m"]
+
+[ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_timeo"]
+[ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_rddr0"]
+[ext_resource type="PackedScene" uid="uid://dlrdmtqyyn0qb" path="res://meshes/main_size_reference.glb" id="3_ufd5r"]
+[ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="4_06pd5"]
+[ext_resource type="Material" uid="uid://cos3t0crjaocc" path="res://materials/rug.tres" id="5_2axi3"]
+[ext_resource type="Material" uid="uid://bqc5pahonbwxo" path="res://materials/carpet.tres" id="6_50sdf"]
+[ext_resource type="PackedScene" uid="uid://xlioxobhyhah" path="res://kenney_assets/nature/ground_grass.glb" id="7_6mqct"]
+[ext_resource type="PackedScene" uid="uid://dumylpfkd4ivl" path="res://kenney_assets/nature/grass_large.glb" id="8_snotc"]
+[ext_resource type="PackedScene" uid="uid://doy11p66sw5s5" path="res://kenney_assets/nature/log_large.glb" id="9_58hbk"]
+[ext_resource type="PackedScene" uid="uid://snysx26vmxur" path="res://kenney_assets/nature/hanging_moss.glb" id="10_y1oe1"]
+[ext_resource type="PackedScene" uid="uid://cxwihwwro08io" path="res://kenney_assets/nature/ground_riverBendBank.glb" id="11_sqm1v"]
+[ext_resource type="PackedScene" uid="uid://dhpm0n51870ed" path="res://kenney_assets/nature/ground_riverEndClosed.glb" id="12_8tbvd"]
+
+[sub_resource type="Shader" id="Shader_8qn7n"]
+code = "// Sobel Edge Detection Shader written by absentSpaghetti
+//
+// This shader is a part of my tutorial/learning Github repository: https://github.com/absentSpaghetti/Shader-Basics-With-Spaghetti
+// Feel free to use, edit and share this shader according to your needs
+//
+// MIT License 
+//
+// prerequisites: color-to-greyscale, simple-box-blur
+
+shader_type spatial;
+render_mode unshaded, cull_disabled;
+
+uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
+uniform float min_step : hint_range(0.0, 1.0, 0.01) = 0.4; // min step for the smoothstep() function
+uniform float max_step : hint_range(0.0, 1.0, 0.01) = 0.6; // max step for the smoothstep() function
+
+// x direction kernel
+const mat3 kx = mat3(
+	vec3(-1, 0, 1),
+	vec3(-2, 0, 2),
+	vec3(-1, 0, 1)
+);
+// y direction kernel 
+const mat3 ky = mat3(
+	vec3(-1, -2, -1),
+	vec3(0, 0, 0),
+	vec3(1, 2, 1)
+);
+
+// By using a different set of kernels we can get different results. This is a kernel for the laplace operator
+//// x direction kernel
+//const mat3 kx = mat3(
+//	vec3(0, -1, 0),
+//	vec3(-1, 4, -1),
+//	vec3(-0, -1, 0)
+//);
+//// y direction kernel 
+//const mat3 ky = mat3(
+//	vec3(-1, -1, -1),
+//	vec3(-1, 8, -1),
+//	vec3(-1, -1, -1)
+//);
+
+void vertex() { 
+	POSITION = vec4(VERTEX, 1.0);
+}
+
+void fragment() { 
+	
+	vec4 texture_color = texture(screen_texture, SCREEN_UV);
+	
+	mat3 I; // Matrix is essentially an array of vectors (in this case vector3s)
+	for (int i = 0; i < 3; i++ ) {
+		for (int j = 0; j < 3; j++) {
+			vec3 sample_around_pixel = texelFetch(screen_texture, ivec2(FRAGCOORD.xy) + ivec2(i-1,j-1), 0).rgb;
+			vec3 sample_grey = vec3(sample_around_pixel.r * 0.3, sample_around_pixel.g * 0.59, sample_around_pixel.b * 0.11);
+			I[i][j] = sample_grey.r + sample_grey.g + sample_grey.b;
+			
+		}
+	}
+	
+	// apply the sobel operator
+	float gx = dot(kx[0], I[0]) + dot(kx[1], I[1]) + dot(kx[2], I[2]); // convolution of the image's and intensity's 'x' values
+	float gy = dot(ky[0], I[0]) + dot(ky[1], I[1]) + dot(ky[2], I[2]); // convolution of the image's and intensity's 'y' values
+	float g = sqrt(pow(gx, 2.0) + pow(gy, 2.0)); // combine x and y of the sobel and get rid of negative values
+	
+	
+	// strength of the effect;
+	g = smoothstep(min_step, max_step, g); // smoothstep() smooths out a value over a curve if it is within min and max steps. Otherwise, it returns 0 (if smaller than min_step) and 1 (if bigger than max_step)
+	
+	ALBEDO = texture_color.rgb - vec3(g);
+	
+//	//color + sobel edge detection
+//	ALBEDO = texture_color.rgb * vec3(g);
+	
+//	//debug, uncomment to return to the screen_texture color
+//	ALBEDO = texture_color.rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y18s4"]
+render_priority = -1
+shader = SubResource("Shader_8qn7n")
+shader_parameter/min_step = 0.13
+shader_parameter/max_step = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_1k5td"]
+size = Vector2(2, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_fuq0v"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="hanging_plant" parent="." instance=ExtResource("1_timeo")]
+transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, 3.28809, 2.78208, -1.70461)
+
+[node name="hanging_plant2" parent="." instance=ExtResource("1_timeo")]
+transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, -3.19264, 2.78208, -1.70461)
+
+[node name="Plant1" parent="hanging_plant2/Hanging Pot" index="0"]
+transform = Transform3D(0.99672, 0.0800608, -0.0117989, -0.0805187, 0.995714, -0.0455099, 0.00810475, 0.0463107, 0.998894, 0.000998378, -0.438903, -0.000218868)
+
+[node name="Plant2" parent="hanging_plant2/Hanging Pot" index="1"]
+transform = Transform3D(0.998434, 0.0173997, 0.0531644, -0.0165441, 0.999727, -0.0164922, -0.0534369, 0.0155869, 0.99845, -0.0242646, -0.437188, -0.0835934)
+
+[node name="Plant3" parent="hanging_plant2/Hanging Pot" index="2"]
+transform = Transform3D(0.999055, 0.0159164, -0.040444, -0.0165718, 0.999736, -0.0159223, 0.0401799, 0.0165775, 0.999055, 0.0643862, -0.437188, -0.00164018)
+
+[node name="Plant4" parent="hanging_plant2/Hanging Pot" index="3"]
+transform = Transform3D(0.99524, -0.0599968, -0.0767951, 0.0557461, 0.996854, -0.0563479, 0.0799341, 0.0517987, 0.995453, 0, -0.433921, 0)
+
+[node name="cat" parent="." instance=ExtResource("2_rddr0")]
+transform = Transform3D(0.483481, 0, -0.875355, 0, 1, 0, 0.875355, 0, 0.483481, -0.225244, 0.300352, 0.498196)
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.66529e-07, 0, -1, 0, 2.13918, 0, 6.09747, 0, -4.37114e-08, -1.47562, 0, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_y18s4")
+mesh = SubResource("QuadMesh_1k5td")
+
+[node name="main_size_reference" parent="." instance=ExtResource("3_ufd5r")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.713876)
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
+current = true
+
+[node name="ShadingContainer" parent="." instance=ExtResource("4_06pd5")]
+
+[node name="rug" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.00652909, 0.00679803, 0.53988)
+material_override = ExtResource("5_2axi3")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.2, 0, 0, 0, -9.61651e-08, 2, 0, -2.2, -8.74228e-08, -0.0273442, 0.00248695, 0.606315)
+visible = false
+material_override = ExtResource("6_50sdf")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="ground_grass" parent="." instance=ExtResource("7_6mqct")]
+transform = Transform3D(120, 0, 0, 0, 1, 0, 0, 0, 37.536, -0.327213, -1.25264, -3.68919)
+
+[node name="grass_large" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(2.21713, 0, 0, 0, 1.92009, -1.10856, 0, 1.10856, 1.92009, -2.67294, 0.509738, -3.65453)
+
+[node name="grass_large4" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(2.61087, -0.229915, -1.09206, 0, 2.77848, -0.58496, 1.116, 0.537882, 2.55486, 0.0861039, 0.320328, -4.36912)
+
+[node name="grass_large5" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(2.27202, 0.694869, -0.609049, -0.647259, 2.35063, 0.267294, 0.659424, -0.0868766, 2.36082, 3.61402, 0.219993, -4.41943)
+
+[node name="grass_large2" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(2.08613, 0.0647446, 0.748012, 0.224101, 2.05449, -0.802825, -0.716583, 0.830998, 1.92655, -3.74901, 1.26359, -6.26619)
+
+[node name="grass_large3" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(2.00181, -2.98023e-08, -0.953101, -0.449348, 1.95526, -0.943772, 0.840529, 1.04528, 1.76538, -1.3238, 1.50707, -7.44458)
+
+[node name="log_large" parent="." instance=ExtResource("9_58hbk")]
+transform = Transform3D(2.2726, -0.115935, 0.762786, 0.340314, 2.28009, -0.667366, -0.692437, 0.740102, 2.1755, -0.75035, 0.982401, -6.41037)
+
+[node name="hanging_moss" parent="." instance=ExtResource("10_y1oe1")]
+transform = Transform3D(7.45212, 0, 0, 0, 7.39579, 0.91451, 0, -0.91451, 7.39579, 5.29561, -0.150786, -12.3731)
+
+[node name="hanging_moss2" parent="." instance=ExtResource("10_y1oe1")]
+transform = Transform3D(7.38394, -1.0057, -4.73968e-08, 0.998097, 7.32813, 0.914509, -0.123417, -0.906144, 7.39579, 6.46389, 0.812562, -12.4923)
+
+[node name="hanging_moss3" parent="." instance=ExtResource("10_y1oe1")]
+transform = Transform3D(-7.40606, -0.356494, -0.745359, -0.443595, 7.38721, 0.874471, -0.697045, -0.913448, 7.36288, 9.65856, -0.654698, -11.866)
+
+[node name="ground_riverBendBank" parent="." instance=ExtResource("11_sqm1v")]
+transform = Transform3D(-2.10403e-07, -1.09682e-07, 4, 1.03528, 3.8637, 1.60401e-07, -3.8637, 1.03528, -1.74846e-07, 11.8975, 0.58347, -5.07039)
+
+[node name="ground_riverEndClosed" parent="." instance=ExtResource("12_8tbvd")]
+transform = Transform3D(4, 0, 0, 0, 3.8637, -1.03528, 0, 1.03528, 3.8637, 11.8975, 1.61875, -8.93409)
+
+[editable path="hanging_plant2"]
+[editable path="ground_grass"]

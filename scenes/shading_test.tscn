@@ -1,15 +1,206 @@
-[gd_scene load_steps=4 format=3 uid="uid://coi1d2u0wj34n"]
+[gd_scene load_steps=16 format=3 uid="uid://coi1d2u0wj34n"]
 
 [ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_revxj"]
 [ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_gojjk"]
-[ext_resource type="PackedScene" uid="uid://dlrdmtqyyn0qb" path="res://meshes/main_size_reference.glb" id="3_sevxw"]
+[ext_resource type="PackedScene" uid="uid://dlrdmtqyyn0qb" path="res://meshes/main_size_reference.glb" id="3_6we1g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wev3h"]
+albedo_color = Color(0.6, 0.537255, 0.505882, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s41aa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmnik"]
+albedo_color = Color(0.713726, 0.713726, 0.713726, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6pm6"]
+albedo_color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ccqr"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icbd7"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8h2ng"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8cy1h"]
+
+[sub_resource type="Environment" id="Environment_tsshv"]
+background_mode = 1
+background_color = Color(0.890196, 0.67451, 0.603922, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.890196, 0.67451, 0.603922, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.78
+ssao_intensity = 0.67
+ssao_power = 2.7991
+ssil_enabled = true
+ssil_radius = 0.54
+ssil_intensity = 1.44
+ssil_sharpness = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.819608, 0.772549, 0.784314, 1)
+volumetric_fog_emission = Color(0.419608, 0.223529, 0.392157, 1)
+volumetric_fog_anisotropy = 0.4
+
+[sub_resource type="Shader" id="Shader_8qn7n"]
+code = "// Sobel Edge Detection Shader written by absentSpaghetti
+//
+// This shader is a part of my tutorial/learning Github repository: https://github.com/absentSpaghetti/Shader-Basics-With-Spaghetti
+// Feel free to use, edit and share this shader according to your needs
+//
+// MIT License 
+//
+// prerequisites: color-to-greyscale, simple-box-blur
+
+shader_type spatial;
+render_mode unshaded, cull_disabled;
+
+uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
+uniform float min_step : hint_range(0.0, 1.0, 0.01) = 0.4; // min step for the smoothstep() function
+uniform float max_step : hint_range(0.0, 1.0, 0.01) = 0.6; // max step for the smoothstep() function
+
+// x direction kernel
+const mat3 kx = mat3(
+	vec3(-1, 0, 1),
+	vec3(-2, 0, 2),
+	vec3(-1, 0, 1)
+);
+// y direction kernel 
+const mat3 ky = mat3(
+	vec3(-1, -2, -1),
+	vec3(0, 0, 0),
+	vec3(1, 2, 1)
+);
+
+// By using a different set of kernels we can get different results. This is a kernel for the laplace operator
+//// x direction kernel
+//const mat3 kx = mat3(
+//	vec3(0, -1, 0),
+//	vec3(-1, 4, -1),
+//	vec3(-0, -1, 0)
+//);
+//// y direction kernel 
+//const mat3 ky = mat3(
+//	vec3(-1, -1, -1),
+//	vec3(-1, 8, -1),
+//	vec3(-1, -1, -1)
+//);
+
+void vertex() { 
+	POSITION = vec4(VERTEX, 1.0);
+}
+
+void fragment() { 
+	
+	vec4 texture_color = texture(screen_texture, SCREEN_UV);
+	
+	mat3 I; // Matrix is essentially an array of vectors (in this case vector3s)
+	for (int i = 0; i < 3; i++ ) {
+		for (int j = 0; j < 3; j++) {
+			vec3 sample_around_pixel = texelFetch(screen_texture, ivec2(FRAGCOORD.xy) + ivec2(i-1,j-1), 0).rgb;
+			vec3 sample_grey = vec3(sample_around_pixel.r * 0.3, sample_around_pixel.g * 0.59, sample_around_pixel.b * 0.11);
+			I[i][j] = sample_grey.r + sample_grey.g + sample_grey.b;
+			
+		}
+	}
+	
+	// apply the sobel operator
+	float gx = dot(kx[0], I[0]) + dot(kx[1], I[1]) + dot(kx[2], I[2]); // convolution of the image's and intensity's 'x' values
+	float gy = dot(ky[0], I[0]) + dot(ky[1], I[1]) + dot(ky[2], I[2]); // convolution of the image's and intensity's 'y' values
+	float g = sqrt(pow(gx, 2.0) + pow(gy, 2.0)); // combine x and y of the sobel and get rid of negative values
+	
+	
+	// strength of the effect;
+	g = smoothstep(min_step, max_step, g); // smoothstep() smooths out a value over a curve if it is within min and max steps. Otherwise, it returns 0 (if smaller than min_step) and 1 (if bigger than max_step)
+	
+	ALBEDO = texture_color.rgb - vec3(g);
+	
+//	//color + sobel edge detection
+//	ALBEDO = texture_color.rgb * vec3(g);
+	
+//	//debug, uncomment to return to the screen_texture color
+//	ALBEDO = texture_color.rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y18s4"]
+render_priority = -1
+shader = SubResource("Shader_8qn7n")
+shader_parameter/min_step = 0.13
+shader_parameter/max_step = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_1k5td"]
+size = Vector2(2, 2)
 
 [node name="Node3D" type="Node3D"]
 
 [node name="hanging_plant" parent="." instance=ExtResource("1_revxj")]
+transform = Transform3D(0.852476, 0, 0, 0, 0.852476, 0, 0, 0, 0.852476, -1.01885, 1.87934, -2.41918)
+
+[node name="hanging_plant2" parent="." instance=ExtResource("1_revxj")]
+transform = Transform3D(0.852476, 0, 0, 0, 0.852476, 0, 0, 0, 0.852476, -1.01885, 1.87934, 2.38229)
 
 [node name="cat" parent="." instance=ExtResource("2_gojjk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.102766, 0, 0)
+transform = Transform3D(1.13389, 0, 0.626277, 0, 1.29535, 0, -0.626277, 0, 1.13389, 0.250144, 0.0527212, 0.191412)
 
-[node name="main_size_reference" parent="." instance=ExtResource("3_sevxw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.02867, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.64688, 0, 0, 0, 0.675781, 0, 0, 0, 6.25056, 0, -0.585337, 0)
+material_override = SubResource("StandardMaterial3D_wev3h")
+mesh = SubResource("BoxMesh_s41aa")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.374148, 0, 0, 0, 2.27024, 0, 0, 0, 6.25056, -1.67124, 0.78809, -0.0152223)
+material_override = SubResource("StandardMaterial3D_lmnik")
+mesh = SubResource("BoxMesh_s41aa")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.63545e-08, 0, 3.48614, 0, 2.27024, 0, -0.374148, 0, -1.52384e-07, 0.224273, 0.78809, 3.22496)
+material_override = SubResource("StandardMaterial3D_lmnik")
+mesh = SubResource("BoxMesh_s41aa")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.506539, 0, 0.571667, 0, 0.846008, 0, -0.526758, 0, -0.549724, -0.866591, 0.145538, 2.32127)
+material_override = SubResource("StandardMaterial3D_x6pm6")
+mesh = SubResource("BoxMesh_s41aa")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.763892, 0, 0.86211, 0, 1.27583, 0, -0.794384, 0, -0.829019, -0.728472, 0.330421, -2.17639)
+material_override = SubResource("StandardMaterial3D_1ccqr")
+mesh = SubResource("BoxMesh_s41aa")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.561968, 0, -0.180597, 0, 0.678492, 0, 0.166409, 0, -0.609879, -1.22428, 0.0262585, -0.898077)
+material_override = SubResource("StandardMaterial3D_icbd7")
+mesh = SubResource("BoxMesh_s41aa")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.54178, 0, 0.611439, 0, 0.904866, 0, -0.563406, 0, -0.58797, 0.591796, 0.133541, -2.36815)
+material_override = SubResource("StandardMaterial3D_8h2ng")
+mesh = SubResource("SphereMesh_8cy1h")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.63545e-08, 0, 3.48614, 0, 2.27024, 0, -0.374148, 0, -1.52384e-07, 0.224273, 0.78809, -3.24559)
+material_override = SubResource("StandardMaterial3D_lmnik")
+mesh = SubResource("BoxMesh_s41aa")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tsshv")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.66529e-07, 0, -1, 0, 2.13918, 0, 6.09747, 0, -4.37114e-08, -1.47562, 0, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_y18s4")
+mesh = SubResource("QuadMesh_1k5td")
+
+[node name="main_size_reference" parent="." instance=ExtResource("3_6we1g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.533, 0)
+visible = false

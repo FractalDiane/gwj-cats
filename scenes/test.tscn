@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b5o7aeyay2g1l"]
+[gd_scene load_steps=17 format=3 uid="uid://b5o7aeyay2g1l"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_2huee"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_mdwb4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/paws_chair.gd" id="6_83pfg"]
 [ext_resource type="PackedScene" uid="uid://c2kexkbdwxc0c" path="res://prefabs/managers/level_manager.tscn" id="8_crm2y"]
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="9_oadbs"]
+[ext_resource type="Script" path="res://scripts/managers/environment_manager.gd" id="10_2kigv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
 size = Vector3(10, 1, 6)
@@ -54,9 +55,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
 transform = Transform3D(0.262694, 0.577851, -0.77271, 1.19632e-10, 0.800836, 0.598884, 0.964879, -0.157323, 0.210375, -5.41966, 2.24672, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_2huee")]
+[node name="Player" parent="." instance=ExtResource("1_2huee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-camera = NodePath("../PlayerCamera")
+camera = Object(Camera3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"keep_aspect":1,"cull_mask":1048575,"environment":null,"attributes":null,"h_offset":0.0,"v_offset":0.0,"doppler_tracking":0,"projection":0,"current":false,"fov":75.0,"size":1.0,"frustum_offset":Vector2(0, 0),"near":0.05,"far":4000.0,"script":ExtResource("2_mdwb4"))
+
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
@@ -100,3 +102,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113867, 0)
 [node name="LevelManager" parent="." instance=ExtResource("8_crm2y")]
 
 [node name="ShadingContainer" parent="." instance=ExtResource("9_oadbs")]
+
+[node name="EnvironmentManager" type="Node3D" parent="."]
+script = ExtResource("10_2kigv")

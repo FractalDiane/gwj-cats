@@ -1,4 +1,4 @@
-extends Node2D
+extends Minigame
 
 """
 Below are the configurables.
@@ -137,6 +137,7 @@ func release_block():
 					return
 		current_game_state = CargoMiniGameState.complete
 		print("done!")
+		minigame_done.emit(true, 0)
 				
 
 func sprite_contains_point(s: Sprite2D, p: Vector2):

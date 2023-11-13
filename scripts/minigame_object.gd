@@ -12,13 +12,12 @@ signal early_task_return(success: bool, data: int)
 # minigame ref
 var minigame: Minigame
 
+var minigame_overlay: Control
+
 
 func _ready():
 	interaction_component.interacted_with.connect(_on_interacted)
-	
-	## jank !!! move assignment of this global into a manager or something later
-	if (Globals.minigame_overlay_ref == null):
-		Globals.minigame_overlay_ref = get_tree().current_scene.find_child("MinigameOverlay")
+	minigame_overlay = HUD.hud_root.get_node("MinigameOverlay")
 
 
 func _on_interacted(player: Player) -> void:
@@ -34,28 +33,26 @@ func launch_minigame() -> void:
 		var scene := load(minigame_scene)
 		if scene != null:
 			minigame = (scene as PackedScene).instantiate() as Minigame
-			if (Globals.minigame_overlay_ref != null):
-				Globals.minigame_overlay_ref.find_child("SubViewport").add_child(minigame)
-				Globals.minigame_overlay_ref.visible = true
-			else:
-				get_tree().current_scene.add_child(minigame)
-			minigame.minigame_done.connect(_minigame_done)
-			minigame.early_return_send.connect(_early_return_sent)
-			early_return_request.connect(minigame.early_return_requested)
+			if (minigame_overlay != null):
+				minigame_overlay.get_node("SubViewportContainer/SubViewport").add_child(minigame)
+				minigame_overlay.visible = true
+				minigame.minigame_done.connect(_minigame_done)
+				minigame.early_return_send.connect(_early_return_sent)
+				early_return_request.connect(minigame.early_return_requested)
 
 
 func _minigame_done(success: bool, data: int):
 	minigame.queue_free()
 	minigame = null
 	
-	if (Globals.minigame_overlay_ref != null):
-		Globals.minigame_overlay_ref.visible = false
+	if (minigame_overlay != null):
+		minigame_overlay.visible = false
 	
 	print("minigame success: " + str(success) + ", minigame data: " + str(data))
 	
 	## really dumb but kinda funny, remove later
 	# (spawns a permanent icon.svg at your mouse position if minigame returned with a boiler explosion)
-	"""
+	
 	if (data == 1):
 		var icon := load("res://icon.svg")
 		var guy := Sprite2D.new()
@@ -70,7 +67,7 @@ func _minigame_done(success: bool, data: int):
 		get_tree().current_scene.add_child(papyrus)
 		papyrus.stream = ydntym
 		papyrus.play()
-	"""
+	
 	
 	task_done.emit(success, data)
 

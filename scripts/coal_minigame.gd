@@ -96,6 +96,7 @@ func _on_coal_button_pressed():
 func _on_lever_button_pressed():
 	hatchOpen = !hatchOpen
 	$overlay.texture = overlay_textures[1 if hatchOpen else 0]
+	$overlay2.texture = overlay_textures[1 if hatchOpen else 0]
 	
 	$lever_button.disabled = hatchOpen
 	$lever_button_alt.disabled = !hatchOpen

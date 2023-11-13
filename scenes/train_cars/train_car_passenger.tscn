@@ -118,13 +118,13 @@ size = Vector2(2, 2)
 [node name="Node3D" type="Node3D"]
 
 [node name="hanging_plant" parent="." instance=ExtResource("1_qb1e3")]
-transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, 2.01092, 1.87934, -0.53333)
+transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, 3.28809, 2.78208, -1.70461)
 
 [node name="hanging_plant2" parent="." instance=ExtResource("1_qb1e3")]
-transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, -2.79055, 1.87934, -0.533331)
+transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, -3.19264, 2.78208, -1.70461)
 
 [node name="cat" parent="." instance=ExtResource("2_8u44m")]
-transform = Transform3D(0.626277, 0, -1.13389, 0, 1.29535, 0, 1.13389, 0, 0.626277, -0.599671, 0.0527212, 0.735663)
+transform = Transform3D(0.483481, 0, -0.875355, 0, 1, 0, 0.875355, 0, 0.483481, 0, 0.75, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tsshv")
@@ -136,7 +136,7 @@ material_override = SubResource("ShaderMaterial_y18s4")
 mesh = SubResource("QuadMesh_1k5td")
 
 [node name="main_size_reference" parent="." instance=ExtResource("3_83dx8")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.408259, -1.533, 0.485519)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00826111, -0.840425, -0.650998)
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)

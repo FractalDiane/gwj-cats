@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://coi1d2u0wj34n"]
+[gd_scene load_steps=16 format=3 uid="uid://coi1d2u0wj34n"]
 
 [ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_revxj"]
 [ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_gojjk"]
+[ext_resource type="PackedScene" uid="uid://dlrdmtqyyn0qb" path="res://meshes/main_size_reference.glb" id="3_6we1g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wev3h"]
 albedo_color = Color(0.6, 0.537255, 0.505882, 1)
@@ -199,3 +200,7 @@ transform = Transform3D(-2.66529e-07, 0, -1, 0, 2.13918, 0, 6.09747, 0, -4.37114
 visible = false
 material_override = SubResource("ShaderMaterial_y18s4")
 mesh = SubResource("QuadMesh_1k5td")
+
+[node name="main_size_reference" parent="." instance=ExtResource("3_6we1g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.533, 0)
+visible = false

@@ -1,4 +1,4 @@
-extends Node2D
+extends Minigame
 
 const lever_textures := [preload("res://sprites/train_control_minigame/train_control_unlocked.png"),
 						 preload("res://sprites/train_control_minigame/train_control_locked.png"),
@@ -10,6 +10,7 @@ var lever_state := LeverState.undetermined
 
 # TODO: upon closing, query the lever's position by reading this variable
 #       if unlocked or indeterminate, flip a coin
+# done, may add a train derailing fail state later
 var lever_sprite: Sprite2D
 
 # Called when the node enters the scene tree for the first time.
@@ -17,14 +18,15 @@ func _ready():
 	lever_sprite = get_node("lever")
 	# TODO: make this an input parameter to the minigame
 	#       (must be either locked_left or locked_right)
-	var initial_state: LeverState = LeverState.locked_left
+	# var initial_state: LeverState = LeverState.locked_left
+	var initial_state: LeverState = Globals.cached_lever_direction as LeverState
 	lever_state = initial_state
 	lever_sprite.rotation = -3*PI/4 if lever_state == LeverState.locked_left else -PI/4
 	lever_sprite.set_texture(lever_textures[lever_state])
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if (lever_state == LeverState.unlocked):
 		var mouse_pos := get_global_mouse_position()
 		var pivot_point_node := get_node("lever_pivot_point")
@@ -40,7 +42,7 @@ func _process(delta):
 		# orient the lever
 		var lever_height = lever_textures[0].get_height()
 		var lever_width = lever_textures[0].get_height()
-		var lever_sprite: Sprite2D = get_node("lever")
+		lever_sprite = get_node("lever")
 		lever_sprite.rotation = -mouse_angle
 		
 
@@ -61,3 +63,24 @@ func _on_lever_left_button_pressed():
 	elif (lever_state == LeverState.locked_left):
 		lever_state = LeverState.unlocked
 		lever_sprite.set_texture(lever_textures[lever_state])
+
+
+
+func exit_task():
+	# on task exit, return 2 for lever left, 3 for lever right, or coin flip if unlocked
+	if (lever_state == LeverState.locked_left or lever_state == LeverState.locked_right):
+		minigame_done.emit(true, int(lever_state + 1))
+	else:
+		var p: float = RandomNumberGenerator.new().randf()
+		minigame_done.emit(true, 2 if (p < 0.5) else 3)
+	
+	Globals.cached_lever_direction = lever_state
+
+
+func early_return_requested():
+	# on current lever state requested before end of minigame, return 2 for lever left, 3 for lever right, or coin flip if unlocked
+	if (lever_state == LeverState.locked_left or lever_state == LeverState.locked_right):
+		early_return_send.emit(true, int(lever_state + 1))
+	else:
+		var p: float = RandomNumberGenerator.new().randf()
+		early_return_send.emit(true, 2 if (p < 0.5) else 3)

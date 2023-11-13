@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_s4q3c"]
 [ext_resource type="PackedScene" uid="uid://3wpoosgsjjnd" path="res://scenes/pawsed_text.tscn" id="1_uygkx"]
 
-[node name="pause_menu" type="Control"]
+[node name="pause_menu" type="Control" node_paths=PackedStringArray("rmenu", "omenu", "fullToggle", "musicSlider", "soundSlider")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,12 +11,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s4q3c")
+rmenu = NodePath("resumeMenu")
+omenu = NodePath("optionsMenu")
+fullToggle = NodePath("optionsMenu/fullToggle")
+musicSlider = NodePath("optionsMenu/musicSlider")
+soundSlider = NodePath("optionsMenu/soundSlider")
 
 [node name="pawsed_text" parent="." instance=ExtResource("1_uygkx")]
 position = Vector2(355, 197)
 scale = Vector2(0.2, 0.2)
 
-[node name="quitButton" type="Button" parent="."]
+[node name="resumeMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="quitButton" type="Button" parent="resumeMenu"]
 layout_mode = 0
 offset_left = 182.0
 offset_top = 546.0
@@ -25,7 +35,7 @@ offset_bottom = 596.0
 theme_override_font_sizes/font_size = 30
 text = "quit"
 
-[node name="resumeButton" type="Button" parent="."]
+[node name="resumeButton" type="Button" parent="resumeMenu"]
 layout_mode = 0
 offset_left = 181.0
 offset_top = 366.0
@@ -34,5 +44,86 @@ offset_bottom = 416.0
 theme_override_font_sizes/font_size = 30
 text = "resume"
 
-[connection signal="pressed" from="quitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="resumeButton" to="." method="_on_resume_button_pressed"]
+[node name="optionsButton" type="Button" parent="resumeMenu"]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 454.0
+offset_right = 296.0
+offset_bottom = 504.0
+theme_override_font_sizes/font_size = 30
+text = "options"
+
+[node name="optionsMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="fullscreenLabel" type="Label" parent="optionsMenu"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 378.0
+offset_right = 289.0
+offset_bottom = 423.0
+theme_override_font_sizes/font_size = 30
+text = "Fullscreen"
+
+[node name="musicLabel" type="Label" parent="optionsMenu"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 431.0
+offset_right = 344.0
+offset_bottom = 476.0
+theme_override_font_sizes/font_size = 30
+text = "Music Volume"
+
+[node name="soundLabel" type="Label" parent="optionsMenu"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 484.0
+offset_right = 349.0
+offset_bottom = 529.0
+theme_override_font_sizes/font_size = 30
+text = "Sound Volume"
+
+[node name="fullToggle" type="CheckButton" parent="optionsMenu"]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 390.0
+offset_right = 363.0
+offset_bottom = 414.0
+
+[node name="musicSlider" type="HSlider" parent="optionsMenu"]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 446.0
+offset_right = 561.0
+offset_bottom = 462.0
+max_value = 1.0
+step = 0.001
+
+[node name="soundSlider" type="HSlider" parent="optionsMenu"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 501.0
+offset_right = 562.0
+offset_bottom = 517.0
+max_value = 1.0
+step = 0.001
+
+[node name="backButton" type="Button" parent="optionsMenu"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 554.0
+offset_right = 216.0
+offset_bottom = 604.0
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[connection signal="pressed" from="resumeMenu/quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="resumeMenu/resumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="resumeMenu/optionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="toggled" from="optionsMenu/fullToggle" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="optionsMenu/musicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="optionsMenu/soundSlider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="pressed" from="optionsMenu/backButton" to="." method="_on_button_pressed"]

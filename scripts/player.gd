@@ -92,3 +92,7 @@ func _on_jump_finished(ending_jump: bool) -> void:
 	on_jump_point = not ending_jump
 	if ending_jump:
 		jump_point_exited.emit()
+
+
+func on_task_done(_success: bool, _data: int):
+	block_movement = false

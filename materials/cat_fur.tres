@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://4herngsws085"]
+
+[resource]
+resource_name = "CatFur"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.34902, 0.258824, 0.223529, 1)
+roughness = 0.63

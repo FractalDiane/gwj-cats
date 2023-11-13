@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6fw5ptwdrfej"]
+
+[ext_resource type="Texture2D" uid="uid://bya5mcsec41qa" path="res://sprites/coal game/coal.png" id="1_cl4fy"]
+[ext_resource type="Script" path="res://scripts/coal.gd" id="1_seieq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hsxuv"]
+radius = 28.0179
+
+[node name="coal" type="RigidBody2D"]
+script = ExtResource("1_seieq")
+despawnBuffer = 300
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cl4fy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, 15)
+shape = SubResource("CircleShape2D_hsxuv")

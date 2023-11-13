@@ -1,29 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ba7ywxh0mgexs"]
+[gd_scene load_steps=13 format=3 uid="uid://ba7ywxh0mgexs"]
 
 [ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_qb1e3"]
 [ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_8u44m"]
 [ext_resource type="PackedScene" uid="uid://dlrdmtqyyn0qb" path="res://meshes/main_size_reference.glb" id="3_83dx8"]
-
-[sub_resource type="Environment" id="Environment_tsshv"]
-background_mode = 1
-background_color = Color(0.890196, 0.67451, 0.603922, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.890196, 0.67451, 0.603922, 1)
-reflected_light_source = 2
-tonemap_mode = 2
-ssao_enabled = true
-ssao_radius = 0.78
-ssao_intensity = 0.67
-ssao_power = 2.7991
-ssil_enabled = true
-ssil_radius = 0.54
-ssil_intensity = 1.44
-ssil_sharpness = 1.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.1
-volumetric_fog_albedo = Color(0.819608, 0.772549, 0.784314, 1)
-volumetric_fog_emission = Color(0.419608, 0.223529, 0.392157, 1)
-volumetric_fog_anisotropy = 0.4
+[ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="4_3m8i8"]
+[ext_resource type="Texture2D" uid="uid://bcxqsep7o0ayg" path="res://sprites/funky_rug.png" id="5_gyvs0"]
+[ext_resource type="Texture2D" uid="uid://dc7hgcmdxtno0" path="res://sprites/tiling_carpet.png" id="6_n3ruj"]
 
 [sub_resource type="Shader" id="Shader_8qn7n"]
 code = "// Sobel Edge Detection Shader written by absentSpaghetti
@@ -115,6 +97,15 @@ shader_parameter/max_step = 1.0
 [sub_resource type="QuadMesh" id="QuadMesh_1k5td"]
 size = Vector2(2, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdlxv"]
+albedo_texture = ExtResource("5_gyvs0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_fuq0v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4vb0"]
+albedo_texture = ExtResource("6_n3ruj")
+uv1_scale = Vector3(2.36, 1.298, 1.18)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="hanging_plant" parent="." instance=ExtResource("1_qb1e3")]
@@ -123,11 +114,20 @@ transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0,
 [node name="hanging_plant2" parent="." instance=ExtResource("1_qb1e3")]
 transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, -3.19264, 2.78208, -1.70461)
 
-[node name="cat" parent="." instance=ExtResource("2_8u44m")]
-transform = Transform3D(0.483481, 0, -0.875355, 0, 1, 0, 0.875355, 0, 0.483481, 0, 0.75, 0)
+[node name="Plant1" parent="hanging_plant2/Hanging Pot" index="0"]
+transform = Transform3D(0.99672, 0.0800608, -0.0117989, -0.0805187, 0.995714, -0.0455099, 0.00810475, 0.0463107, 0.998894, 0.000998378, -0.438903, -0.000218868)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_tsshv")
+[node name="Plant2" parent="hanging_plant2/Hanging Pot" index="1"]
+transform = Transform3D(0.998434, 0.0173997, 0.0531644, -0.0165441, 0.999727, -0.0164922, -0.0534369, 0.0155869, 0.99845, -0.0242646, -0.437188, -0.0835934)
+
+[node name="Plant3" parent="hanging_plant2/Hanging Pot" index="2"]
+transform = Transform3D(0.999055, 0.0159164, -0.040444, -0.0165718, 0.999736, -0.0159223, 0.0401799, 0.0165775, 0.999055, 0.0643862, -0.437188, -0.00164018)
+
+[node name="Plant4" parent="hanging_plant2/Hanging Pot" index="3"]
+transform = Transform3D(0.99524, -0.0599968, -0.0767951, 0.0557461, 0.996854, -0.0563479, 0.0799341, 0.0517987, 0.995453, 0, -0.433921, 0)
+
+[node name="cat" parent="." instance=ExtResource("2_8u44m")]
+transform = Transform3D(0.483481, 0, -0.875355, 0, 1, 0, 0.875355, 0, 0.483481, -0.225244, 0.300352, 0.498196)
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.66529e-07, 0, -1, 0, 2.13918, 0, 6.09747, 0, -4.37114e-08, -1.47562, 0, 0)
@@ -136,7 +136,22 @@ material_override = SubResource("ShaderMaterial_y18s4")
 mesh = SubResource("QuadMesh_1k5td")
 
 [node name="main_size_reference" parent="." instance=ExtResource("3_83dx8")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00826111, -0.840425, -0.650998)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.713876)
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
+
+[node name="ShadingContainer" parent="." instance=ExtResource("4_3m8i8")]
+
+[node name="rug" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.00652909, 0.00679803, 0.53988)
+visible = false
+material_override = SubResource("StandardMaterial3D_mdlxv")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.2, 0, 0, 0, -9.61651e-08, 2, 0, -2.2, -8.74228e-08, -0.0273442, 0.00248695, 0.606315)
+material_override = SubResource("StandardMaterial3D_r4vb0")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[editable path="hanging_plant2"]

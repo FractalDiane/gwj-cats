@@ -21,10 +21,35 @@ coalFlingAngleVariance = 0.7
 coalFlingTorqueVariance = 100.0
 
 [node name="furnace" type="Sprite2D" parent="."]
+position = Vector2(-670, 0)
 texture = ExtResource("1_x6ulx")
 centered = false
 
+[node name="furnace2" type="Sprite2D" parent="."]
+position = Vector2(1352, 0)
+texture = ExtResource("1_x6ulx")
+centered = false
+region_enabled = true
+region_rect = Rect2(1352, 0, 568, 1080)
+
+[node name="furnace3" type="Sprite2D" parent="."]
+position = Vector2(875, 0)
+scale = Vector2(1.24, 1)
+texture = ExtResource("1_x6ulx")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 536, 1080)
+
+[node name="overlay2" type="Sprite2D" parent="."]
+position = Vector2(839, 0)
+texture = ExtResource("2_23ksj")
+centered = false
+flip_h = true
+region_enabled = true
+region_rect = Rect2(-8, 0, 624, 1080)
+
 [node name="overlay" type="Sprite2D" parent="."]
+position = Vector2(-670, 0)
 texture = ExtResource("2_23ksj")
 centered = false
 
@@ -43,37 +68,28 @@ action_mode = 0
 flat = true
 
 [node name="lever_button" type="Button" parent="."]
-offset_left = 319.0
+offset_left = 925.0
 offset_top = 480.0
-offset_right = 529.0
+offset_right = 1135.0
 offset_bottom = 1080.0
 focus_mode = 0
 toggle_mode = true
 flat = true
 
 [node name="lever_button_alt" type="Button" parent="."]
-offset_left = 2.0
-offset_top = 644.0
-offset_right = 172.0
-offset_bottom = 1286.0
-rotation = -0.594996
+offset_left = 960.0
+offset_top = 469.0
+offset_right = 1130.0
+offset_bottom = 1111.0
+rotation = 0.595157
+pivot_offset = Vector2(85, 642)
 focus_mode = 0
 disabled = true
 toggle_mode = true
 flat = true
 
-[node name="furnace_button" type="Button" parent="."]
-visible = false
-offset_left = 836.0
-offset_top = 691.0
-offset_right = 1256.0
-offset_bottom = 991.0
-focus_mode = 0
-toggle_mode = true
-flat = true
-
 [node name="furnace_trigger" type="Area2D" parent="."]
-position = Vector2(1046, 841)
+position = Vector2(376, 841)
 input_pickable = false
 monitorable = false
 
@@ -89,9 +105,6 @@ theme_override_font_sizes/normal_font_size = 50
 text = "coal: 0 of 0"
 fit_content = true
 scroll_active = false
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
 
 [connection signal="pressed" from="coal_button" to="." method="_on_coal_button_pressed"]
 [connection signal="pressed" from="lever_button" to="." method="_on_lever_button_pressed"]

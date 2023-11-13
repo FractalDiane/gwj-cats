@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ns88leyqt665"
-path="res://.godot/imported/triple_vertical.png-e6a8ad83322f138041121c53c3bdc2a7.ctex"
+uid="uid://b2q8uka2hon72"
+path="res://.godot/imported/tetris_j_hook_up.png-d64a82d4734dc761b1e4466440ff0815.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cargo_minigame/triple_vertical.png"
-dest_files=["res://.godot/imported/triple_vertical.png-e6a8ad83322f138041121c53c3bdc2a7.ctex"]
+source_file="res://sprites/cargo_minigame/tetris_j_hook_up.png"
+dest_files=["res://.godot/imported/tetris_j_hook_up.png-d64a82d4734dc761b1e4466440ff0815.ctex"]
 
 [params]
 

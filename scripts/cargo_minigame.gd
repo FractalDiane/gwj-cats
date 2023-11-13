@@ -1,5 +1,23 @@
 extends Node2D
 
+"""
+Below are the configurables.
+"""
+
+const N := 3 # HEIGHT
+const M := 4 # WIDTH
+const MAX_BLOCK := 4 # biggest block e.g. 4 for tetromino
+
+const BLOCK_SIZE_IN_PIXELS := 200
+
+const SPAWN_POOL_HEIGHT := 5
+const SPAWN_POOL_WIDTH := 5
+
+"""
+I've separated readable high-level code from unreadable code.
+Readable code below.
+"""
+
 # on closing: complete is the only winning state
 enum CargoMiniGameState {startup, unselected, selected, complete}
 var selected_block_node: Sprite2D = null
@@ -9,13 +27,13 @@ var current_game_state := CargoMiniGameState.startup
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	generate_connections()
-	print_graph()
+	# print_graph()
 	get_pieces()
 	get_blocks()
-	
+	"""
 	for b in blocks:
 		print(Block.keys()[b])
-	
+	"""
 	create_block_nodes()
 	
 	for i in range(N):
@@ -41,9 +59,6 @@ const BLOCK_SPRITES_TABLE := [
 	preload("res://sprites/cargo_minigame/triple_square_minus_top_right.png"),
 	preload("res://sprites/cargo_minigame/triple_square_minus_bottom_left.png"),
 	preload("res://sprites/cargo_minigame/triple_square_minus_bottom_right.png"),
-	null]
-"""
-
 	preload("res://sprites/cargo_minigame/tetris_i_horizontal.png"),
 	preload("res://sprites/cargo_minigame/tetris_i_vertical.png"),
 	preload("res://sprites/cargo_minigame/tetris_o.png"),
@@ -59,22 +74,11 @@ const BLOCK_SPRITES_TABLE := [
 	preload("res://sprites/cargo_minigame/tetris_s_vertical.png"),
 	preload("res://sprites/cargo_minigame/tetris_z.png"),
 	preload("res://sprites/cargo_minigame/tetris_z_vertical.png"),
-	preload("res://sprites/cargo_minigame/tetris_t_up,.png"),
+	preload("res://sprites/cargo_minigame/tetris_t_up.png"),
 	preload("res://sprites/cargo_minigame/tetris_t_down.png"),
 	preload("res://sprites/cargo_minigame/tetris_t_left.png"),
 	preload("res://sprites/cargo_minigame/tetris_t_right.png")
 ]
-"""
-
-
-const N := 3 # HEIGHT
-const M := 4 # WIDTH
-const MAX_BLOCK := 3 # biggest block e.g. 4 for tetromino
-
-const BLOCK_SIZE_IN_PIXELS := 200
-
-const SPAWN_POOL_HEIGHT := 5
-const SPAWN_POOL_WIDTH := 5
 
 """
 Spaghetti code starts here.
@@ -86,9 +90,6 @@ even future me.
 """
 
 func piece_can_place(block: Block, i: int, j: int):
-	print("here")
-	print(i)
-	print(j)
 	var shape: Array = SHAPE_TABLE[block]
 	for point in shape:
 		if i+point[0] < 0 or i+point[0] >= N or j+point[1] < 0 or j+point[1] >= M:
@@ -120,12 +121,10 @@ func release_block():
 	var i := int(roundf(float(y_pos) / BLOCK_SIZE_IN_PIXELS))
 
 	if (piece_can_place(selected_block_type, i, j)):
-		print("snap!")
 		var shape: Array = SHAPE_TABLE[selected_block_type]
 		if not cells_occupied_by_given_blocks.has(selected_block_node):
 			cells_occupied_by_given_blocks[selected_block_node] = []
 		for point in shape:
-			print("checking " + str([i+point[0], j+point[1]]))
 			cell_occupation[i+point[0]][j+point[1]] = true
 			cells_occupied_by_given_blocks[selected_block_node].push_back([i+point[0], j+point[1]])
 		selected_block_node.position.x = board_x + j * BLOCK_SIZE_IN_PIXELS + block_width / 2
@@ -164,7 +163,6 @@ func _on_button_button_down():
 				selected_block_type = blocks[i]
 				if cells_occupied_by_given_blocks.has(selected_block_node):
 					for cell in cells_occupied_by_given_blocks[selected_block_node]:
-						print(cell)
 						cell_occupation[cell[0]][cell[1]] = false
 					cells_occupied_by_given_blocks[selected_block_node] = []
 				return
@@ -193,7 +191,7 @@ func create_block_nodes():
 		sprite.position.x = randf_range(block_xmin, block_xmax)
 		sprite.position.y = randf_range(block_ymin, block_ymax)
 		
-		sprite.z_index = 9 - BLOCK_WIDTHS[block] - BLOCK_HEIGHTS[block]
+		sprite.z_index = Block.unknown - block
 		
 		block_nodes.push_back(sprite)
 	
@@ -284,7 +282,7 @@ enum Block {
 	tetris_s_vertical,
 	tetris_z,
 	tetris_z_vertical,
-	tetris_t_up, # direction refer to the direction of the T's nipple
+	tetris_t_up, # direction refers to the direction of the T's nipple
 	tetris_t_down,
 	tetris_t_left,
 	tetris_t_right,
@@ -298,6 +296,7 @@ var blocks: Array = []
 func get_blocks():
 	for p in pieces:
 		blocks.push_back(piece_to_block(p))
+	blocks.sort()
 
 var pieces := [] 
 func get_pieces():
@@ -309,8 +308,9 @@ func get_pieces():
 				pieces.push_back(block.keys())
 				for x in block:
 					visited[x] = null
-	pieces.sort()
 	
+
+# THIS ONE HAS NO NEGATIVES
 const SHAPE_TABLE := [
 	[[0, 0]],
 	[[0, 0], [0, 1]],
@@ -328,20 +328,21 @@ const SHAPE_TABLE := [
 	[[0, 0], [0, 1], [1, 1], [2, 1]],
 	[[0, 0], [0, 1], [0, 2], [1, 0]],
 	[[0, 2], [1, 0], [1, 1], [1, 2]],
-	[[0, 0], [1, 0], [2, -1], [2, 0]],
+	[[0, 1], [1, 1], [2, 1], [2, 0]],
 	[[0, 0], [0, 1], [1, 0], [2, 0]],
 	[[0, 0], [0, 1], [0, 2], [1, 2]],
 	[[0, 0], [1, 0], [1, 1], [1, 2]],
-	[[1, 0], [1, 1], [0, 1], [0, 0]],
+	[[1, 0], [1, 1], [0, 1], [0, 2]],
 	[[0,  0], [1, 0], [1, 1], [2, 1]],
 	[[0, 0], [0, 1], [1, 1], [1, 2]],
-	[[0, 0], [1, 0], [1, -1], [2, -1]],
+	[[0, 1], [1, 1], [1, 0], [2, 0]],
 	[[0, 1], [1, 0], [1, 1], [1, 2]],
 	[[0, 0], [0, 1], [0, 2], [1, 1]],
 	[[0, 1], [1, 0], [1, 1], [2, 1]],
 	[[0, 0], [1, 0], [1, 1], [2, 0]]
 ]
 
+# THIS ONE HAS NEGATIVES
 const BLOCK_TABLE := {
 	[[0, 0]]: Block.single,
 	[[0, 0], [0, 1]]: Block.double_horizontal,
@@ -368,8 +369,8 @@ const BLOCK_TABLE := {
 	[[0, 0], [1, -1], [1, 0], [1, 1]]: Block.tetris_t_up,
 	[[0, 0], [0, 1], [0, 2], [1, 1]]: Block.tetris_t_down,
 	[[0, 0], [0, 1], [1, 1], [1, 2]]: Block.tetris_z,
-	[[0, 0], [1, 0], [1, -1], [2, -1]]: Block.tetris_z_vertical,
-	[[0, 0], [0, 1], [-1, 1], [-1, 0]]: Block.tetris_s,
+	[[0, 0], [1, -1], [1, 0], [2, -1]]: Block.tetris_z_vertical,
+	[[0, 0], [0, 1], [1, -1], [1, 0]]: Block.tetris_s,
 	[[0, 0], [1, 0], [1, 1], [2, 1]]: Block.tetris_s_vertical
 }	
 
@@ -381,6 +382,8 @@ func piece_to_block(piece: Array):
 		piece[i] = [piece[i][0] - dy, piece[i][1] - dx]
 	if BLOCK_TABLE.has(piece):
 		return BLOCK_TABLE[piece]
+	print(piece)
+	print("^ A WEIRD THING HAPPENED: COULDNT IDENTIFY THIS PIECE")
 	return Block.unknown
 	
 func is_in_bounds(point: Array):

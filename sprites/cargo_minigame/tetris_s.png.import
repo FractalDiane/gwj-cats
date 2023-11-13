@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ns88leyqt665"
-path="res://.godot/imported/triple_vertical.png-e6a8ad83322f138041121c53c3bdc2a7.ctex"
+uid="uid://bm1styqhtoe01"
+path="res://.godot/imported/tetris_s.png-4c0e9793b7d1238942ca1a9a0b3c4f30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cargo_minigame/triple_vertical.png"
-dest_files=["res://.godot/imported/triple_vertical.png-e6a8ad83322f138041121c53c3bdc2a7.ctex"]
+source_file="res://sprites/cargo_minigame/tetris_s.png"
+dest_files=["res://.godot/imported/tetris_s.png-4c0e9793b7d1238942ca1a9a0b3c4f30.ctex"]
 
 [params]
 

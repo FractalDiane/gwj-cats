@@ -16,7 +16,10 @@ func _ready():
 	interaction_component.interacted_with.connect(_on_interacted)
 
 
-func _on_interacted(_player: Player) -> void:
+func _on_interacted(player: Player) -> void:
+	player.block_movement = true
+	if (!task_done.is_connected(player.on_task_done)):
+		task_done.connect(player.on_task_done)
 	launch_minigame()
 
 

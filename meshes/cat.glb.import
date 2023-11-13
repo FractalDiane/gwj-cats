@@ -28,5 +28,40 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"CatEyeSockets": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_eye_whites.tres"
+},
+"CatFur": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_fur.tres"
+},
+"CatFurInEar": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_fur_inner_ear.tres"
+},
+"CatNose": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_nose.tres"
+},
+"Eye": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_eye_iris.tres"
+},
+"Eye.001": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_eye_pupil.tres"
+},
+"Outline": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/outline.tres"
+},
+"Whisker": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_whisker.tres"
+}
+}
+}
 gltf/embedded_image_handling=1

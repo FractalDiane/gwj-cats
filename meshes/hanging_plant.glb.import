@@ -28,5 +28,20 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"plant": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/plant.tres"
+},
+"pot": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/clay.tres"
+},
+"rope": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/rope.tres"
+}
+}
+}
 gltf/embedded_image_handling=1

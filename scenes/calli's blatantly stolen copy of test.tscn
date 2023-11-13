@@ -64,7 +64,7 @@ script = ExtResource("2_31t53")
 [node name="TestThingy" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63606, 0.573184, -0.953491)
 script = ExtResource("3_l5ixy")
-minigame_scene = "res://scenes/train_control_minigame.tscn"
+minigame_scene = "res://scenes/coal_minigame.tscn"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestThingy"]
 mesh = SubResource("BoxMesh_jm3yc")

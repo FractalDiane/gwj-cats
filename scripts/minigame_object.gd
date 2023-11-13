@@ -12,14 +12,20 @@ signal early_task_return(success: bool, data: int)
 # minigame ref
 var minigame: Minigame
 
+
 func _ready():
 	interaction_component.interacted_with.connect(_on_interacted)
+	
+	## jank !!! move assignment of this global into a manager or something later
+	if (Globals.minigame_overlay_ref == null):
+		Globals.minigame_overlay_ref = get_tree().current_scene.find_child("MinigameOverlay")
 
 
 func _on_interacted(player: Player) -> void:
 	player.block_movement = true
 	if (!task_done.is_connected(player.on_task_done)):
 		task_done.connect(player.on_task_done)
+	
 	launch_minigame()
 
 
@@ -28,7 +34,11 @@ func launch_minigame() -> void:
 		var scene := load(minigame_scene)
 		if scene != null:
 			minigame = (scene as PackedScene).instantiate() as Minigame
-			get_tree().current_scene.add_child(minigame)
+			if (Globals.minigame_overlay_ref != null):
+				Globals.minigame_overlay_ref.find_child("SubViewport").add_child(minigame)
+				Globals.minigame_overlay_ref.visible = true
+			else:
+				get_tree().current_scene.add_child(minigame)
 			minigame.minigame_done.connect(_minigame_done)
 			minigame.early_return_send.connect(_early_return_sent)
 			early_return_request.connect(minigame.early_return_requested)
@@ -38,7 +48,23 @@ func _minigame_done(success: bool, data: int):
 	minigame.queue_free()
 	minigame = null
 	
+	Globals.minigame_overlay_ref.visible = false
+	
 	print("minigame success: " + str(success) + ", minigame data: " + str(data))
+	
+	## really dumb but kinda funny, remove later
+	# (spawns a permanent icon.svg at your mouse position if minigame returned with a boiler explosion)
+	"""
+	if (data == 1):
+		var icon := load("res://icon.svg")
+		var guy := Sprite2D.new()
+		guy.texture = icon
+		get_tree().current_scene.add_child(guy)
+		guy.position = get_viewport().get_mouse_position()
+		guy.scale.x = 20
+		guy.scale.y = 4
+	"""
+	
 	task_done.emit(success, data)
 
 

@@ -11,7 +11,7 @@ size = Vector2(420, 300)
 [node name="coal minigame" type="Node2D"]
 script = ExtResource("1_rq1up")
 coalNeeded = 30
-coalToExplode = 50
+coalToExplode = 60
 coalPerScoop = 8
 coalSpread = 90
 coalSpeed = 100.0
@@ -89,6 +89,9 @@ theme_override_font_sizes/normal_font_size = 50
 text = "coal: 0 of 0"
 fit_content = true
 scroll_active = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
 [connection signal="pressed" from="coal_button" to="." method="_on_coal_button_pressed"]
 [connection signal="pressed" from="lever_button" to="." method="_on_lever_button_pressed"]

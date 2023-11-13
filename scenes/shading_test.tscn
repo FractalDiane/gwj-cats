@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://coi1d2u0wj34n"]
+[gd_scene load_steps=18 format=3 uid="uid://coi1d2u0wj34n"]
 
 [ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_revxj"]
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="1_uv1hc"]
 [ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_gojjk"]
 [ext_resource type="PackedScene" uid="uid://dlrdmtqyyn0qb" path="res://meshes/main_size_reference.glb" id="3_6we1g"]
+[ext_resource type="Material" uid="uid://cos3t0crjaocc" path="res://materials/rug.tres" id="5_x61tm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wev3h"]
 albedo_color = Color(0.6, 0.537255, 0.505882, 1)
@@ -127,6 +128,8 @@ shader_parameter/max_step = 1.0
 [sub_resource type="QuadMesh" id="QuadMesh_1k5td"]
 size = Vector2(2, 2)
 
+[sub_resource type="QuadMesh" id="QuadMesh_l8gjk"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="hanging_plant" parent="." instance=ExtResource("1_revxj")]
@@ -200,3 +203,8 @@ light_energy = 0.69
 omni_range = 1.86887
 
 [node name="ShadingContainer" parent="." instance=ExtResource("1_uv1hc")]
+
+[node name="rug" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.74846e-07, -2, -8.74228e-08, 0, -8.74228e-08, 2, -4, 8.74228e-08, 3.82137e-15, 0.30741, 0.0377438, 0.221757)
+material_override = ExtResource("5_x61tm")
+mesh = SubResource("QuadMesh_l8gjk")

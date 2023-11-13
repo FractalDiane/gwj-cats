@@ -134,7 +134,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y18s4"]
 render_priority = -1
 shader = SubResource("Shader_8qn7n")
-shader_parameter/min_step = 0.72
+shader_parameter/min_step = 0.13
 shader_parameter/max_step = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_1k5td"]
@@ -149,7 +149,7 @@ transform = Transform3D(0.852476, 0, 0, 0, 0.852476, 0, 0, 0, 0.852476, -1.01885
 transform = Transform3D(0.852476, 0, 0, 0, 0.852476, 0, 0, 0, 0.852476, -1.01885, 1.87934, 2.38229)
 
 [node name="cat" parent="." instance=ExtResource("2_gojjk")]
-transform = Transform3D(1.29535, 0, 0, 0, 1.29535, 0, 0, 0, 1.29535, -0.102766, 0.0527212, 0)
+transform = Transform3D(1.13389, 0, 0.626277, 0, 1.29535, 0, -0.626277, 0, 1.13389, 0.250144, 0.0527212, 0.191412)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(3.64688, 0, 0, 0, 0.675781, 0, 0, 0, 6.25056, 0, -0.585337, 0)
@@ -195,6 +195,7 @@ mesh = SubResource("BoxMesh_s41aa")
 environment = SubResource("Environment_tsshv")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.66529e-07, 0, -1, 0, 2.13918, 0, 6.09747, 0, -4.37114e-08, -1.47562, 0, 0)
 visible = false
 material_override = SubResource("ShaderMaterial_y18s4")
 mesh = SubResource("QuadMesh_1k5td")

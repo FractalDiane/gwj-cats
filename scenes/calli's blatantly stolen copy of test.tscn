@@ -1,13 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5o7aeyay2g1l"]
+[gd_scene load_steps=15 format=3 uid="uid://b32h13egroexw"]
 
-[ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_2huee"]
-[ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_mdwb4"]
-[ext_resource type="Script" path="res://scripts/minigame_object.gd" id="3_5gm6w"]
-[ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="3_mhsad"]
-[ext_resource type="PackedScene" uid="uid://bk4008dytdk5b" path="res://prefabs/trans_volume.tscn" id="4_f8hb4"]
-[ext_resource type="PackedScene" uid="uid://c3lwmorn0gik4" path="res://prefabs/components/jump_point.tscn" id="6_7g1dt"]
-[ext_resource type="Script" path="res://scripts/paws_chair.gd" id="6_83pfg"]
-[ext_resource type="PackedScene" uid="uid://c2kexkbdwxc0c" path="res://prefabs/managers/level_manager.tscn" id="8_crm2y"]
+[ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_r4sus"]
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_31t53"]
+[ext_resource type="Script" path="res://scripts/minigame_object.gd" id="3_l5ixy"]
+[ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="4_7yv7d"]
+[ext_resource type="PackedScene" uid="uid://bk4008dytdk5b" path="res://prefabs/trans_volume.tscn" id="5_fqdb3"]
+[ext_resource type="Script" path="res://scripts/paws_chair.gd" id="6_7r306"]
+[ext_resource type="PackedScene" path="res://prefabs/components/jump_point.tscn" id="7_7005h"]
+[ext_resource type="PackedScene" uid="uid://c2kexkbdwxc0c" path="res://prefabs/managers/level_manager.tscn" id="8_sw505"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
 size = Vector3(10, 1, 6)
@@ -53,19 +53,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
 transform = Transform3D(0.262694, 0.577851, -0.77271, 1.19632e-10, 0.800836, 0.598884, 0.964879, -0.157323, 0.210375, -5.41966, 2.24672, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_2huee")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_r4sus")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-camera = Object(Camera3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"keep_aspect":1,"cull_mask":1048575,"environment":null,"attributes":null,"h_offset":0.0,"v_offset":0.0,"doppler_tracking":0,"projection":0,"current":false,"fov":75.0,"size":1.0,"frustum_offset":Vector2(0, 0),"near":0.05,"far":4000.0,"script":ExtResource("2_mdwb4"))
-
+camera = NodePath("../PlayerCamera")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
-script = ExtResource("2_mdwb4")
+script = ExtResource("2_31t53")
 
 [node name="TestThingy" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63606, 0.573184, -0.953491)
-script = ExtResource("3_5gm6w")
-minigame_scene = "res://scenes/coal_minigame.tscn"
+script = ExtResource("3_l5ixy")
+minigame_scene = "res://scenes/train_control_minigame.tscn"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestThingy"]
 mesh = SubResource("BoxMesh_jm3yc")
@@ -73,17 +72,17 @@ mesh = SubResource("BoxMesh_jm3yc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestThingy"]
 shape = SubResource("ConvexPolygonShape3D_qh3qs")
 
-[node name="InteractionReceiverComponent" parent="TestThingy" instance=ExtResource("3_mhsad")]
+[node name="InteractionReceiverComponent" parent="TestThingy" instance=ExtResource("4_7yv7d")]
 
-[node name="TransVolume" parent="." instance=ExtResource("4_f8hb4")]
+[node name="TransVolume" parent="." instance=ExtResource("5_fqdb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5075, 0, 0)
 
-[node name="TransVolume2" parent="." instance=ExtResource("4_f8hb4")]
+[node name="TransVolume2" parent="." instance=ExtResource("5_fqdb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.49832, 0, 0)
 
 [node name="PawsChair" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9134, 0.605134, 0)
-script = ExtResource("6_83pfg")
+script = ExtResource("6_7r306")
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PawsChair"]
@@ -92,9 +91,9 @@ mesh = SubResource("BoxMesh_u5a72")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PawsChair"]
 shape = SubResource("ConvexPolygonShape3D_81eac")
 
-[node name="InteractionReceiverComponent" parent="PawsChair" instance=ExtResource("3_mhsad")]
+[node name="InteractionReceiverComponent" parent="PawsChair" instance=ExtResource("4_7yv7d")]
 
-[node name="JumpPoint" parent="PawsChair" instance=ExtResource("6_7g1dt")]
+[node name="JumpPoint" parent="PawsChair" instance=ExtResource("7_7005h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113867, 0)
 
-[node name="LevelManager" parent="." instance=ExtResource("8_crm2y")]
+[node name="LevelManager" parent="." instance=ExtResource("8_sw505")]

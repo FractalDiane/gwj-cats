@@ -1,161 +1,31 @@
-[gd_scene load_steps=17 format=3 uid="uid://6nn1e7smr27m"]
+[gd_scene load_steps=20 format=3 uid="uid://6nn1e7smr27m"]
 
-[ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_timeo"]
-[ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_rddr0"]
-[ext_resource type="PackedScene" uid="uid://dlrdmtqyyn0qb" path="res://meshes/main_size_reference.glb" id="3_ufd5r"]
-[ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="4_06pd5"]
-[ext_resource type="Material" uid="uid://cos3t0crjaocc" path="res://materials/rug.tres" id="5_2axi3"]
-[ext_resource type="Material" uid="uid://bqc5pahonbwxo" path="res://materials/carpet.tres" id="6_50sdf"]
 [ext_resource type="PackedScene" uid="uid://xlioxobhyhah" path="res://kenney_assets/nature/ground_grass.glb" id="7_6mqct"]
 [ext_resource type="PackedScene" uid="uid://dumylpfkd4ivl" path="res://kenney_assets/nature/grass_large.glb" id="8_snotc"]
 [ext_resource type="PackedScene" uid="uid://doy11p66sw5s5" path="res://kenney_assets/nature/log_large.glb" id="9_58hbk"]
 [ext_resource type="PackedScene" uid="uid://snysx26vmxur" path="res://kenney_assets/nature/hanging_moss.glb" id="10_y1oe1"]
 [ext_resource type="PackedScene" uid="uid://cxwihwwro08io" path="res://kenney_assets/nature/ground_riverBendBank.glb" id="11_sqm1v"]
 [ext_resource type="PackedScene" uid="uid://dhpm0n51870ed" path="res://kenney_assets/nature/ground_riverEndClosed.glb" id="12_8tbvd"]
+[ext_resource type="PackedScene" uid="uid://ct8o2ixrq7brm" path="res://kenney_assets/nature/ground_riverStraight.glb" id="13_2iom8"]
+[ext_resource type="PackedScene" uid="uid://ba7ywxh0mgexs" path="res://scenes/train_cars/train_car_passenger.tscn" id="13_npl06"]
+[ext_resource type="PackedScene" uid="uid://ci7b3cj6smu1q" path="res://kenney_assets/nature/ground_riverRocks.glb" id="14_iycf7"]
+[ext_resource type="PackedScene" uid="uid://dqlijxw5s2ucr" path="res://kenney_assets/nature/tree_pineRoundA.glb" id="14_o2j45"]
+[ext_resource type="PackedScene" uid="uid://sxh840b33do8" path="res://kenney_assets/nature/ground_riverSideOpen.glb" id="15_c6s2u"]
+[ext_resource type="PackedScene" uid="uid://rril71hqdia5" path="res://kenney_assets/nature/tree_pineRoundC.glb" id="15_m1ms7"]
+[ext_resource type="PackedScene" uid="uid://dmnetrqc4jfxq" path="res://kenney_assets/nature/ground_riverOpen.glb" id="16_25eco"]
+[ext_resource type="PackedScene" uid="uid://bekh0j7drb57h" path="res://kenney_assets/nature/tree_pineRoundD.glb" id="16_j4eep"]
+[ext_resource type="PackedScene" uid="uid://bmni5bua3f5jq" path="res://kenney_assets/nature/tree_pineSmallC.glb" id="17_67fnj"]
+[ext_resource type="PackedScene" uid="uid://bn8yh8xu1bsyp" path="res://kenney_assets/nature/ground_riverCorner.glb" id="17_sxtyg"]
+[ext_resource type="PackedScene" uid="uid://cwcljqimmtm5j" path="res://kenney_assets/nature/tree_pineTallA_detailed.glb" id="18_6nuio"]
+[ext_resource type="PackedScene" uid="uid://dxd1uxs38kue6" path="res://kenney_assets/nature/ground_riverSide.glb" id="18_6tt48"]
+[ext_resource type="PackedScene" uid="uid://6evcsd7rft7i" path="res://kenney_assets/nature/tree_pineDefaultB.glb" id="19_t2xo7"]
 
-[sub_resource type="Shader" id="Shader_8qn7n"]
-code = "// Sobel Edge Detection Shader written by absentSpaghetti
-//
-// This shader is a part of my tutorial/learning Github repository: https://github.com/absentSpaghetti/Shader-Basics-With-Spaghetti
-// Feel free to use, edit and share this shader according to your needs
-//
-// MIT License 
-//
-// prerequisites: color-to-greyscale, simple-box-blur
+[node name="environment_forest" type="Node3D"]
 
-shader_type spatial;
-render_mode unshaded, cull_disabled;
-
-uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
-uniform float min_step : hint_range(0.0, 1.0, 0.01) = 0.4; // min step for the smoothstep() function
-uniform float max_step : hint_range(0.0, 1.0, 0.01) = 0.6; // max step for the smoothstep() function
-
-// x direction kernel
-const mat3 kx = mat3(
-	vec3(-1, 0, 1),
-	vec3(-2, 0, 2),
-	vec3(-1, 0, 1)
-);
-// y direction kernel 
-const mat3 ky = mat3(
-	vec3(-1, -2, -1),
-	vec3(0, 0, 0),
-	vec3(1, 2, 1)
-);
-
-// By using a different set of kernels we can get different results. This is a kernel for the laplace operator
-//// x direction kernel
-//const mat3 kx = mat3(
-//	vec3(0, -1, 0),
-//	vec3(-1, 4, -1),
-//	vec3(-0, -1, 0)
-//);
-//// y direction kernel 
-//const mat3 ky = mat3(
-//	vec3(-1, -1, -1),
-//	vec3(-1, 8, -1),
-//	vec3(-1, -1, -1)
-//);
-
-void vertex() { 
-	POSITION = vec4(VERTEX, 1.0);
-}
-
-void fragment() { 
-	
-	vec4 texture_color = texture(screen_texture, SCREEN_UV);
-	
-	mat3 I; // Matrix is essentially an array of vectors (in this case vector3s)
-	for (int i = 0; i < 3; i++ ) {
-		for (int j = 0; j < 3; j++) {
-			vec3 sample_around_pixel = texelFetch(screen_texture, ivec2(FRAGCOORD.xy) + ivec2(i-1,j-1), 0).rgb;
-			vec3 sample_grey = vec3(sample_around_pixel.r * 0.3, sample_around_pixel.g * 0.59, sample_around_pixel.b * 0.11);
-			I[i][j] = sample_grey.r + sample_grey.g + sample_grey.b;
-			
-		}
-	}
-	
-	// apply the sobel operator
-	float gx = dot(kx[0], I[0]) + dot(kx[1], I[1]) + dot(kx[2], I[2]); // convolution of the image's and intensity's 'x' values
-	float gy = dot(ky[0], I[0]) + dot(ky[1], I[1]) + dot(ky[2], I[2]); // convolution of the image's and intensity's 'y' values
-	float g = sqrt(pow(gx, 2.0) + pow(gy, 2.0)); // combine x and y of the sobel and get rid of negative values
-	
-	
-	// strength of the effect;
-	g = smoothstep(min_step, max_step, g); // smoothstep() smooths out a value over a curve if it is within min and max steps. Otherwise, it returns 0 (if smaller than min_step) and 1 (if bigger than max_step)
-	
-	ALBEDO = texture_color.rgb - vec3(g);
-	
-//	//color + sobel edge detection
-//	ALBEDO = texture_color.rgb * vec3(g);
-	
-//	//debug, uncomment to return to the screen_texture color
-//	ALBEDO = texture_color.rgb;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y18s4"]
-render_priority = -1
-shader = SubResource("Shader_8qn7n")
-shader_parameter/min_step = 0.13
-shader_parameter/max_step = 1.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_1k5td"]
-size = Vector2(2, 2)
-
-[sub_resource type="QuadMesh" id="QuadMesh_fuq0v"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="hanging_plant" parent="." instance=ExtResource("1_timeo")]
-transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, 3.28809, 2.78208, -1.70461)
-
-[node name="hanging_plant2" parent="." instance=ExtResource("1_timeo")]
-transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, -3.19264, 2.78208, -1.70461)
-
-[node name="Plant1" parent="hanging_plant2/Hanging Pot" index="0"]
-transform = Transform3D(0.99672, 0.0800608, -0.0117989, -0.0805187, 0.995714, -0.0455099, 0.00810475, 0.0463107, 0.998894, 0.000998378, -0.438903, -0.000218868)
-
-[node name="Plant2" parent="hanging_plant2/Hanging Pot" index="1"]
-transform = Transform3D(0.998434, 0.0173997, 0.0531644, -0.0165441, 0.999727, -0.0164922, -0.0534369, 0.0155869, 0.99845, -0.0242646, -0.437188, -0.0835934)
-
-[node name="Plant3" parent="hanging_plant2/Hanging Pot" index="2"]
-transform = Transform3D(0.999055, 0.0159164, -0.040444, -0.0165718, 0.999736, -0.0159223, 0.0401799, 0.0165775, 0.999055, 0.0643862, -0.437188, -0.00164018)
-
-[node name="Plant4" parent="hanging_plant2/Hanging Pot" index="3"]
-transform = Transform3D(0.99524, -0.0599968, -0.0767951, 0.0557461, 0.996854, -0.0563479, 0.0799341, 0.0517987, 0.995453, 0, -0.433921, 0)
-
-[node name="cat" parent="." instance=ExtResource("2_rddr0")]
-transform = Transform3D(0.483481, 0, -0.875355, 0, 1, 0, 0.875355, 0, 0.483481, -0.225244, 0.300352, 0.498196)
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.66529e-07, 0, -1, 0, 2.13918, 0, 6.09747, 0, -4.37114e-08, -1.47562, 0, 0)
-visible = false
-material_override = SubResource("ShaderMaterial_y18s4")
-mesh = SubResource("QuadMesh_1k5td")
-
-[node name="main_size_reference" parent="." instance=ExtResource("3_ufd5r")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.713876)
-
-[node name="PlayerCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
-current = true
-
-[node name="ShadingContainer" parent="." instance=ExtResource("4_06pd5")]
-
-[node name="rug" type="MeshInstance3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.00652909, 0.00679803, 0.53988)
-material_override = ExtResource("5_2axi3")
-mesh = SubResource("QuadMesh_fuq0v")
-
-[node name="carpet" type="MeshInstance3D" parent="."]
-transform = Transform3D(7.2, 0, 0, 0, -9.61651e-08, 2, 0, -2.2, -8.74228e-08, -0.0273442, 0.00248695, 0.606315)
-visible = false
-material_override = ExtResource("6_50sdf")
-mesh = SubResource("QuadMesh_fuq0v")
+[node name="train_car_passenger" parent="." instance=ExtResource("13_npl06")]
 
 [node name="ground_grass" parent="." instance=ExtResource("7_6mqct")]
-transform = Transform3D(120, 0, 0, 0, 1, 0, 0, 0, 37.536, -0.327213, -1.25264, -3.68919)
+transform = Transform3D(120, 0, 0, 0, 0.965926, -10.368, 0, 0.258819, 38.694, -0.327213, -2.77996, -4.09843)
 
 [node name="grass_large" parent="." instance=ExtResource("8_snotc")]
 transform = Transform3D(2.21713, 0, 0, 0, 1.92009, -1.10856, 0, 1.10856, 1.92009, -2.67294, 0.509738, -3.65453)
@@ -172,23 +42,158 @@ transform = Transform3D(2.08613, 0.0647446, 0.748012, 0.224101, 2.05449, -0.8028
 [node name="grass_large3" parent="." instance=ExtResource("8_snotc")]
 transform = Transform3D(2.00181, -2.98023e-08, -0.953101, -0.449348, 1.95526, -0.943772, 0.840529, 1.04528, 1.76538, -1.3238, 1.50707, -7.44458)
 
+[node name="grass_large6" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(1.41946, 0.112648, -2.45653, -0.431907, 2.80373, -0.121, 2.42089, 0.434161, 1.41877, 8.48905, 0.320328, -5.3869)
+
+[node name="grass_large8" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(1.41946, 0.112648, -2.45653, -0.431907, 2.80373, -0.121, 2.42089, 0.434161, 1.41877, 9.80081, 0.320328, -4.3337)
+
+[node name="grass_large9" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(1.41946, 0.112648, -2.45653, -0.431907, 2.80373, -0.121, 2.42089, 0.434161, 1.41877, 13.2597, 1.11112, -8.05258)
+
+[node name="grass_large7" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(2.00181, -2.98023e-08, -0.953101, -0.449348, 1.95526, -0.943772, 0.840529, 1.04528, 1.76538, 19.1395, -0.118269, -4.23005)
+
+[node name="grass_large10" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(-1.74689, -0.364417, -2.20855, -0.991921, 2.63745, 0.34939, 2.00663, 0.9865, -1.74996, 21.5591, 0.70561, -11.4579)
+
+[node name="grass_large19" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(2.00181, -2.98023e-08, -0.953101, -0.449348, 1.95526, -0.943772, 0.840529, 1.04528, 1.76538, 57.0575, -0.808243, -6.57432)
+
+[node name="grass_large20" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(-1.74689, -0.364417, -2.20855, -0.991921, 2.63745, 0.34939, 2.00663, 0.9865, -1.74996, 54.7769, 1.65788, -16.6109)
+
+[node name="grass_large12" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(-2.02393, -0.693677, 1.19932, 0.173721, 1.97935, 1.438, -1.37455, 1.27155, -1.58418, -16.0281, -0.050941, -4.34449)
+
+[node name="grass_large13" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(-0.744518, 0.00355989, 2.74003, 1.2005, 2.55278, 0.32288, -2.46305, 1.24315, -0.670871, -17.9755, 0.998437, -7.50549)
+
+[node name="grass_large14" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(-0.744518, 0.00355989, 2.74003, 1.2005, 2.55278, 0.32288, -2.46305, 1.24315, -0.670871, -21.98, 0.0968075, -4.84356)
+
+[node name="grass_large17" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(1.89708, -0.465607, 2.06068, 1.22568, 2.49837, -0.563869, -1.72072, 1.26627, 1.87023, -35.2403, 0.291415, -5.23597)
+
+[node name="grass_large18" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(1.89708, -0.465607, 2.06068, 1.22568, 2.49837, -0.563869, -1.72072, 1.26627, 1.87023, -39.729, 0.80383, -7.11307)
+
+[node name="grass_large15" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(-1.86565, 0.071992, 1.19576, 0.499098, 2.0586, 0.65476, -1.089, 0.820138, -1.74846, -30.067, 0.679991, -4.65903)
+
+[node name="grass_large21" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(-1.86565, 0.071992, 1.19576, 0.499098, 2.0586, 0.65476, -1.089, 0.820138, -1.74846, -37.8868, -0.03835, -4.34422)
+
+[node name="grass_large16" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(2.20672, 0.607325, 1.68037, 0.0415603, 2.65216, -1.01313, -1.78627, 0.81198, 2.05232, -26.9504, -0.890642, -4.14219)
+
+[node name="grass_large11" parent="." instance=ExtResource("8_snotc")]
+transform = Transform3D(0.317358, -0.724608, 2.0712, 0.91104, 1.94737, 0.541691, -1.99623, 0.773541, 0.576493, 27.4389, -0.118269, -4.23005)
+
 [node name="log_large" parent="." instance=ExtResource("9_58hbk")]
 transform = Transform3D(2.2726, -0.115935, 0.762786, 0.340314, 2.28009, -0.667366, -0.692437, 0.740102, 2.1755, -0.75035, 0.982401, -6.41037)
 
 [node name="hanging_moss" parent="." instance=ExtResource("10_y1oe1")]
-transform = Transform3D(7.45212, 0, 0, 0, 7.39579, 0.91451, 0, -0.91451, 7.39579, 5.29561, -0.150786, -12.3731)
+transform = Transform3D(7.45212, 0, 0, 0, 7.39579, 0.91451, 0, -0.91451, 7.39579, -14.4206, -0.150786, -12.3731)
 
 [node name="hanging_moss2" parent="." instance=ExtResource("10_y1oe1")]
-transform = Transform3D(7.38394, -1.0057, -4.73968e-08, 0.998097, 7.32813, 0.914509, -0.123417, -0.906144, 7.39579, 6.46389, 0.812562, -12.4923)
+transform = Transform3D(7.38394, -1.0057, -4.73968e-08, 0.998097, 7.32813, 0.914509, -0.123417, -0.906144, 7.39579, -13.2523, 0.812562, -12.4923)
 
 [node name="hanging_moss3" parent="." instance=ExtResource("10_y1oe1")]
-transform = Transform3D(-7.40606, -0.356494, -0.745359, -0.443595, 7.38721, 0.874471, -0.697045, -0.913448, 7.36288, 9.65856, -0.654698, -11.866)
+transform = Transform3D(-7.40606, -0.356494, -0.745359, -0.443595, 7.38721, 0.874471, -0.697045, -0.913448, 7.36288, -10.0577, -0.654698, -11.866)
 
-[node name="ground_riverBendBank" parent="." instance=ExtResource("11_sqm1v")]
-transform = Transform3D(-2.10403e-07, -1.09682e-07, 4, 1.03528, 3.8637, 1.60401e-07, -3.8637, 1.03528, -1.74846e-07, 11.8975, 0.58347, -5.07039)
+[node name="river" type="Node3D" parent="."]
+transform = Transform3D(0.990857, 2.79397e-09, 0.13492, 0.0349199, 0.965926, -0.256453, -0.130323, 0.258819, 0.957094, 29.8459, -0.513088, -3.67826)
 
-[node name="ground_riverEndClosed" parent="." instance=ExtResource("12_8tbvd")]
-transform = Transform3D(4, 0, 0, 0, 3.8637, -1.03528, 0, 1.03528, 3.8637, 11.8975, 1.61875, -8.93409)
+[node name="ground_riverBendBank" parent="river" instance=ExtResource("11_sqm1v")]
+transform = Transform3D(-2.63003e-07, -1.37102e-07, 5, 0, 5, 1.37102e-07, -5, 0, -2.63003e-07, -12.8201, -1.70166, -5.71978)
 
-[editable path="hanging_plant2"]
-[editable path="ground_grass"]
+[node name="ground_riverEndClosed" parent="river" instance=ExtResource("12_8tbvd")]
+transform = Transform3D(5, 0, 0, 0, 5, 4.76837e-07, 0, -4.76837e-07, 5, -12.8201, -1.70166, -10.7198)
+
+[node name="ground_riverEndClosed2" parent="river" instance=ExtResource("12_8tbvd")]
+transform = Transform3D(1.19209e-07, -2.08616e-07, -5, 1.19209e-07, 5, -7.59959e-07, 5, -3.57628e-07, -2.38419e-07, 27.1799, -1.70166, -5.71978)
+
+[node name="ground_riverStraight" parent="river" instance=ExtResource("13_2iom8")]
+transform = Transform3D(-2.18557e-07, 4.28957e-15, 5, 2.38419e-07, 5, -5.39939e-08, -5, 1.19209e-07, -2.01508e-07, -7.82011, -1.70166, -5.71978)
+
+[node name="ground_riverStraight2" parent="river" instance=ExtResource("13_2iom8")]
+transform = Transform3D(-1.09278e-06, -1.29789e-14, 5, 0, 5, -5.39939e-08, -5, 0, -1.07574e-06, 2.17989, -1.70166, -5.71978)
+
+[node name="ground_riverRocks" parent="river" instance=ExtResource("14_iycf7")]
+transform = Transform3D(5.96046e-07, -1.49012e-08, -5, -1.19209e-07, 5, -4.47035e-08, 5, 1.19209e-07, 7.15256e-07, -2.82011, -1.70166, -5.71978)
+
+[node name="ground_riverSideOpen" parent="river" instance=ExtResource("15_c6s2u")]
+transform = Transform3D(-2.18557e-07, -4.28957e-15, -5, -2.38419e-07, 5, -5.39939e-08, 5, 1.19209e-07, -2.01508e-07, 7.17989, -1.70166, -5.71978)
+
+[node name="ground_riverSideOpen2" parent="river" instance=ExtResource("15_c6s2u")]
+transform = Transform3D(-2.18557e-07, 4.59755e-15, 5, 1.19209e-07, 5, -5.39939e-08, -5, 2.38419e-07, -2.35606e-07, 22.1799, -1.70166, -5.71978)
+
+[node name="ground_riverOpen" parent="river" instance=ExtResource("16_25eco")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 12.1799, -1.70166, -5.71978)
+
+[node name="ground_riverOpen2" parent="river" instance=ExtResource("16_25eco")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 17.1799, -1.70166, -5.71978)
+
+[node name="ground_riverCorner" parent="river" instance=ExtResource("17_sxtyg")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 7.17989, -1.70166, -10.7198)
+
+[node name="ground_riverCorner2" parent="river" instance=ExtResource("17_sxtyg")]
+transform = Transform3D(-2.18557e-07, -4.28957e-15, -5, -2.38419e-07, 5, -5.39939e-08, 5, 1.19209e-07, -2.01508e-07, 22.1799, -1.70166, -10.7198)
+
+[node name="ground_riverCorner3" parent="river" instance=ExtResource("17_sxtyg")]
+transform = Transform3D(-5, 2.08967e-15, -4.37114e-07, 7.10543e-15, 5, 1.19209e-07, 4.37114e-07, 1.19209e-07, -5, 22.1799, -1.70166, -0.719783)
+
+[node name="ground_riverCorner4" parent="river" instance=ExtResource("17_sxtyg")]
+transform = Transform3D(-2.18557e-07, 4.59755e-15, 5, 1.19209e-07, 5, -5.39939e-08, -5, 2.38419e-07, -2.35606e-07, 7.17989, -1.70166, -0.719781)
+
+[node name="ground_riverSide" parent="river" instance=ExtResource("18_6tt48")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 12.1799, -1.70166, -10.7198)
+
+[node name="ground_riverSide2" parent="river" instance=ExtResource("18_6tt48")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 17.1799, -1.70166, -10.7198)
+
+[node name="ground_riverSide3" parent="river" instance=ExtResource("18_6tt48")]
+transform = Transform3D(-5, 2.08967e-15, -4.37114e-07, 7.10543e-15, 5, 1.19209e-07, 4.37114e-07, 1.19209e-07, -5, 17.1799, -1.70166, -0.719781)
+
+[node name="ground_riverSide4" parent="river" instance=ExtResource("18_6tt48")]
+transform = Transform3D(-5, 2.08967e-15, -4.37114e-07, 7.10543e-15, 5, 1.19209e-07, 4.37114e-07, 1.19209e-07, -5, 12.1799, -1.70166, -0.719781)
+
+[node name="tree_pineRoundA" parent="." instance=ExtResource("14_o2j45")]
+transform = Transform3D(5.85, 0, 0, 0, 5.65067, -1.51409, 0, 1.51409, 5.65067, 27.8472, -0.0855519, -13.0742)
+
+[node name="tree_pineRoundA2" parent="." instance=ExtResource("14_o2j45")]
+transform = Transform3D(3.15, 0, 0, 0, 3.04267, -0.81528, 0, 0.81528, 3.04267, 30.4754, -1.51434, -6.78286)
+
+[node name="tree_pineRoundC" parent="." instance=ExtResource("15_m1ms7")]
+transform = Transform3D(4.65556, -0.471965, 0.0735196, 0.477657, 4.60008, -0.716571, 0, 0.720333, 4.62423, 30.202, -0.218993, -11.5787)
+
+[node name="tree_pineRoundD" parent="." instance=ExtResource("16_j4eep")]
+transform = Transform3D(4.8, 0, 0, 0, 4.63644, -1.24233, 0, 1.24233, 4.63644, 24.6606, -1.5037, -6.57926)
+
+[node name="tree_pineSmallC" parent="." instance=ExtResource("17_67fnj")]
+transform = Transform3D(2.78683, -0.00389954, 0.271263, 0.0433175, 2.77019, -0.405199, -0.267811, 0.407489, 2.75721, 31.8874, -0.150577, -11.9403)
+
+[node name="tree_pineSmallC3" parent="." instance=ExtResource("17_67fnj")]
+transform = Transform3D(2.78683, -0.00389954, 0.271263, 0.0433175, 2.77019, -0.405199, -0.267811, 0.407489, 2.75721, 13.9565, -0.150577, -5.59034)
+
+[node name="tree_pineSmallC2" parent="." instance=ExtResource("17_67fnj")]
+transform = Transform3D(1.47483, 0.497647, -3.64841, -1.19573, 3.78191, 0.0324976, 3.48264, 1.08773, 1.55619, 19.2981, -0.209909, -11.2513)
+
+[node name="tree_pineRoundC2" parent="." instance=ExtResource("15_m1ms7")]
+transform = Transform3D(4.59851, -0.353757, 0.794334, 0.477657, 4.60008, -0.716571, -0.726605, 0.785166, 4.55609, 49.0287, 1.45846, -19.4241)
+
+[node name="tree_pineSmallC4" parent="." instance=ExtResource("17_67fnj")]
+transform = Transform3D(2.0003, 0.661314, -3.36083, -1.19573, 3.78191, 0.0324976, 3.20979, 0.996736, 2.10653, 38.3095, 1.46754, -17.3989)
+
+[node name="tree_pineRoundC3" parent="." instance=ExtResource("15_m1ms7")]
+transform = Transform3D(-4.21521, 0.251013, -2.01778, -0.0254517, 4.63733, 0.630055, 2.03317, 0.578455, -4.17541, 53.9481, -1.15847, -9.22721)
+
+[node name="tree_pineSmallC5" parent="." instance=ExtResource("17_67fnj")]
+transform = Transform3D(-1.99611, -0.142389, 3.42476, 0.773536, 3.8422, 0.610599, -3.33929, 0.975148, -1.90576, 51.6521, -1.18823, -5.54847)
+
+[node name="tree_pineTallA_detailed" parent="." instance=ExtResource("18_6nuio")]
+transform = Transform3D(8.77571, -0.626917, 1.01411, 1.0002, 7.97111, -3.72768, -0.648869, 3.80828, 7.96935, 24.0254, 0.284396, -12.0183)
+
+[node name="tree_pineDefaultB" parent="." instance=ExtResource("19_t2xo7")]
+transform = Transform3D(5.6094, -0.333948, 0.0999668, 0.345193, 5.09702, -2.34267, 0.0485383, 2.3443, 5.10772, 17.7592, -0.118186, -12.1778)

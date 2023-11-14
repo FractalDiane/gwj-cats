@@ -14,6 +14,7 @@ var origin = Vector3()
 var origin_normal = Vector3()
 var origin_2d = null
 var local_origin_offset = Vector3()
+#var snappy_toggled = false
 
 func _enter_tree():
 	selection.connect("selection_changed", _on_selection_changed)
@@ -46,6 +47,9 @@ func _forward_3d_gui_input(camera, event):
 		undo_redo.commit_action()
 	dragging = now_dragging
 
+	#if event is InputEventKey and event.keycode == KEY_V and not event.echo:
+	#	snappy_toggled = !snappy_toggled
+	#	print(snappy_toggled)
 
 	if Input.is_key_pressed(KEY_V):
 		var from = camera.project_ray_origin(event.position)

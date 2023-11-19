@@ -1,9 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://dpq8y2fpg03x6"]
+[gd_scene load_steps=30 format=3 uid="uid://dpq8y2fpg03x6"]
 
 [ext_resource type="Material" uid="uid://b0qjvbpb1o5iq" path="res://materials/wallpaper2.tres" id="4_aq8ya"]
 [ext_resource type="Material" uid="uid://bwyhxqwclcs44" path="res://materials/wallpaper3.tres" id="4_j3x8j"]
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="5_jxr1q"]
 [ext_resource type="Texture2D" uid="uid://bcxqsep7o0ayg" path="res://sprites/funky_rug.png" id="6_rom60"]
+[ext_resource type="Material" uid="uid://x0ckqq366k5g" path="res://materials/crate_wall.tres" id="7_fjt2t"]
+[ext_resource type="Material" uid="uid://c4nxh36nb33pj" path="res://materials/crate_wall_2.tres" id="8_8tl6u"]
 [ext_resource type="Material" uid="uid://c4mxrt6e8gxt6" path="res://materials/metal_grate.tres" id="8_an2w2"]
 [ext_resource type="Material" uid="uid://dp5ij7v0l2o1d" path="res://materials/star.tres" id="8_ybldo"]
 [ext_resource type="Material" uid="uid://d00wriixirgpr" path="res://materials/metal_siding.tres" id="9_a2r6e"]
@@ -102,8 +104,7 @@ size = Vector3(2.34313, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o3eur"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t4rtn"]
-points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
+[sub_resource type="BoxShape3D" id="BoxShape3D_gg8im"]
 
 [node name="train_car_cargo" type="Node3D"]
 
@@ -124,7 +125,7 @@ material_override = ExtResource("4_aq8ya")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet14" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.23055e-07, 9.34688e-08, -2.02463, 2.81517, 4.08565e-15, -8.84995e-08, 0, -2.13832, -8.84995e-08, -4.86556, 0.553641, 0.463319)
+transform = Transform3D(-1.242e-07, 9.8435e-08, -2.02463, 2.84137, 4.30273e-15, -8.84995e-08, 0, -2.25193, -8.84995e-08, -4.86556, 0.553641, 0.463319)
 material_override = ExtResource("4_j3x8j")
 mesh = SubResource("QuadMesh_fuq0v")
 
@@ -134,17 +135,82 @@ material_override = ExtResource("4_j3x8j")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet6" type="MeshInstance3D" parent="."]
-transform = Transform3D(8.41506, 0, 0, 0, -2.38989e-07, 2.33752, 0, -5.46742, -1.02176e-07, -0.027, -0.306, 0.606)
+transform = Transform3D(9.19219, 0, 0, 0, -2.38989e-07, 2.33752, 0, -5.46742, -1.02176e-07, -0.027, -0.306, 0.606)
 material_override = ExtResource("8_an2w2")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet7" type="MeshInstance3D" parent="."]
-transform = Transform3D(8.60362, 0, 0, 0, 0.567132, 1.42109e-14, 0, -1.17927e-14, 2.33752, -0.027, -0.592629, 3.3663)
+transform = Transform3D(9.48082, 0, 0, 0, 0.567132, 1.42109e-14, 0, -1.17927e-14, 2.33752, -0.027, -0.592629, 3.3663)
 material_override = ExtResource("9_a2r6e")
 mesh = SubResource("QuadMesh_fuq0v")
 
+[node name="carpet16" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.36393, 0, 0, 0, 2.89142, 1.42109e-14, 0, -6.01228e-14, 2.33752, -0.0270162, 1.12596, -2.06426)
+material_override = ExtResource("7_fjt2t")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet17" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.52701e-08, 0, 2.33752, -3.1049e-14, 2.89142, -3.43943e-14, -1.49321, -6.01228e-14, -1.02176e-07, -4.70275, 1.12596, -1.37364)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet18" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.9581e-07, 0, -2.33752, 3.1049e-14, 2.89142, -3.43943e-14, 1.49321, -6.01228e-14, 3.06528e-07, 4.6416, 1.12596, -1.37364)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet21" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.88524e-07, 0, -2.33752, 4.57503e-14, 0.578179, -3.43943e-14, 2.20022, -1.20224e-14, 3.06528e-07, 4.6416, 2.27825, 0.451949)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet22" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.80874e-07, 3.00997e-21, 2.33752, 4.57503e-14, 0.578179, -3.43943e-14, -2.20022, 1.20224e-14, -5.1088e-07, -4.69254, 2.27825, 0.451949)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet19" type="MeshInstance3D" parent="."]
+transform = Transform3D(-7.90626e-08, 0, 2.33752, -3.76101e-14, 2.89142, -3.43943e-14, -1.80874, -6.01228e-14, -1.02176e-07, -4.70275, 1.12596, 2.43733)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet23" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.52701e-08, 0, -2.57127, -3.1049e-14, 2.89142, 3.78337e-14, -1.49321, -6.01228e-14, 1.12394e-07, -4.90108, 1.12596, -1.37364)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet24" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.80874e-07, 3.00997e-21, -2.57127, 4.57503e-14, 0.578179, 3.78337e-14, -2.20022, 1.20224e-14, 5.61968e-07, -4.90073, 2.27825, 0.451949)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet25" type="MeshInstance3D" parent="."]
+transform = Transform3D(-7.90626e-08, 0, -2.57127, -3.76101e-14, 2.89142, 3.78337e-14, -1.80874, -6.01228e-14, 1.12394e-07, -4.91695, 1.12596, 2.43733)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet20" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.37188e-07, 0, -2.33752, 3.76101e-14, 2.89142, -3.43943e-14, 1.80874, -6.01228e-14, 3.06528e-07, 4.6416, 1.12596, 2.43733)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet26" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.9581e-07, 0, 2.33752, 3.1049e-14, 2.89142, 3.43943e-14, 1.49321, -6.01228e-14, -3.06528e-07, 4.83545, 1.12596, -1.37364)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet27" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.88524e-07, 0, 2.33752, 4.57503e-14, 0.578179, 3.43943e-14, 2.20022, -1.20224e-14, -3.06528e-07, 4.83545, 2.27825, 0.451949)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet28" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.37188e-07, 0, 2.33752, 3.76101e-14, 2.89142, 3.43943e-14, 1.80874, -6.01228e-14, -3.06528e-07, 4.83545, 1.12596, 2.43733)
+material_override = ExtResource("8_8tl6u")
+mesh = SubResource("QuadMesh_fuq0v")
+
 [node name="carpet8" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.59047e-07, 1.17927e-14, -2.33751, -5.91997e-22, 0.567132, 1.42109e-14, 5.40073, -8.47033e-22, 1.78814e-07, -4.30944, -0.592629, 0.66529)
+transform = Transform3D(-4.59047e-07, 1.17927e-14, -2.33751, -5.91997e-22, 0.567132, 1.42109e-14, 5.40073, -8.47033e-22, 1.78814e-07, -4.90529, -0.592629, 0.66529)
 material_override = ExtResource("9_a2r6e")
 mesh = SubResource("QuadMesh_fuq0v")
 
@@ -169,7 +235,7 @@ material_override = ExtResource("9_a2r6e")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet9" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.31e-08, -1.17927e-14, 2.33751, -5.91997e-22, 0.567132, 1.42109e-14, -5.40073, 1.87798e-21, -3.83166e-07, 4.27643, -0.592629, 0.66529)
+transform = Transform3D(-1.31e-08, -1.17927e-14, 2.33751, -5.91997e-22, 0.567132, 1.42109e-14, -5.40073, 1.87798e-21, -3.83166e-07, 4.84205, -0.592629, 0.66529)
 material_override = ExtResource("9_a2r6e")
 mesh = SubResource("QuadMesh_fuq0v")
 
@@ -194,7 +260,7 @@ material_override = ExtResource("8_ybldo")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="wood_flooring" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.3731e-07, 8.58738, 8.74228e-08, 0, -3.75366e-07, 2, 5.42903, 3.75366e-07, 1.09268e-14, -0.027, -0.306606, 0.645677)
+transform = Transform3D(-2.3731e-07, 9.38043, 8.74228e-08, 0, -4.10031e-07, 2, 5.42903, 4.10031e-07, 1.09268e-14, -0.027, -0.306606, 0.645677)
 material_override = ExtResource("9_gnwxu")
 mesh = SubResource("QuadMesh_fuq0v")
 
@@ -241,10 +307,20 @@ transform = Transform3D(2.93778, 0, 0.299441, 0, 1.21984, 0, -0.743917, 0, 1.182
 material_override = ExtResource("16_sdl0t")
 mesh = SubResource("BoxMesh_o3eur")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_gg8im")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.66424, 0, 0.581325, 0, 1.21984, 0, -1.44422, 0, 1.07241, 0.955698, 0.277778, 0.264155)
 material_override = ExtResource("17_ds8mc")
 mesh = SubResource("BoxMesh_o3eur")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_gg8im")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.78793, 0, 0.608314, 0, 1.27647, 0, -1.51127, 0, 1.1222, 0.955698, 0.277778, 0.264155)
@@ -273,10 +349,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46083, 0, 0.954986)
 script = ExtResource("13_85s17")
 minigame_scene = "res://scenes/cargo_minigame.tscn"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="minigames/Minigame"]
-transform = Transform3D(1, 1.86264e-09, 1.19209e-07, -1.86265e-09, 1, 1.86265e-09, -1.19209e-07, -1.86265e-09, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_t4rtn")
-
 [node name="InteractionReceiverComponent" parent="minigames/Minigame" instance=ExtResource("14_kh5sn")]
 
 [node name="Minigame2" type="StaticBody3D" parent="minigames"]
@@ -284,10 +356,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83056, 0, 1.01191)
 script = ExtResource("13_85s17")
 minigame_scene = "res://scenes/cargo_minigame.tscn"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="minigames/Minigame2"]
-transform = Transform3D(1, 1.86264e-09, 1.19209e-07, -1.86265e-09, 1, 1.86265e-09, -1.19209e-07, -1.86265e-09, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_t4rtn")
-
 [node name="InteractionReceiverComponent" parent="minigames/Minigame2" instance=ExtResource("14_kh5sn")]
 
 [editable path="ShadingContainer"]
+[editable path="minigames/Minigame/InteractionReceiverComponent"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj1asdrlonvrq"]
+
+[ext_resource type="PackedScene" uid="uid://besabvjbrc8eh" path="res://meshes/bench.glb" id="1_67e5t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24lxi"]
+size = Vector3(0.585749, 0.643479, 1.71712)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175634, -0.0682054, -1.0045)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_24lxi")
+
+[node name="bench14" parent="." instance=ExtResource("1_67e5t")]
+transform = Transform3D(-0.999998, 1.76943e-15, -0.00194954, 1.77289e-15, 1, -1.77289e-15, 0.00194954, -1.77634e-15, -0.999998, -0.354607, -0.35992, 0)

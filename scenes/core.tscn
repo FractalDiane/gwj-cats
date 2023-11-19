@@ -1,0 +1,131 @@
+[gd_scene load_steps=21 format=3 uid="uid://b5o7aeyay2g1l"]
+
+[ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_5ow53"]
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_rxfd0"]
+[ext_resource type="PackedScene" uid="uid://bk4008dytdk5b" path="res://prefabs/trans_volume.tscn" id="3_lpfbe"]
+[ext_resource type="Script" path="res://scripts/minigame_object.gd" id="4_gyg1b"]
+[ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="5_soni8"]
+[ext_resource type="Script" path="res://scripts/paws_chair.gd" id="6_kkj5n"]
+[ext_resource type="PackedScene" path="res://prefabs/components/jump_point.tscn" id="7_ek35c"]
+[ext_resource type="PackedScene" uid="uid://c2kexkbdwxc0c" path="res://prefabs/managers/level_manager.tscn" id="8_o7icn"]
+[ext_resource type="Resource" uid="uid://bmcktg2k4adnv" path="res://scripts/resources/level_1.tres" id="9_ku8m6"]
+[ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="10_0m2yd"]
+[ext_resource type="Script" path="res://scripts/managers/environment_manager.gd" id="11_0vtgq"]
+[ext_resource type="Script" path="res://scripts/managers/train_manager.gd" id="12_pjd41"]
+[ext_resource type="AudioStream" uid="uid://dbw0xitjj3ot5" path="res://audio/fast-jazz-143910.mp3" id="13_pqa1i"]
+[ext_resource type="Material" uid="uid://bqxmx7s4gmnye" path="res://materials/vignette.tres" id="14_1sjgw"]
+[ext_resource type="Texture2D" uid="uid://knncb840uvf5" path="res://sprites/minigame_overlay.png" id="15_qh2s3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jm3yc"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qh3qs"]
+points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u5a72"]
+size = Vector3(0.5, 0.2, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_81eac"]
+points = PackedVector3Array(-0.25, -0.1, -0.25, -0.25, 0.1, -0.25, 0.25, -0.1, -0.25, -0.25, -0.1, 0.25, -0.25, 0.1, 0.25, 0.25, 0.1, -0.25, 0.25, -0.1, 0.25, 0.25, 0.1, 0.25)
+
+[sub_resource type="QuadMesh" id="QuadMesh_kvy7g"]
+
+[node name="Test" type="Node3D"]
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera", "train_manager") instance=ExtResource("1_5ow53")]
+camera = NodePath("../PlayerCamera")
+train_manager = NodePath("../TrainManager")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
+script = ExtResource("2_rxfd0")
+
+[node name="TransVolume" parent="PlayerCamera" node_paths=PackedStringArray("train_manager") instance=ExtResource("3_lpfbe")]
+transform = Transform3D(0.999976, -2.12991e-10, 0.00698126, 0.00550131, 0.615661, -0.787992, -0.00429809, 0.788011, 0.615646, 5.2, 0.094, -6.316)
+train_manager = NodePath("../../TrainManager")
+direction = 1
+
+[node name="TransVolume2" parent="PlayerCamera" node_paths=PackedStringArray("train_manager") instance=ExtResource("3_lpfbe")]
+transform = Transform3D(0.999976, -2.32831e-10, 0.00698126, 0.00550131, 0.615661, -0.787992, -0.00429809, 0.788011, 0.615646, -5.2, 0.034, -6.269)
+train_manager = NodePath("../../TrainManager")
+
+[node name="TestThingy" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63606, 0.573184, -0.953491)
+visible = false
+script = ExtResource("4_gyg1b")
+minigame_scene = "res://scenes/coal_minigame.tscn"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestThingy"]
+mesh = SubResource("BoxMesh_jm3yc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestThingy"]
+shape = SubResource("ConvexPolygonShape3D_qh3qs")
+
+[node name="InteractionReceiverComponent" parent="TestThingy" instance=ExtResource("5_soni8")]
+
+[node name="PawsChair" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9134, 0.605134, 0)
+script = ExtResource("6_kkj5n")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PawsChair"]
+mesh = SubResource("BoxMesh_u5a72")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PawsChair"]
+shape = SubResource("ConvexPolygonShape3D_81eac")
+
+[node name="InteractionReceiverComponent" parent="PawsChair" instance=ExtResource("5_soni8")]
+
+[node name="JumpPoint" parent="PawsChair" instance=ExtResource("7_ek35c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113867, 0)
+
+[node name="LevelManager" parent="." node_paths=PackedStringArray("train_manager") instance=ExtResource("8_o7icn")]
+current_level = ExtResource("9_ku8m6")
+train_manager = NodePath("../TrainManager")
+
+[node name="ShadingContainer" parent="." instance=ExtResource("10_0m2yd")]
+
+[node name="EnvironmentManager" type="Node3D" parent="."]
+script = ExtResource("11_0vtgq")
+environment_speed = 5.0
+
+[node name="TrainManager" type="Node3D" parent="." node_paths=PackedStringArray("player_camera", "player")]
+script = ExtResource("12_pjd41")
+player_camera = NodePath("../PlayerCamera")
+player = NodePath("../Player")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_pqa1i")
+autoplay = true
+bus = &"Music"
+
+[node name="vignette" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.93263, 0, 0, 0, -2.80394e-07, 2, 0, -6.41466, -8.74228e-08, -0.0273442, 2.62956, 1.0621)
+visible = false
+material_override = ExtResource("14_1sjgw")
+mesh = SubResource("QuadMesh_kvy7g")
+
+[node name="MinigameOverlay" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MinigameOverlay"]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 191.0
+offset_right = 1659.0
+offset_bottom = 977.0
+
+[node name="SubViewport" type="SubViewport" parent="MinigameOverlay/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1398, 786)
+size_2d_override = Vector2i(1920, 1080)
+size_2d_override_stretch = true
+render_target_update_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="MinigameOverlay"]
+texture = ExtResource("15_qh2s3")
+centered = false

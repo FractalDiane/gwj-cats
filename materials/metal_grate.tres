@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c4mxrt6e8gxt6"]
+
+[ext_resource type="Texture2D" uid="uid://okx27u7vse68" path="res://sprites/metal-6338635_1280.png" id="1_q8t74"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.447059, 0.721569, 0.556863, 1)
+albedo_texture = ExtResource("1_q8t74")
+uv1_scale = Vector3(5.87, 5.083, 1.18)

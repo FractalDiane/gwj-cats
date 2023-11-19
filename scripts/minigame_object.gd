@@ -15,10 +15,6 @@ var minigame: Minigame
 
 func _ready():
 	interaction_component.interacted_with.connect(_on_interacted)
-	
-	## jank !!! move assignment of this global into a manager or something later
-	if (Globals.minigame_overlay_ref == null):
-		Globals.minigame_overlay_ref = get_tree().current_scene.find_child("MinigameOverlay")
 
 
 func _on_interacted(player: Player) -> void:

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bqxmx7s4gmnye"]
+
+[ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="1_bfaa6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_bfaa6")
+shader_parameter/size = Vector2(0.405, 0.255)

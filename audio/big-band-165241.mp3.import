@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/big-band-165241.mp3-b1b0fdd97f35607a804296dd7
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -52,22 +52,26 @@ func _ready():
 func _process(_delta):
 	# move scoop to mouse pos
 	mouse_pos = get_viewport().get_mouse_position()
-	mouse_pos.x = max(mouse_pos.x, shovelMinimumXValue)
+	if mouse_pos.x < shovelMinimumXValue:
+		drop_coal()
+		mouse_pos.x = shovelMinimumXValue
 	$scoop.position = mouse_pos
 	
 	# drop coal if leftMouseUp
 	if (Input.is_action_just_released("input_click")):
-		hasCoal = false
-		#$scoop.texture = scoop_textures[0]
+		drop_coal()
+
+func drop_coal():
+	hasCoal = false
+	#$scoop.texture = scoop_textures[0]
+	for coal in coalPieces:
+		if (coal == null):
+			continue
+		var new_magnitude: float = min(coal.linear_velocity.length(), coalFlingMaxSpeed)
+		coal.linear_velocity = (coal.linear_velocity.normalized().rotated(coalFlingAngleVariance * random.randf()) * new_magnitude * ((1+coalFlingSpeedVariance) * random.randf()))
 		
-		for coal in coalPieces:
-			if (coal == null):
-				continue
-			var new_magnitude: float = min(coal.linear_velocity.length(), coalFlingMaxSpeed)
-			coal.linear_velocity = (coal.linear_velocity.normalized().rotated(coalFlingAngleVariance * random.randf()) * new_magnitude * ((1+coalFlingSpeedVariance) * random.randf()))
-			
-			coal.apply_torque_impulse(coalFlingTorqueVariance * random.randf())
-		coalPieces = []
+		coal.apply_torque_impulse(coalFlingTorqueVariance * random.randf())
+	coalPieces = []
 
 
 func _physics_process(delta):

@@ -1,19 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://cvb1xdcuq73m6"]
+[gd_scene load_steps=18 format=3 uid="uid://cvb1xdcuq73m6"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_5ow53"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_rxfd0"]
 [ext_resource type="PackedScene" uid="uid://bk4008dytdk5b" path="res://prefabs/trans_volume.tscn" id="3_lpfbe"]
 [ext_resource type="Script" path="res://scripts/minigame_object.gd" id="4_gyg1b"]
 [ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="5_soni8"]
-[ext_resource type="Script" path="res://scripts/paws_chair.gd" id="6_kkj5n"]
-[ext_resource type="PackedScene" uid="uid://c3lwmorn0gik4" path="res://prefabs/components/jump_point.tscn" id="7_ek35c"]
 [ext_resource type="PackedScene" uid="uid://c2kexkbdwxc0c" path="res://prefabs/managers/level_manager.tscn" id="8_o7icn"]
-[ext_resource type="Resource" uid="uid://4seqx8tovos2" path="res://scripts/resources/level_1.tres" id="9_ku8m6"]
+[ext_resource type="Resource" uid="uid://bmcktg2k4adnv" path="res://scripts/resources/level_1.tres" id="9_ku8m6"]
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="10_0m2yd"]
 [ext_resource type="Script" path="res://scripts/managers/environment_manager.gd" id="11_0vtgq"]
 [ext_resource type="Script" path="res://scripts/managers/train_manager.gd" id="12_pjd41"]
 [ext_resource type="AudioStream" uid="uid://dbw0xitjj3ot5" path="res://audio/fast-jazz-143910.mp3" id="13_pqa1i"]
-[ext_resource type="Material" path="res://materials/vignette.tres" id="14_1sjgw"]
+[ext_resource type="Material" uid="uid://bqxmx7s4gmnye" path="res://materials/vignette.tres" id="14_1sjgw"]
 [ext_resource type="Texture2D" uid="uid://knncb840uvf5" path="res://sprites/minigame_overlay.png" id="15_qh2s3"]
 
 [sub_resource type="GDScript" id="GDScript_k7ncy"]
@@ -62,6 +60,12 @@ shape = SubResource("ConvexPolygonShape3D_qh3qs")
 [node name="LevelManager" parent="." node_paths=PackedStringArray("train_manager") instance=ExtResource("8_o7icn")]
 current_level = ExtResource("9_ku8m6")
 train_manager = NodePath("../TrainManager")
+normalTaskBaseFrequency = 0.1
+engineTaskBaseFrequency = 0.1
+taskTimeRandomnessMultiplier = 0.1
+normalTaskWindow = 0.1
+engineTaskWindow = 0.1
+difficultyScaling = 0.1
 
 [node name="ShadingContainer" parent="." instance=ExtResource("10_0m2yd")]
 

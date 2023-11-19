@@ -344,6 +344,9 @@ minigame_scene = "res://scenes/cargo_minigame.tscn"
 [node name="InteractArea" parent="minigames/Minigame/InteractionReceiverComponent" index="0"]
 transform = Transform3D(2.45794, 0, 0, 0, 1, 0, 0, 0, 1.52699, -1.56286, 0, -0.989627)
 
+[node name="CollisionShape3D" parent="minigames/Minigame/InteractionReceiverComponent/InteractArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0399547)
+
 [node name="outline" type="MeshInstance3D" parent="minigames/Minigame"]
 transform = Transform3D(3.00265, 0, 0.317809, 0, 1.29466, 0, -0.760343, 0, 1.25505, -2.79306, 0.277778, -1.38476)
 material_override = ExtResource("12_48mhb")

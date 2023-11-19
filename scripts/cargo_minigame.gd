@@ -4,7 +4,7 @@ extends Minigame
 Below are the configurables.
 """
 
-const N := 3 # HEIGHT
+const N := 4 # HEIGHT
 const M := 4 # WIDTH
 const MAX_BLOCK := 4 # biggest block e.g. 4 for tetromino
 
@@ -480,4 +480,4 @@ func print_graph():
 			row_text += "|" if connections[i][j][3] else " "
 			row_text += " "
 		print(row_text)
-		row_text = ""
+		row_text = ""	

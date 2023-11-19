@@ -1,17 +1,8 @@
-extends Node3D
+extends TrainCar
 
 @export var anim: AnimationPlayer
 @export var fade_time: float = 1.5
 @export var passenger_possibilities: Array
-	
-func fade_out_obstructor():
-	anim.play("fade_out")
-	
-func fade_in_obstructor():
-	anim.play("fade_in")
-
-func set_obstructor_off():
-	anim.play("off")
 
 func _ready():
 	for i in range(2):

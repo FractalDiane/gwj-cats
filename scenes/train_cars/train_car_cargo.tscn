@@ -308,7 +308,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.709
 shape = SubResource("BoxShape3D_ra1fp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.93778, 0, 0.299441, 0, 1.21984, 0, -0.743917, 0, 1.18251, -1.33223, 0.277778, -0.429778)
+transform = Transform3D(2.93778, 0, 0.299441, 0, 1.21984, 0, -0.743917, 0, 1.18251, -1.33223, 0.344633, -0.429778)
 material_override = ExtResource("16_sdl0t")
 mesh = SubResource("BoxMesh_o3eur")
 
@@ -318,7 +318,7 @@ mesh = SubResource("BoxMesh_o3eur")
 shape = SubResource("BoxShape3D_gg8im")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.66424, 0, 0.581325, 0, 1.21984, 0, -1.44422, 0, 1.07241, 0.955698, 0.277778, 0.264155)
+transform = Transform3D(2.66424, 0, 0.581325, 0, 1.21984, 0, -1.44422, 0, 1.07241, 0.955698, 0.344633, 0.264155)
 material_override = ExtResource("17_ds8mc")
 mesh = SubResource("BoxMesh_o3eur")
 
@@ -328,7 +328,7 @@ mesh = SubResource("BoxMesh_o3eur")
 shape = SubResource("BoxShape3D_gg8im")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.05919, 0.361956, 0.818517, -1.3887, 1.08063, 0.0881795, -1.73643, -0.434995, 0.900141, 1.03711, 0.816038, -1.52055)
+transform = Transform3D(2.05919, 0.361956, 0.818517, -1.3887, 1.08063, 0.0881795, -1.73643, -0.434995, 0.900141, 0.256233, 1.02474, -1.07927)
 material_override = ExtResource("18_3v25u")
 mesh = SubResource("BoxMesh_o3eur")
 
@@ -348,7 +348,7 @@ transform = Transform3D(2.45794, 0, 0, 0, 1, 0, 0, 0, 1.52699, -1.56286, 0, -0.9
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0399547)
 
 [node name="outline" type="MeshInstance3D" parent="minigames/Minigame"]
-transform = Transform3D(3.00265, 0, 0.317809, 0, 1.29466, 0, -0.760343, 0, 1.25505, -2.79306, 0.277778, -1.38476)
+transform = Transform3D(3.00265, 0, 0.317809, 0, 1.29466, 0, -0.760343, 0, 1.25505, -2.79306, 0.344633, -1.38476)
 material_override = ExtResource("12_48mhb")
 mesh = SubResource("BoxMesh_o3eur")
 skeleton = NodePath("../../..")
@@ -360,7 +360,7 @@ mesh = SubResource("BoxMesh_o3eur")
 skeleton = NodePath("../../../..")
 
 [node name="outline3" type="MeshInstance3D" parent="minigames/Minigame/outline"]
-transform = Transform3D(0.806945, 0.159344, 0.193983, -1.10673, 0.900143, 0.0714813, -0.938673, -0.277245, 0.870241, 0.827981, 0.415752, -0.367495)
+transform = Transform3D(0.806945, 0.159344, 0.193983, -1.10673, 0.900143, 0.0714813, -0.938673, -0.277245, 0.870241, 0.548617, 0.525318, -0.185134)
 material_override = ExtResource("12_48mhb")
 mesh = SubResource("BoxMesh_o3eur")
 skeleton = NodePath("../../../..")

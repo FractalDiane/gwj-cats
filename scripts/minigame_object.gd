@@ -21,7 +21,8 @@ func _ready():
 
 
 func _on_interacted(player: Player) -> void:
-	player.block_movement = true
+	player.set_block_movement(true)
+	player.set_block_interaction(true)
 	if (!task_done.is_connected(player.on_task_done)):
 		task_done.connect(player.on_task_done)
 	

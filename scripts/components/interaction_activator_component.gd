@@ -1,10 +1,11 @@
 class_name InteractionActivatorComponent
 extends Node3D
 
+var enabled: bool = true
 var focused_object: InteractionReceiverComponent = null
 
 func try_interact(player: Player) -> void:
-	if focused_object != null:
+	if focused_object != null and enabled:
 		focused_object.interact(player)
 
 

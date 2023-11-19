@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Level" load_steps=4 format=3 uid="uid://bmcktg2k4adnv"]
+
+[ext_resource type="Script" path="res://scripts/resources/level.gd" id="1_aa551"]
+[ext_resource type="PackedScene" uid="uid://ba7ywxh0mgexs" path="res://scenes/train_cars/train_car_passenger.tscn" id="2_lcyjf"]
+[ext_resource type="PackedScene" uid="uid://dpq8y2fpg03x6" path="res://scenes/train_cars/train_car_cargo.tscn" id="3_kr0lm"]
+
+[resource]
+script = ExtResource("1_aa551")
+total_time_limit = 180.0
+train_cars = [ExtResource("2_lcyjf"), ExtResource("3_kr0lm"), ExtResource("3_kr0lm"), ExtResource("2_lcyjf"), ExtResource("2_lcyjf"), ExtResource("2_lcyjf")]

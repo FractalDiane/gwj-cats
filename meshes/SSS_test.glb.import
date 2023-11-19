@@ -1,0 +1,39 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bph0qxrxuewr7"
+path="res://.godot/imported/SSS_test.glb-4e1c62b174d0dfbc51b1eea5669b4274.scn"
+
+[deps]
+
+source_file="res://meshes/SSS_test.glb"
+dest_files=["res://.godot/imported/SSS_test.glb-4e1c62b174d0dfbc51b1eea5669b4274.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"SSS": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/window_cloth_covered_glass.tres"
+}
+}
+}
+gltf/embedded_image_handling=1

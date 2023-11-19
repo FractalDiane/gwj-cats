@@ -1,0 +1,67 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bm02sgkftlal4"
+path="res://.godot/imported/cat_3.glb-a61167504d5d3da0a8a28c06be80f910.scn"
+
+[deps]
+
+source_file="res://meshes/cat_3.glb"
+dest_files=["res://.godot/imported/cat_3.glb-a61167504d5d3da0a8a28c06be80f910.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"CatEyeSockets": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_eye_whites.tres"
+},
+"CatFur": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_fur_4.tres"
+},
+"CatFurInEar": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_fur_inner_ear.tres"
+},
+"CatNose": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_nose.tres"
+},
+"Eye": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_eye_iris_4.tres"
+},
+"Eye.001": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_eye_pupil.tres"
+},
+"Outline": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/outline.tres"
+},
+"Whisker": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/cat_whisker.tres"
+}
+}
+}
+gltf/embedded_image_handling=1

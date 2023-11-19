@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqfxdk2jum1mf"
-path="res://.godot/imported/tetris_l copy 3.png-2dc9083072e9f308ff32c7f261969b1c.ctex"
+uid="uid://cmdtitiafrvnm"
+path="res://.godot/imported/board_4x4.png-cef1b997902f29e030d1cc75ad5167b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cargo_minigame/tetris_l copy 3.png"
-dest_files=["res://.godot/imported/tetris_l copy 3.png-2dc9083072e9f308ff32c7f261969b1c.ctex"]
+source_file="res://sprites/cargo_minigame/board_4x4.png"
+dest_files=["res://.godot/imported/board_4x4.png-cef1b997902f29e030d1cc75ad5167b7.ctex"]
 
 [params]
 

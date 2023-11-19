@@ -41,9 +41,9 @@ func _animate_ticket():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (animation_started and not animation_finished):
-		relative_hand_pos +=  hand_velocity
-		hand_sprite.position.y +=  hand_velocity
-		ticket_sprite.position.y +=  hand_velocity
+		relative_hand_pos +=  hand_velocity * delta * (60)
+		hand_sprite.position.y +=  hand_velocity * delta * (60)
+		ticket_sprite.position.y +=  hand_velocity * delta * (60)
 		if (relative_hand_pos >= 0):
 			animation_finished = true
 		

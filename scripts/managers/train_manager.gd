@@ -3,6 +3,7 @@ class_name TrainManager
 
 signal move_started()
 signal move_finished()
+signal done_instantiating()
 
 var active_car_index: int = 0
 var active_train_cars: Array = []

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5o7aeyay2g1l"]
+[gd_scene load_steps=19 format=3 uid="uid://b5o7aeyay2g1l"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_2huee"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_mdwb4"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="9_oadbs"]
 [ext_resource type="Script" path="res://scripts/managers/environment_manager.gd" id="10_2kigv"]
 [ext_resource type="AudioStream" uid="uid://dbw0xitjj3ot5" path="res://audio/fast-jazz-143910.mp3" id="11_47cgh"]
+[ext_resource type="Script" path="res://scripts/managers/train_manager.gd" id="11_caop5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
 size = Vector3(10, 1, 6)
@@ -52,13 +53,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 mesh = SubResource("BoxMesh_tc1sk")
 surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_2huee")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera", "train_manager") instance=ExtResource("1_2huee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 camera = NodePath("../PlayerCamera")
+train_manager = NodePath("../TrainManager")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
 script = ExtResource("2_mdwb4")
+
+[node name="TransVolume" parent="PlayerCamera" node_paths=PackedStringArray("train_manager") instance=ExtResource("4_f8hb4")]
+transform = Transform3D(0.999976, -2.32831e-10, 0.00698126, 0.00550131, 0.615661, -0.787992, -0.00429809, 0.788011, 0.615646, 5.53339, 0.094145, -6.31642)
+train_manager = NodePath("../../TrainManager")
+direction = 1
+
+[node name="TransVolume2" parent="PlayerCamera" node_paths=PackedStringArray("train_manager") instance=ExtResource("4_f8hb4")]
+transform = Transform3D(0.999976, -2.32831e-10, 0.00698126, 0.00550131, 0.615661, -0.787992, -0.00429809, 0.788011, 0.615646, -5.47216, 0.0335986, -6.26912)
+train_manager = NodePath("../../TrainManager")
 
 [node name="TestThingy" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63606, 0.573184, -0.953491)
@@ -72,12 +83,6 @@ mesh = SubResource("BoxMesh_jm3yc")
 shape = SubResource("ConvexPolygonShape3D_qh3qs")
 
 [node name="InteractionReceiverComponent" parent="TestThingy" instance=ExtResource("3_mhsad")]
-
-[node name="TransVolume" parent="." instance=ExtResource("4_f8hb4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5075, 0, 0)
-
-[node name="TransVolume2" parent="." instance=ExtResource("4_f8hb4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.49832, 0, 0)
 
 [node name="PawsChair" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9134, 0.605134, 0)
@@ -102,6 +107,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113867, 0)
 [node name="EnvironmentManager" type="Node3D" parent="."]
 script = ExtResource("10_2kigv")
 environment_speed = 5.0
+
+[node name="TrainManager" type="Node3D" parent="." node_paths=PackedStringArray("player_camera", "player")]
+script = ExtResource("11_caop5")
+player_camera = NodePath("../PlayerCamera")
+player = NodePath("../Player")
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_47cgh")

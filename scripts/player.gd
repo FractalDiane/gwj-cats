@@ -4,6 +4,7 @@ extends CharacterBody3D
 signal jump_point_exited()
 
 @export var camera: PlayerCamera = null
+@export var train_manager: TrainManager = null
 @export var rot_threshold: float = 0.45
 
 const SPEED := 3.0
@@ -21,20 +22,19 @@ var cat_node : Node3D
 # ==================================================================================================
 
 func _ready():
-	camera.move_started.connect(_on_camera_move_started)
-	camera.move_finished.connect(_on_camera_move_finished)
 	cat_node = get_node("cat")
 	last_rot_location = global_position
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed(&"debug_left"):
-		camera.move_car(PlayerCamera.Direction.Left, self)
-	elif Input.is_action_just_pressed(&"debug_right"):
-		camera.move_car(PlayerCamera.Direction.Right, self)
-		
 	if Input.is_action_just_pressed("interact"):
 		interaction_component.try_interact(self)
+
+func move_car(tween: Tween, direction: Statics.Direction) -> void:
+	var dir := 1 if direction == Statics.Direction.Right else -1
+	tween.parallel().tween_property(self, ^"position:x", position.x + dir * 2.5, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUINT)
+	block_movement = true
+	tween.finished.connect(_on_move_finished)
 
 
 func _physics_process(delta: float) -> void:
@@ -102,11 +102,7 @@ func jump_to_jump_point(jump_point: JumpPoint, jump_away: bool) -> void:
 
 # ==================================================================================================
 
-func _on_camera_move_started() -> void:
-	block_movement = true
-	
-
-func _on_camera_move_finished() -> void:
+func _on_move_finished() -> void:
 	block_movement = false
 	
 	

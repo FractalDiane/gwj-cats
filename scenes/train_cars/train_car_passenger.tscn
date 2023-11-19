@@ -349,7 +349,6 @@ transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801,
 [node name="ShadingContainer" parent="." instance=ExtResource("4_3m8i8")]
 
 [node name="DirectionalLight3D" parent="ShadingContainer" index="1"]
-transform = Transform3D(0.730876, 0.652813, 0.199137, 0.5001, -0.710791, 0.494648, 0.464457, -0.261938, -0.845972, 0.0170121, 0.00665426, -0.205514)
 shadow_bias = 0.0
 shadow_opacity = 0.84
 shadow_blur = 1.842

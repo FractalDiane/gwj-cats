@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c5ea711yvncsd"]
+[gd_scene load_steps=41 format=3 uid="uid://c5ea711yvncsd"]
 
 [ext_resource type="Script" path="res://scripts/train_car.gd" id="1_xeqb3"]
 [ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="2_svmla"]
@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://ct8j630fca2eh" path="res://meshes/caboose_cab_shell.glb" id="5_5vnkj"]
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="5_cy7xm"]
 [ext_resource type="Texture2D" uid="uid://bcxqsep7o0ayg" path="res://sprites/funky_rug.png" id="6_uihvt"]
-[ext_resource type="Material" uid="uid://dscqj0rokkerb" path="res://materials/wood_red_flooring.tres" id="6_uye0p"]
 [ext_resource type="Material" uid="uid://dp5ij7v0l2o1d" path="res://materials/star.tres" id="8_hbgju"]
 [ext_resource type="PackedScene" uid="uid://dj1asdrlonvrq" path="res://meshes/static_body_bench.tscn" id="10_g762a"]
 [ext_resource type="Material" uid="uid://dbtmswntjoiuh" path="res://materials/wall_alpha.tres" id="11_5t0fs"]
 [ext_resource type="Script" path="res://scripts/paws_chair.gd" id="12_hp4l5"]
+[ext_resource type="Material" uid="uid://clruf26npxmu1" path="res://materials/bench_cushion.tres" id="13_6dljv"]
 [ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="14_1tjk7"]
 [ext_resource type="PackedScene" path="res://prefabs/components/jump_point.tscn" id="14_d2wfc"]
 [ext_resource type="PackedScene" uid="uid://bdlmopw28yf6m" path="res://kenney_assets/furniture/doorwayOpen.glb" id="20_lle4b"]
@@ -264,6 +264,8 @@ size = Vector3(9.09595, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ra1fp"]
 size = Vector3(2.34313, 1, 1)
 
+[sub_resource type="TorusMesh" id="TorusMesh_o8kc1"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_w5ohv"]
 size = Vector3(0.5, 0.2, 0.5)
 
@@ -336,9 +338,6 @@ mesh = SubResource("ArrayMesh_rbfx1")
 
 [node name="caboose_cab_shell" parent="." instance=ExtResource("5_5vnkj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.307606, 0.714)
-
-[node name="train" parent="caboose_cab_shell" index="0"]
-material_override = ExtResource("6_uye0p")
 
 [node name="shadow_casters" parent="caboose_cab_shell" index="4"]
 cast_shadow = 3
@@ -440,7 +439,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71379, -0.214757, 0.346655
 script = ExtResource("12_hp4l5")
 metadata/_edit_group_ = true
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PawsChair"]
+transform = Transform3D(0.475846, 0, 0, 0, 0.475846, 0, 0, 0, 0.475846, 0, 0, 0)
+material_override = ExtResource("13_6dljv")
+mesh = SubResource("TorusMesh_o8kc1")
+skeleton = NodePath("../MeshInstance3D")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PawsChair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0969975, 0)
+material_override = ExtResource("13_6dljv")
 mesh = SubResource("BoxMesh_w5ohv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PawsChair"]

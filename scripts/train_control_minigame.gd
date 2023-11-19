@@ -5,6 +5,9 @@ const lever_textures := [preload("res://sprites/train_control_minigame/train_con
 						 preload("res://sprites/train_control_minigame/train_control_locked.png"),
 						preload("res://sprites/train_control_minigame/train_control_locked.png")]
 
+const direction_textures := [preload("res://sprites/train_control_minigame/train_control_left_arrow.png"),
+							 preload("res://sprites/train_control_minigame/train_control_right_arrow.png")]
+
 enum LeverState {unlocked, locked_left, locked_right, undetermined}
 var lever_state := LeverState.undetermined
 
@@ -15,10 +18,15 @@ var lever_sprite: Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	lever_sprite = get_node("lever")
+	var direction_indicator_sprite := get_node("indicator")
+	if Globals.direction_lever_should_point_to_not_lose_is_left:
+		direction_indicator_sprite.set_texture(direction_textures[0])
+	else:
+		direction_indicator_sprite.set_texture(direction_textures[0])
 	# TODO: make this an input parameter to the minigame
 	#       (must be either locked_left or locked_right)
 	# var initial_state: LeverState = LeverState.locked_left
+	lever_sprite = get_node("lever")
 	var initial_state: LeverState = Globals.cached_lever_direction as LeverState
 	lever_state = initial_state
 	lever_sprite.rotation = -3*PI/4 if lever_state == LeverState.locked_left else -PI/4

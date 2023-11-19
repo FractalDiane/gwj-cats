@@ -81,12 +81,3 @@ func _early_return_sent(success: bool, data: int):
 # to be connected to signal from task manager for when it wants 
 func _on_early_task_return_request():
 	early_return_request.emit()
-
-
-######################################
-### FOR TESTING, REMOVE LATER!!!!! ###
-######################################
-func _input(event):
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_F10:
-			early_return_request.emit()

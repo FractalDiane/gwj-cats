@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c4nxh36nb33pj"]
+
+[ext_resource type="Texture2D" uid="uid://ye43ijxlacd6" path="res://sprites/Divided_beam_pale_navy_blue_corrugated_slightly_scuffed_metal_texture.jpg" id="1_52xvw"]
+
+[resource]
+albedo_color = Color(0.721569, 0.52549, 0.45098, 1)
+albedo_texture = ExtResource("1_52xvw")
+uv1_scale = Vector3(-0.585, 1.298, 1.18)

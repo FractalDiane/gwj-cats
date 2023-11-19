@@ -27,3 +27,8 @@ void fragment() {
 	}
 	ALBEDO = vec3(color) + bg_color;
 }
+
+void light() {
+	DIFFUSE_LIGHT = vec3(0.0, 0.0, 0.0);
+	SPECULAR_LIGHT = vec3(0.0, 0.0, 0.0);
+}

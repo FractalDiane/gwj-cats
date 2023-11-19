@@ -38,5 +38,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.226835, 0)
 [node name="cat" parent="." instance=ExtResource("3_dnmks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0301514, 0, 0.014535)
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 9.215
+
 [connection signal="area_entered" from="InteractionActivatorComponent/InteractArea" to="InteractionActivatorComponent" method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractionActivatorComponent/InteractArea" to="InteractionActivatorComponent" method="_on_interact_area_area_exited"]

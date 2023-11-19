@@ -4,6 +4,7 @@ extends CharacterBody3D
 signal jump_point_exited()
 
 @export var camera: PlayerCamera = null
+@export var rot_threshold: float = 0.45
 
 const SPEED := 2.5
 
@@ -14,11 +15,16 @@ var block_movement := false
 var on_jump_point := false
 var pre_jump_location := Vector3()
 
+var last_rot_location := Vector3()
+var cat_node : Node3D
+
 # ==================================================================================================
 
 func _ready():
 	camera.move_started.connect(_on_camera_move_started)
 	camera.move_finished.connect(_on_camera_move_finished)
+	cat_node = get_node("cat")
+	last_rot_location = global_position
 
 
 func _process(_delta: float) -> void:
@@ -53,6 +59,23 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 
 	move_and_slide()
+	
+	if (position.distance_to(last_rot_location) > rot_threshold):
+		"""var delta_pos: Vector3 = global_position - last_rot_location
+		var axis: Vector3
+		var t: float = 0
+		var a_list = [Vector3.RIGHT, Vector3.FORWARD, Vector3.LEFT, Vector3.BACK]
+		for a in a_list:
+			var v: float = delta_pos.dot(a)
+			if (v > t):
+				t = v
+				axis = a
+		axis.z = axis.y
+		axis.y = 0
+		print(Vector3.UP.cross(axis).normalized(), axis)"""
+		cat_node.rotate(Vector3.RIGHT, PI * 0.5)
+		last_rot_location = global_position
+		
 
 # ==================================================================================================
 

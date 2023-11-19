@@ -56,7 +56,7 @@ _subresources={
 },
 "Outline": {
 "use_external/enabled": true,
-"use_external/path": "res://materials/outline_UX_inv.tres"
+"use_external/path": "res://materials/outline.tres"
 },
 "Whisker": {
 "use_external/enabled": true,

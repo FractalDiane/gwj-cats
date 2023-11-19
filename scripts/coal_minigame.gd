@@ -25,6 +25,7 @@ var coalPrefab: PackedScene = preload("res://prefabs/coal.tscn")
 @export var coalFlingSpeedVariance: float
 @export var coalFlingAngleVariance: float
 @export var coalFlingTorqueVariance: float
+@export var shovelMinimumXValue: int
 
 var coalAmount : int
 var hasCoal: bool
@@ -51,6 +52,7 @@ func _ready():
 func _process(_delta):
 	# move scoop to mouse pos
 	mouse_pos = get_viewport().get_mouse_position()
+	mouse_pos.x = max(mouse_pos.x, shovelMinimumXValue)
 	$scoop.position = mouse_pos
 	
 	# drop coal if leftMouseUp
@@ -110,7 +112,11 @@ func _on_furnace_trigger_entered(body: Node2D):
 	if (hatchOpen):
 		if (coalAmount < coalToExplode):
 			coalAmount += 1
-		$debugtext.text = "coal: " + str(coalAmount) + " of " + str(coalNeeded)
+		if (coalAmount >= coalNeeded):
+			$debugtext.text = "coal: " + str(coalAmount) + " of " + str(coalNeeded) + "\n(close hatch to complete task)"
+		else:
+			$debugtext.text = "coal: " + str(coalAmount) + " of " + str(coalNeeded)
+		
 		
 		if (coalAmount == coalToExplode):
 			$debugtext.text = "get exploded idiot (return task fail/set death flag or something)"

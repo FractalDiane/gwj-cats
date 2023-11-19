@@ -367,16 +367,19 @@ transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0,
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 3.57628e-07, -0.423764, 0.890021)
 
 [node name="Plant1" parent="hanging_plant2/Hanging Pot" index="0"]
-transform = Transform3D(0.99672, 0.0800608, -0.0117989, -0.0805187, 0.995714, -0.0455099, 0.00810475, 0.0463107, 0.998894, 0.000998378, -0.438903, -0.000218868)
+transform = Transform3D(0.998044, 0.0210942, -0.0588542, -0.0188069, 0.999057, 0.0391509, 0.0596245, -0.0379675, 0.997498, 0.000998378, -0.438903, -0.000218868)
 
 [node name="Plant2" parent="hanging_plant2/Hanging Pot" index="1"]
-transform = Transform3D(0.998434, 0.0173997, 0.0531644, -0.0165441, 0.999727, -0.0164922, -0.0534369, 0.0155869, 0.99845, -0.0242646, -0.437188, -0.0835934)
+transform = Transform3D(0.997874, 0.0213387, -0.0615833, -0.0188649, 0.999002, 0.0404756, 0.0623855, -0.0392278, 0.997281, -0.0242646, -0.437188, -0.0835934)
 
 [node name="Plant3" parent="hanging_plant2/Hanging Pot" index="2"]
-transform = Transform3D(0.999055, 0.0159164, -0.040444, -0.0165718, 0.999736, -0.0159223, 0.0401799, 0.0165775, 0.999055, 0.0643862, -0.437188, -0.00164018)
+transform = Transform3D(0.999318, 0.0175543, 0.0324965, -0.0188649, 0.999003, 0.0404756, -0.0317535, -0.041061, 0.998652, 0.0643862, -0.437188, -0.00164018)
 
 [node name="Plant4" parent="hanging_plant2/Hanging Pot" index="3"]
-transform = Transform3D(0.99524, -0.0599968, -0.0767951, 0.0557461, 0.996854, -0.0563479, 0.0799341, 0.0517987, 0.995453, 0, -0.433921, 0)
+transform = Transform3D(0.999134, 0.0173351, 0.037821, -0.0188649, 0.999003, 0.0404756, -0.0370816, -0.0411541, 0.998464, 0, -0.433921, 0)
+
+[node name="AnimationPlayer" parent="hanging_plant2" index="1"]
+autoplay = "Animation"
 
 [node name="cat" parent="." instance=ExtResource("3_o8v6q")]
 transform = Transform3D(0.483481, 0, -0.875355, 0, 1, 0, 0.875355, 0, 0.483481, 0, 0, 0.498)
@@ -642,21 +645,24 @@ transform = Transform3D(2.25354, 0, 0.429885, 0, 2.29417, 0, -0.429885, 0, 2.253
 [node name="barrel4" parent="." instance=ExtResource("22_1cux7")]
 transform = Transform3D(2.27542, -0.292699, 1.27943e-08, 0, -1.00281e-07, -2.29417, 0.292699, 2.27542, -9.94619e-08, -0.195857, -0.0116388, -1.91984)
 
-[node name="shovel" parent="." instance=ExtResource("23_e8fsd")]
+[node name="lever" parent="." instance=ExtResource("23_e8fsd")]
 transform = Transform3D(2.19267, -0.246482, -1.17545, 0.940082, -1.17056, 1.99907, -0.747456, -2.19529, -0.933957, 3.21804, 0.915955, 2.25846)
 
-[node name="shovel2" parent="." instance=ExtResource("23_e8fsd")]
-transform = Transform3D(2.29152, -0.257594, -1.22844, 0.982463, -1.22333, 2.08919, -0.781152, -2.29425, -0.976061, 3.22756, 0.899757, 2.26603)
+[node name="outline" type="Node3D" parent="lever"]
+transform = Transform3D(0.350814, 0.150407, -0.119588, -0.0394357, -0.187282, -0.351232, -0.188065, 0.319839, -0.149427, -0.0127664, 0.0118591, -0.288125)
 
-[node name="shovel2" parent="shovel2" index="0"]
+[node name="shovel2" parent="lever/outline" instance=ExtResource("23_e8fsd")]
+transform = Transform3D(2.29152, -0.257594, -1.22844, 0.982463, -1.22333, 2.08919, -0.781152, -2.29425, -0.976061, -0.298237, 0.585666, -0.245037)
+
+[node name="shovel2" parent="lever/outline/shovel2" index="0"]
 transform = Transform3D(1.2234, 0, -1.93715e-07, 8.9407e-08, 1.37319, -1.49012e-07, -4.47035e-08, -2.98023e-08, 1.2234, 1.01328e-06, -0.00607181, -0.0403616)
 material_override = ExtResource("26_24rj8")
 mesh = SubResource("ArrayMesh_xe8bf")
 
-[node name="shovel3" parent="." instance=ExtResource("23_e8fsd")]
-transform = Transform3D(3.06252, -0.257594, -1.22844, 1.31302, -1.22333, 2.08919, -1.04398, -2.29425, -0.976061, 3.68428, 0.123017, 2.62892)
+[node name="shovel3" parent="lever/outline" instance=ExtResource("23_e8fsd")]
+transform = Transform3D(3.06252, -0.257594, -1.22844, 1.31302, -1.22333, 2.08919, -1.04398, -2.29425, -0.976061, 0.158486, -0.191073, 0.117853)
 
-[node name="shovel2" parent="shovel3" index="0"]
+[node name="shovel2" parent="lever/outline/shovel3" index="0"]
 transform = Transform3D(-0.888059, 1.49012e-08, 4.47035e-08, 5.96046e-08, 1.16399, -2.98023e-08, -1.49012e-08, 2.98023e-08, -1.03702, 7.7486e-07, -0.00602543, -0.121464)
 material_override = ExtResource("26_24rj8")
 mesh = SubResource("ArrayMesh_xe8bf")
@@ -670,69 +676,13 @@ transform = Transform3D(-2.14727e-07, 0.929177, -1.8193, 1.12859e-07, 1.76787, 0
 [node name="cabinetTelevision2" parent="." instance=ExtResource("27_mkedn")]
 transform = Transform3D(-2.14727e-07, -0.910594, -1.8193, 1.12858e-07, -1.73251, 0.956205, 5.54957, 5.77904e-15, -8.9839e-08, 3.79049, 0.65, -1.48445)
 
-[node name="campfire_logs" parent="." instance=ExtResource("30_xl54q")]
-transform = Transform3D(0.992031, 0, -0.125991, 0, 1, 0, 0.125991, 0, 0.992031, 1.93818, 0.381205, -0.541282)
-
-[node name="campfire_logs2" parent="campfire_logs/tmpParent" index="0"]
-transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
-material_override = ExtResource("31_kevxl")
-
-[node name="campfire_logs2" parent="." instance=ExtResource("30_xl54q")]
-transform = Transform3D(0.488404, 0.117896, -0.864617, -0.23465, 0.97208, 1.18379e-08, 0.840477, 0.202882, 0.502432, 2.02229, 0.352149, -0.634489)
-
-[node name="campfire_logs2" parent="campfire_logs2/tmpParent" index="0"]
-transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
-material_override = ExtResource("31_kevxl")
-
-[node name="campfire_logs6" parent="." instance=ExtResource("30_xl54q")]
-transform = Transform3D(-0.924436, 0.0371605, -0.379523, 0.0244201, 0.998967, 0.0383303, 0.380555, 0.0261659, -0.924388, 2.16165, 0.228751, -0.986414)
-
-[node name="campfire_logs2" parent="campfire_logs6/tmpParent" index="0"]
-transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
-material_override = ExtResource("31_kevxl")
-
-[node name="campfire_logs11" parent="." instance=ExtResource("30_xl54q")]
-transform = Transform3D(-0.384581, 0.0447786, -0.922004, 0.0244201, 0.998967, 0.0383303, 0.922768, -0.00777435, -0.385278, 2.70554, 0.228751, -0.903159)
-
-[node name="campfire_logs2" parent="campfire_logs11/tmpParent" index="0"]
-transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
-material_override = ExtResource("31_kevxl")
-
-[node name="campfire_logs10" parent="." instance=ExtResource("30_xl54q")]
-transform = Transform3D(0.0307367, -0.0390739, 0.998764, 0.0244201, 0.998967, 0.0383303, -0.999229, 0.0232118, 0.0316593, 2.38345, 0.228751, -1.32315)
-
-[node name="campfire_logs2" parent="campfire_logs10/tmpParent" index="0"]
-transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
-material_override = ExtResource("31_kevxl")
-
-[node name="campfire_logs9" parent="." instance=ExtResource("30_xl54q")]
-transform = Transform3D(-0.924436, 0.0371605, -0.379523, 0.0244201, 0.998967, 0.0383303, 0.380555, 0.0261659, -0.924388, 1.89626, 0.228751, -1.33854)
-
-[node name="campfire_logs2" parent="campfire_logs9/tmpParent" index="0"]
-transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
-material_override = ExtResource("31_kevxl")
-
-[node name="campfire_logs7" parent="." instance=ExtResource("30_xl54q")]
-transform = Transform3D(-0.744066, -0.335966, -0.577488, 0.475745, 0.340434, -0.811031, 0.469075, -0.878198, -0.0934713, 1.1115, -0.782869, -1.45377)
-
-[node name="campfire_logs2" parent="campfire_logs7/tmpParent" index="0"]
-transform = Transform3D(2.25018, -0.632566, -0.31148, 0.192588, 1.55346, -1.76355, 0.678284, 1.65743, 1.53405, 0.138018, -0.737018, -0.525623)
-material_override = ExtResource("31_kevxl")
-
-[node name="campfire_logs8" parent="." instance=ExtResource("30_xl54q")]
-transform = Transform3D(-0.397526, -0.739302, -0.543512, 0.475745, 0.340434, -0.811031, 0.784627, -0.580979, 0.216388, 1.04209, -0.782869, -1.11109)
-
-[node name="campfire_logs2" parent="campfire_logs8/tmpParent" index="0"]
-transform = Transform3D(2.25484, -0.520168, 0.453378, 0.683997, 1.48073, -1.70295, 0.0909607, 1.75992, 1.5668, 0.202186, -0.652485, -0.592408)
-material_override = ExtResource("31_kevxl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="furnace" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.58788, 0.240011, -0.757352, -0.372746, 1.71979, -0.236489, 0.701604, 0.370488, 1.5884, 3.4454, -0.233778, -1.46304)
 material_override = ExtResource("32_gebyy")
 mesh = SubResource("SphereMesh_2jems")
-skeleton = NodePath("../campfire_logs4/tmpParent/campfire_logs2")
+skeleton = NodePath("../coal_pile/campfire_logs4/tmpParent/campfire_logs2")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
+[node name="OmniLight3D" type="OmniLight3D" parent="furnace"]
 transform = Transform3D(0.563209, -5.58794e-08, -7.45058e-08, 7.82311e-08, 0.563209, 7.45058e-09, 7.45058e-08, 3.72529e-08, 0.563209, -0.0436133, 0.24428, 0.185088)
 light_color = Color(1, 0.278431, 0.141176, 1)
 light_energy = 13.075
@@ -740,32 +690,11 @@ light_indirect_energy = 16.0
 light_size = 1.0
 omni_range = 5.8639
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.32429, 0.20017, -0.631633, -0.310871, 1.43431, -0.197233, 0.585139, 0.308987, 1.32473, 2.86657, 0.276989, -0.960129)
+[node name="outline" type="MeshInstance3D" parent="furnace"]
+transform = Transform3D(0.834002, -2.98023e-08, 8.9407e-08, -5.21541e-08, 0.834002, -1.49012e-08, 5.96046e-08, 0, 0.834002, -0.240012, 0.293671, 0.354133)
 material_override = ExtResource("26_24rj8")
 mesh = SubResource("SphereMesh_2jems")
-skeleton = NodePath("../campfire_logs4/tmpParent/campfire_logs2")
-
-[node name="campfire_logs4" parent="." instance=ExtResource("30_xl54q")]
-transform = Transform3D(0.875122, 0.318976, -0.363889, -0.310671, 0.946897, 0.0828896, 0.371005, 0.0405111, 0.927747, 2.65716, 0.568472, -0.726826)
-
-[node name="campfire_logs2" parent="campfire_logs4/tmpParent" index="0"]
-transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
-material_override = ExtResource("31_kevxl")
-
-[node name="campfire_logs5" parent="." instance=ExtResource("30_xl54q")]
-transform = Transform3D(0.160817, 0.366958, -0.916232, -0.3416, 0.891635, 0.297149, 0.925985, 0.265198, 0.268743, 2.74814, 0.510141, -0.797018)
-
-[node name="campfire_logs2" parent="campfire_logs5/tmpParent" index="0"]
-transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
-material_override = ExtResource("31_kevxl")
-
-[node name="campfire_logs3" parent="." instance=ExtResource("30_xl54q")]
-transform = Transform3D(0.615929, 0.227451, -1.08355, 0.208489, 1.19393, 0.369133, 1.08736, -0.357761, 0.542995, 2.19813, 0.582424, -1.71483)
-
-[node name="campfire_logs2" parent="campfire_logs3/tmpParent" index="0"]
-transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
-material_override = ExtResource("31_kevxl")
+skeleton = NodePath("../../coal_pile/campfire_logs4/tmpParent/campfire_logs2")
 
 [node name="minigames" type="Node3D" parent="."]
 
@@ -791,20 +720,99 @@ shape = SubResource("ConvexPolygonShape3D_606cr")
 
 [node name="InteractionReceiverComponent" parent="minigames/Minigame2" instance=ExtResource("14_nva8m")]
 
+[node name="coal_pile" type="Node3D" parent="."]
+
+[node name="campfire_logs" parent="coal_pile" instance=ExtResource("30_xl54q")]
+transform = Transform3D(0.992031, 0, -0.125991, 0, 1, 0, 0.125991, 0, 0.992031, 1.93818, 0.381205, -0.541282)
+
+[node name="campfire_logs2" parent="coal_pile/campfire_logs/tmpParent" index="0"]
+transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
+material_override = ExtResource("31_kevxl")
+
+[node name="campfire_logs2" parent="coal_pile" instance=ExtResource("30_xl54q")]
+transform = Transform3D(0.488404, 0.117896, -0.864617, -0.23465, 0.97208, 1.18379e-08, 0.840477, 0.202882, 0.502432, 2.02229, 0.352149, -0.634489)
+
+[node name="campfire_logs2" parent="coal_pile/campfire_logs2/tmpParent" index="0"]
+transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
+material_override = ExtResource("31_kevxl")
+
+[node name="campfire_logs6" parent="coal_pile" instance=ExtResource("30_xl54q")]
+transform = Transform3D(-0.924436, 0.0371605, -0.379523, 0.0244201, 0.998967, 0.0383303, 0.380555, 0.0261659, -0.924388, 2.16165, 0.228751, -0.986414)
+
+[node name="campfire_logs2" parent="coal_pile/campfire_logs6/tmpParent" index="0"]
+transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
+material_override = ExtResource("31_kevxl")
+
+[node name="campfire_logs11" parent="coal_pile" instance=ExtResource("30_xl54q")]
+transform = Transform3D(-0.384581, 0.0447786, -0.922004, 0.0244201, 0.998967, 0.0383303, 0.922768, -0.00777435, -0.385278, 2.70554, 0.228751, -0.903159)
+
+[node name="campfire_logs2" parent="coal_pile/campfire_logs11/tmpParent" index="0"]
+transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
+material_override = ExtResource("31_kevxl")
+
+[node name="campfire_logs10" parent="coal_pile" instance=ExtResource("30_xl54q")]
+transform = Transform3D(0.0307367, -0.0390739, 0.998764, 0.0244201, 0.998967, 0.0383303, -0.999229, 0.0232118, 0.0316593, 2.38345, 0.228751, -1.32315)
+
+[node name="campfire_logs2" parent="coal_pile/campfire_logs10/tmpParent" index="0"]
+transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
+material_override = ExtResource("31_kevxl")
+
+[node name="campfire_logs9" parent="coal_pile" instance=ExtResource("30_xl54q")]
+transform = Transform3D(-0.924436, 0.0371605, -0.379523, 0.0244201, 0.998967, 0.0383303, 0.380555, 0.0261659, -0.924388, 1.89626, 0.228751, -1.33854)
+
+[node name="campfire_logs2" parent="coal_pile/campfire_logs9/tmpParent" index="0"]
+transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
+material_override = ExtResource("31_kevxl")
+
+[node name="campfire_logs7" parent="coal_pile" instance=ExtResource("30_xl54q")]
+transform = Transform3D(-0.744066, -0.335966, -0.577488, 0.475745, 0.340434, -0.811031, 0.469075, -0.878198, -0.0934713, 1.1115, -0.782869, -1.45377)
+
+[node name="campfire_logs2" parent="coal_pile/campfire_logs7/tmpParent" index="0"]
+transform = Transform3D(2.25018, -0.632566, -0.31148, 0.192588, 1.55346, -1.76355, 0.678284, 1.65743, 1.53405, 0.138018, -0.737018, -0.525623)
+material_override = ExtResource("31_kevxl")
+
+[node name="campfire_logs8" parent="coal_pile" instance=ExtResource("30_xl54q")]
+transform = Transform3D(-0.397526, -0.739302, -0.543512, 0.475745, 0.340434, -0.811031, 0.784627, -0.580979, 0.216388, 1.04209, -0.782869, -1.11109)
+
+[node name="campfire_logs2" parent="coal_pile/campfire_logs8/tmpParent" index="0"]
+transform = Transform3D(2.25484, -0.520168, 0.453378, 0.683997, 1.48073, -1.70295, 0.0909607, 1.75992, 1.5668, 0.202186, -0.652485, -0.592408)
+material_override = ExtResource("31_kevxl")
+
+[node name="campfire_logs4" parent="coal_pile" instance=ExtResource("30_xl54q")]
+transform = Transform3D(0.875122, 0.318976, -0.363889, -0.310671, 0.946897, 0.0828896, 0.371005, 0.0405111, 0.927747, 2.65716, 0.568472, -0.726826)
+
+[node name="campfire_logs2" parent="coal_pile/campfire_logs4/tmpParent" index="0"]
+transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
+material_override = ExtResource("31_kevxl")
+
+[node name="campfire_logs5" parent="coal_pile" instance=ExtResource("30_xl54q")]
+transform = Transform3D(0.160817, 0.366958, -0.916232, -0.3416, 0.891635, 0.297149, 0.925985, 0.265198, 0.268743, 2.74814, 0.510141, -0.797018)
+
+[node name="campfire_logs2" parent="coal_pile/campfire_logs5/tmpParent" index="0"]
+transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
+material_override = ExtResource("31_kevxl")
+
+[node name="campfire_logs3" parent="coal_pile" instance=ExtResource("30_xl54q")]
+transform = Transform3D(0.615929, 0.227451, -1.08355, 0.208489, 1.19393, 0.369133, 1.08736, -0.357761, 0.542995, 2.19813, 0.582424, -1.71483)
+
+[node name="campfire_logs2" parent="coal_pile/campfire_logs3/tmpParent" index="0"]
+transform = Transform3D(2.34497, -0.248081, 0, 0.241666, 2.28434, -0.532774, 0.0560507, 0.529817, 2.29709, 0.158424, -0.645266, -0.478395)
+material_override = ExtResource("31_kevxl")
+
 [editable path="hanging_plant2"]
 [editable path="passenger_cab_shell2"]
 [editable path="engine_cab_shell"]
 [editable path="ShadingContainer"]
-[editable path="shovel2"]
-[editable path="shovel3"]
-[editable path="campfire_logs"]
-[editable path="campfire_logs2"]
-[editable path="campfire_logs6"]
-[editable path="campfire_logs11"]
-[editable path="campfire_logs10"]
-[editable path="campfire_logs9"]
-[editable path="campfire_logs7"]
-[editable path="campfire_logs8"]
-[editable path="campfire_logs4"]
-[editable path="campfire_logs5"]
-[editable path="campfire_logs3"]
+[editable path="lever/outline/shovel2"]
+[editable path="lever/outline/shovel3"]
+[editable path="coal_pile/campfire_logs"]
+[editable path="coal_pile/campfire_logs2"]
+[editable path="coal_pile/campfire_logs6"]
+[editable path="coal_pile/campfire_logs11"]
+[editable path="coal_pile/campfire_logs10"]
+[editable path="coal_pile/campfire_logs9"]
+[editable path="coal_pile/campfire_logs7"]
+[editable path="coal_pile/campfire_logs8"]
+[editable path="coal_pile/campfire_logs4"]
+[editable path="coal_pile/campfire_logs5"]
+[editable path="coal_pile/campfire_logs3"]

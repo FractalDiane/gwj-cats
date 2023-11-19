@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://6nn1e7smr27m"]
+[gd_scene load_steps=32 format=3 uid="uid://6nn1e7smr27m"]
 
 [ext_resource type="Material" uid="uid://c8est2c6utop3" path="res://materials/grass.tres" id="2_qnc6e"]
 [ext_resource type="PackedScene" uid="uid://xlioxobhyhah" path="res://kenney_assets/nature/ground_grass.glb" id="7_6mqct"]
@@ -27,11 +27,15 @@
 [ext_resource type="PackedScene" uid="uid://b2rc01ubkdcwg" path="res://kenney_assets/nature/stone_tallJ.glb" id="24_xvdsd"]
 [ext_resource type="PackedScene" uid="uid://cy6lxt7j3ldom" path="res://kenney_assets/nature/stone_largeD.glb" id="25_ujlt3"]
 [ext_resource type="PackedScene" uid="uid://cvc7c23cpy3qb" path="res://kenney_assets/nature/tree_pineGroundB.glb" id="26_aobmy"]
+[ext_resource type="Material" uid="uid://b1hluv8cdl6jr" path="res://materials/metal.tres" id="28_8vn0v"]
+[ext_resource type="Material" uid="uid://d1dvluc8qip18" path="res://materials/rail_ties.tres" id="29_atbuo"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_l30qh"]
 size = Vector2(160, 40)
 subdivide_width = 160
 subdivide_depth = 40
+
+[sub_resource type="BoxMesh" id="BoxMesh_735kt"]
 
 [node name="environment_forest" type="Node3D"]
 
@@ -39,7 +43,7 @@ subdivide_depth = 40
 visible = false
 
 [node name="ground_grass" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 22.9104, -0.748015, -2.19129)
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 23, -0.748, -2.191)
 material_override = ExtResource("2_qnc6e")
 mesh = SubResource("QuadMesh_l30qh")
 skeleton = NodePath(".")
@@ -313,3 +317,816 @@ transform = Transform3D(5.45654, 0, 0, 0, 5.41497, -0.672263, 0, 0.672263, 5.414
 
 [node name="tree_pineGroundB4" parent="." instance=ExtResource("26_aobmy")]
 transform = Transform3D(4.09848, -0.213755, 0.303968, 0.245328, 4.08485, -0.435288, -0.279109, 0.451631, 4.0809, 93.3276, 0.497514, -6.56895)
+
+[node name="tracks" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.95881, -0.284049, 0, 0.284049, 0.95881, 0, -0.237916, -0.0643178)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(160, 0, 0, 0, 0.199, 0, 0, 0, 0.199, 23, -0.897433, -0.325383)
+material_override = ExtResource("28_8vn0v")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(160, 0, 0, 0, 0.199, 0, 0, 0, 0.199, 23, -0.897433, 1.27947)
+material_override = ExtResource("28_8vn0v")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 0, -8.69857e-09, 23, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 3.72529e-09, -8.69857e-09, 24, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.11759e-08, -8.69857e-09, 25, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.11759e-08, -8.69857e-09, 27, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 26, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 3.72529e-09, -8.69857e-09, 28, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.11759e-08, -8.69857e-09, 29, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 30, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 32, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 31, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 3.72529e-09, -8.69857e-09, 33, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 2.43523e-24, -0.199, -0.12732, 0.198841, 3.47725e-10, 3.18246, 0.00795502, -8.69161e-09, 34, -1.02527, 0.517526)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 5.16065e-17, -0.199, -0.159473, 0.198751, 4.35539e-10, 3.18101, 0.00996396, -8.68766e-09, 35, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 5.16065e-17, -0.199, -0.159473, 0.198751, 4.35539e-10, 3.18101, 0.00996396, -8.68766e-09, 37, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, -0.159473, 0.198751, 4.35537e-10, 3.18101, 0.00996396, -8.68766e-09, 36, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 9.56755e-17, -0.199, -0.159473, 0.19875, 4.35538e-10, 3.18101, 0.00996397, -8.68766e-09, 38, -0.943726, 0.493233)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 5.16065e-17, -0.199, -0.159473, 0.198751, 4.35539e-10, 3.18101, 0.00996396, -8.68766e-09, 39, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, -0.159473, 0.198751, 4.35537e-10, 3.18101, 0.00996396, -8.68766e-09, 40, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, -0.159473, 0.198751, 4.35537e-10, 3.18101, 0.00996396, -8.68766e-09, 42, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, -7.45388e-23, -0.199, -0.159473, 0.198751, 4.35537e-10, 3.18101, 0.00996396, -8.68766e-09, 41, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 9.56755e-17, -0.199, -0.159473, 0.19875, 4.35538e-10, 3.18101, 0.00996397, -8.68766e-09, 43, -0.943726, 0.493233)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 5.16065e-17, -0.199, -0.159473, 0.198751, 4.35539e-10, 3.18101, 0.00996396, -8.68766e-09, 44, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, -0.159473, 0.198751, 4.35537e-10, 3.18101, 0.00996396, -8.68766e-09, 45, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, -0.159473, 0.198751, 4.35537e-10, 3.18101, 0.00996396, -8.68766e-09, 47, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, -7.45388e-23, -0.199, -0.159473, 0.198751, 4.35537e-10, 3.18101, 0.00996396, -8.68766e-09, 46, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 5.16065e-17, -0.199, -0.159473, 0.198751, 4.35539e-10, 3.18101, 0.00996396, -8.68766e-09, 48, -0.943726, 0.493233)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, -0.159473, 0.198751, 4.35537e-10, 3.18101, 0.00996396, -8.68766e-09, 49, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D30" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, -7.45388e-23, -0.199, -0.159473, 0.198751, 4.35537e-10, 3.18101, 0.00996396, -8.68766e-09, 50, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D31" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, -7.45388e-23, -0.199, -0.159473, 0.198751, 4.35537e-10, 3.18101, 0.00996396, -8.68766e-09, 52, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D32" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 5.16065e-17, -0.199, -0.159473, 0.198751, 4.35539e-10, 3.18101, 0.00996395, -8.68766e-09, 51, -0.944062, 0.493464)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 53, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D34" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 54, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D35" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 55, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D36" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 57, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D37" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 56, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D38" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 58, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D39" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 59, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D40" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 60, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D41" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 62, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D42" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 61, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D43" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 63, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D44" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 64, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D45" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 65, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D46" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 67, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D47" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 66, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D48" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 68, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D49" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 69, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D50" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 70, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D51" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 72, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D52" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 71, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D53" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 73, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D54" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 74, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D55" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 75, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D56" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 77, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D57" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 76, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D58" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 78, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D59" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 79, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D60" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 80, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D61" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 82, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D62" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 81, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D63" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 83, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D64" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 84, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D65" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 85, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D66" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 87, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D67" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 86, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D68" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 88, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D69" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 89, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D70" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 90, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D71" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 92, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D72" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 91, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D73" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 93, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D74" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 94, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D75" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 95, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D76" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 97, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D77" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 96, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D78" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 2.23517e-08, -8.69857e-09, 98, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D79" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 99, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D80" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 100, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D81" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 102, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D153" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 103, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D82" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 101, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D83" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 13, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D84" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 14, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D85" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 15, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D86" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 17, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D87" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 16, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D88" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 18, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D89" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 19, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D90" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 20, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D91" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 22, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D92" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 21, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D93" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 3, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D94" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 4, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D95" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 5, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D96" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 7, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D97" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 6, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D98" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 8, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D99" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 9, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D100" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 10, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D101" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 12, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D102" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 11, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D103" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -7, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D104" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -6, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D105" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -5, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D106" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -3, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D107" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -4, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D108" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -2, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D109" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -1, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D110" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 0, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D111" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 2, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D112" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, 1, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D113" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -17, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D114" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -16, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D115" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -15, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D116" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -13, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D117" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -14, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D118" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -12, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D119" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -11, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D120" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -10, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D121" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -8, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D122" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -9, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D123" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -27, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D124" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -26, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D125" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -25, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D126" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -23, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D127" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -24, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D128" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -22, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D129" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -21, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D130" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -20, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D131" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -18, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D132" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -19, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D133" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -37, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D134" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -36, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D135" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -35, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D136" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -33, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D137" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -34, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D138" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -32, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D139" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -31, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D140" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -30, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D141" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -28, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D142" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -29, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D143" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199, 0, 3.185, 1.86265e-08, -8.69857e-09, -47, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D144" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -46, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D145" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -45, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D146" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -43, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D147" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -44, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D148" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -42, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D149" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -41, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D150" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -40, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D151" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -38, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D152" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.6077e-08, -8.69857e-09, -39, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D154" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -56, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D155" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -55, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D156" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -53, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D157" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.6077e-08, -8.69857e-09, -54, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D158" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -52, -1.03668, 0.520753)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D159" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.23517e-08, -8.69857e-09, -51, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D160" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.6077e-08, -8.69857e-09, -50, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D161" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.6077e-08, -8.69857e-09, -48, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")
+
+[node name="MeshInstance3D162" type="MeshInstance3D" parent="tracks"]
+transform = Transform3D(-1.39221e-07, 0, -0.199, 0, 0.199001, 0, 3.185, 2.6077e-08, -8.69857e-09, -49, -1.037, 0.521)
+material_override = ExtResource("29_atbuo")
+mesh = SubResource("BoxMesh_735kt")

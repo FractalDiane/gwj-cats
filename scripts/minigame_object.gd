@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name MinigameObject
+
 signal task_done(success: bool, data: int)
 
 signal early_return_request()

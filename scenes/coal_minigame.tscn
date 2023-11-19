@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgms55y27m3u5"]
+[gd_scene load_steps=7 format=3 uid="uid://cgms55y27m3u5"]
 
 [ext_resource type="Script" path="res://scripts/coal_minigame.gd" id="1_rq1up"]
 [ext_resource type="Texture2D" uid="uid://c5lbqy8enuj88" path="res://sprites/coal game/furnace.png" id="1_x6ulx"]
 [ext_resource type="Texture2D" uid="uid://ctvgales5gmuw" path="res://sprites/coal game/overlay_closed.png" id="2_23ksj"]
 [ext_resource type="Texture2D" uid="uid://t7mdgxovj1fo" path="res://sprites/coal game/shovel.png" id="3_inkym"]
+[ext_resource type="Texture2D" uid="uid://b3wpg3rly7byd" path="res://sprites/cargo_minigame/tetris_l.png" id="5_y266m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jj5pk"]
 size = Vector2(420, 300)
@@ -19,6 +20,7 @@ coalFlingMaxSpeed = 1700.0
 coalFlingSpeedVariance = 0.6
 coalFlingAngleVariance = 0.7
 coalFlingTorqueVariance = 100.0
+shovelMinimumXValue = 920
 
 [node name="furnace" type="Sprite2D" parent="."]
 position = Vector2(-670, 0)
@@ -105,6 +107,11 @@ theme_override_font_sizes/normal_font_size = 50
 text = "coal: 0 of 0"
 fit_content = true
 scroll_active = false
+
+[node name="TetrisL" type="Sprite2D" parent="."]
+position = Vector2(1106, 648)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_y266m")
 
 [connection signal="pressed" from="coal_button" to="." method="_on_coal_button_pressed"]
 [connection signal="pressed" from="lever_button" to="." method="_on_lever_button_pressed"]

@@ -28,5 +28,32 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"carpetWhite": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/rock.tres"
+},
+"glass": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/window_glass.tres"
+},
+"metal": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/crate.tres"
+},
+"metalDark": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/window_trimming.tres"
+},
+"metalMedium": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/rock.tres"
+},
+"wood": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/wallpaper3.tres"
+}
+}
+}
 gltf/embedded_image_handling=1

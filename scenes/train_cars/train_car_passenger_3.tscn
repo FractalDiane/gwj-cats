@@ -1,23 +1,23 @@
-[gd_scene load_steps=43 format=3 uid="uid://ba7ywxh0mgexs"]
+[gd_scene load_steps=43 format=3 uid="uid://c0ao21a1aiij2"]
 
-[ext_resource type="Script" path="res://scripts/train_car.gd" id="1_avy2t"]
-[ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_qb1e3"]
-[ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_8u44m"]
-[ext_resource type="PackedScene" uid="uid://sc2gp24ugjve" path="res://meshes/passenger_cab_shell.glb" id="3_dapsf"]
-[ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="4_3m8i8"]
-[ext_resource type="Texture2D" uid="uid://bcxqsep7o0ayg" path="res://sprites/funky_rug.png" id="5_gyvs0"]
-[ext_resource type="Texture2D" uid="uid://dc7hgcmdxtno0" path="res://sprites/tiling_carpet.png" id="6_n3ruj"]
-[ext_resource type="Material" uid="uid://dp5ij7v0l2o1d" path="res://materials/star.tres" id="7_4dnrn"]
-[ext_resource type="Material" uid="uid://dbk4762cwse3u" path="res://materials/wood_flooring.tres" id="7_kbix3"]
-[ext_resource type="Material" uid="uid://dbtmswntjoiuh" path="res://materials/wall_alpha.tres" id="11_iro36"]
-[ext_resource type="PackedScene" uid="uid://dj1asdrlonvrq" path="res://meshes/static_body_bench.tscn" id="11_oec7y"]
-[ext_resource type="PackedScene" uid="uid://bm02sgkftlal4" path="res://meshes/cat_3.glb" id="13_e6xkr"]
-[ext_resource type="Script" path="res://scripts/minigame_object.gd" id="13_v3sfv"]
-[ext_resource type="PackedScene" uid="uid://l7o118kxm6u8" path="res://meshes/cat_sit_2.glb" id="14_gn4jj"]
-[ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="14_xup4s"]
-[ext_resource type="PackedScene" uid="uid://npguh02b7h8x" path="res://meshes/cat_inflated.glb" id="15_g60mq"]
-[ext_resource type="PackedScene" uid="uid://5qooy2en2as8" path="res://meshes/cat_inflated_2.glb" id="18_leq0p"]
-[ext_resource type="PackedScene" uid="uid://bdlmopw28yf6m" path="res://kenney_assets/furniture/doorwayOpen.glb" id="18_popj8"]
+[ext_resource type="Script" path="res://scripts/train_car.gd" id="1_ljhqy"]
+[ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="2_d3no8"]
+[ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="3_1nruy"]
+[ext_resource type="PackedScene" uid="uid://sc2gp24ugjve" path="res://meshes/passenger_cab_shell.glb" id="4_fk7c4"]
+[ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="5_fih42"]
+[ext_resource type="Texture2D" uid="uid://bcxqsep7o0ayg" path="res://sprites/funky_rug.png" id="6_gy304"]
+[ext_resource type="Texture2D" uid="uid://dc7hgcmdxtno0" path="res://sprites/tiling_carpet.png" id="7_u0h8p"]
+[ext_resource type="Material" uid="uid://dp5ij7v0l2o1d" path="res://materials/star.tres" id="8_c2pjm"]
+[ext_resource type="Material" uid="uid://dbk4762cwse3u" path="res://materials/wood_flooring.tres" id="9_i8e16"]
+[ext_resource type="PackedScene" uid="uid://dj1asdrlonvrq" path="res://meshes/static_body_bench.tscn" id="10_fvfab"]
+[ext_resource type="Material" uid="uid://dbtmswntjoiuh" path="res://materials/wall_alpha.tres" id="11_jtw4l"]
+[ext_resource type="Script" path="res://scripts/minigame_object.gd" id="12_41skd"]
+[ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="13_y54n5"]
+[ext_resource type="PackedScene" uid="uid://npguh02b7h8x" path="res://meshes/cat_inflated.glb" id="14_j7b67"]
+[ext_resource type="PackedScene" uid="uid://vau41rythufu" path="res://meshes/cat_2.glb" id="15_eykuy"]
+[ext_resource type="PackedScene" uid="uid://5qooy2en2as8" path="res://meshes/cat_inflated_2.glb" id="17_54guu"]
+[ext_resource type="PackedScene" uid="uid://eai728f3x684" path="res://meshes/cat_sit.glb" id="18_ib3f0"]
+[ext_resource type="PackedScene" uid="uid://bdlmopw28yf6m" path="res://kenney_assets/furniture/doorwayOpen.glb" id="20_knxpl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_givah"]
 resource_name = "window_cloth_covered_glass"
@@ -183,13 +183,13 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qsmwf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdlxv"]
-albedo_texture = ExtResource("5_gyvs0")
+albedo_texture = ExtResource("6_gy304")
 
 [sub_resource type="QuadMesh" id="QuadMesh_fuq0v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4vb0"]
 albedo_color = Color(0.85, 0.799, 0.799, 1)
-albedo_texture = ExtResource("6_n3ruj")
+albedo_texture = ExtResource("7_u0h8p")
 uv1_scale = Vector3(2.36, 1.298, 1.18)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ljugx"]
@@ -275,10 +275,11 @@ size = Vector3(2.34313, 1, 1)
 points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
 
 [node name="train_car_passenger" type="Node3D" node_paths=PackedStringArray("available_minigames")]
-script = ExtResource("1_avy2t")
-available_minigames = [NodePath("passengers/Minigame5"), NodePath("passengers/Minigame6")]
+script = ExtResource("1_ljhqy")
+car_type = 2
+available_minigames = [NodePath("passengers/Minigame"), NodePath("passengers/Minigame4")]
 
-[node name="hanging_plant" parent="." instance=ExtResource("1_qb1e3")]
+[node name="hanging_plant" parent="." instance=ExtResource("2_d3no8")]
 transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, 3.87244, 2.09901, -1.70461)
 
 [node name="Plant1" parent="hanging_plant/Hanging Pot" index="0"]
@@ -296,7 +297,7 @@ transform = Transform3D(0.999134, 0.0173351, 0.037821, -0.018865, 0.999002, 0.04
 [node name="AnimationPlayer" parent="hanging_plant" index="1"]
 autoplay = "Animation"
 
-[node name="hanging_plant2" parent="." instance=ExtResource("1_qb1e3")]
+[node name="hanging_plant2" parent="." instance=ExtResource("2_d3no8")]
 transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, -3.19264, 2.47447, -1.70461)
 
 [node name="Hanging Pot" parent="hanging_plant2" index="0"]
@@ -317,11 +318,11 @@ transform = Transform3D(0.999134, 0.0173351, 0.037821, -0.0188649, 0.999003, 0.0
 [node name="AnimationPlayer" parent="hanging_plant2" index="1"]
 autoplay = "Animation"
 
-[node name="cat" parent="." instance=ExtResource("2_8u44m")]
+[node name="cat" parent="." instance=ExtResource("3_1nruy")]
 transform = Transform3D(0.483481, 0, -0.875355, 0, 1, 0, 0.875355, 0, 0.483481, 0, 0, 0.498)
 visible = false
 
-[node name="passenger_cab_shell2" parent="." instance=ExtResource("3_dapsf")]
+[node name="passenger_cab_shell2" parent="." instance=ExtResource("4_fk7c4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.307606, 0.714)
 
 [node name="door_001" parent="passenger_cab_shell2" index="1"]
@@ -362,7 +363,7 @@ mesh = SubResource("ArrayMesh_rbfx1")
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
 
-[node name="ShadingContainer" parent="." instance=ExtResource("4_3m8i8")]
+[node name="ShadingContainer" parent="." instance=ExtResource("5_fih42")]
 
 [node name="rug" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.00652909, -0.300808, 0.53988)
@@ -377,83 +378,83 @@ mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.09908e-07, -9.61651e-08, 2, -2.5144, 4.20351e-15, -8.74228e-08, 0, -2.2, -8.74228e-08, -4.31609, 0.716384, 0.441167)
-material_override = ExtResource("7_4dnrn")
+material_override = ExtResource("8_c2pjm")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet4" type="MeshInstance3D" parent="."]
 transform = Transform3D(8.8823e-08, 2.88495e-07, -2, -2.03203, 4.20351e-15, -8.74228e-08, -7.76516e-15, 2.2, 2.62268e-07, -4.32155, 0.726074, 0.441167)
-material_override = ExtResource("7_4dnrn")
+material_override = ExtResource("8_c2pjm")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.09908e-07, 2.88495e-07, -2, -2.5144, 4.20351e-15, -8.74228e-08, -9.60846e-15, 2.2, 2.62268e-07, 4.30106, 0.716384, 0.441167)
-material_override = ExtResource("7_4dnrn")
+material_override = ExtResource("8_c2pjm")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet5" type="MeshInstance3D" parent="."]
 transform = Transform3D(-9.06119e-08, -4.80825e-07, 2, -2.07296, 4.20351e-15, -8.74228e-08, 1.58431e-14, -2.2, -4.37114e-07, 4.31441, 0.758492, 0.441167)
-material_override = ExtResource("7_4dnrn")
+material_override = ExtResource("8_c2pjm")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="wood_flooring" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.3731e-07, 8.58738, 8.74228e-08, 0, -3.75366e-07, 2, 5.42903, 3.75366e-07, 1.09268e-14, -0.027, -0.306606, 0.645677)
-material_override = ExtResource("7_kbix3")
+material_override = ExtResource("9_i8e16")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="benches" type="Node3D" parent="."]
 
-[node name="StaticBody3D" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.144447, -0.0682054, -1.06652)
 
-[node name="StaticBody3D2" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D2" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.73796, -0.0682054, -1.06652)
 
-[node name="StaticBody3D3" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D3" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.144447, -0.0682054, 2.36285)
 
-[node name="StaticBody3D4" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D4" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.73796, -0.0682054, 2.36285)
 
-[node name="StaticBody3D9" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D9" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93084, -0.0682054, -1.06652)
 
-[node name="StaticBody3D10" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D10" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.343355, -0.0682054, -1.06652)
 
-[node name="StaticBody3D11" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D11" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93084, -0.0682054, 2.36285)
 
-[node name="StaticBody3D12" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D12" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.343355, -0.0682054, 2.36285)
 
-[node name="StaticBody3D13" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D13" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04079, -0.0682054, -1.06652)
 
-[node name="StaticBody3D14" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D14" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.42901, -0.0682054, -1.06652)
 
-[node name="StaticBody3D15" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D15" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04079, -0.0682054, 2.36285)
 
-[node name="StaticBody3D16" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D16" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.42901, -0.0682054, 2.36285)
 
-[node name="StaticBody3D5" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D5" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26993, -0.068, -1.06702)
 
-[node name="StaticBody3D6" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D6" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.87207, -0.0682054, -1.06652)
 
-[node name="StaticBody3D7" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D7" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26967, -0.0682054, 2.36285)
 
-[node name="StaticBody3D8" parent="benches" instance=ExtResource("11_oec7y")]
+[node name="StaticBody3D8" parent="benches" instance=ExtResource("10_fvfab")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.87207, -0.0682054, 2.36285)
 
 [node name="Obstructor" type="MeshInstance3D" parent="."]
 transform = Transform3D(8.67, 0, 0, 0, 2.7, 0, 0, 0, 5.398, 0, 1.09, 0.666781)
 visible = false
-material_override = ExtResource("11_iro36")
+material_override = ExtResource("11_jtw4l")
 mesh = SubResource("BoxMesh_ljugx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Obstructor"]
@@ -489,43 +490,45 @@ shape = SubResource("BoxShape3D_ra1fp")
 
 [node name="passengers" type="Node3D" parent="."]
 
-[node name="Minigame5" type="StaticBody3D" parent="passengers"]
-transform = Transform3D(-0.838461, 0, 0.544961, 0, 1, 0, -0.544961, 0, -0.838461, 0.145162, 0.538715, -1.57146)
-script = ExtResource("13_v3sfv")
+[node name="Minigame" type="StaticBody3D" parent="passengers"]
+transform = Transform3D(-0.0348644, -0.988557, 0.146765, 0.99935, -0.0358238, -0.00389828, 0.0091114, 0.146534, 0.989164, -1.48729, -0.00754231, -0.863291)
+script = ExtResource("12_41skd")
 minigame_scene = "res://scenes/ticket_checking.tscn"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/Minigame5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/Minigame"]
+transform = Transform3D(1, -6.98492e-10, -1.86265e-09, 6.98492e-10, 1, 1.49012e-08, 1.86265e-09, -1.49012e-08, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_gsxvb")
 
-[node name="InteractionReceiverComponent" parent="passengers/Minigame5" instance=ExtResource("14_xup4s")]
+[node name="InteractionReceiverComponent" parent="passengers/Minigame" instance=ExtResource("13_y54n5")]
 
-[node name="outline" parent="passengers/Minigame5" instance=ExtResource("18_leq0p")]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+[node name="outline" parent="passengers/Minigame" instance=ExtResource("14_j7b67")]
+transform = Transform3D(1, 1.04774e-09, 0, 1.5134e-09, 1, 0, -9.31323e-10, 0, 1, 0, 0, 0)
 
-[node name="cat_sit_2" parent="passengers/Minigame5" instance=ExtResource("14_gn4jj")]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+[node name="cat1" parent="passengers/Minigame" instance=ExtResource("15_eykuy")]
+transform = Transform3D(1, 1.04774e-09, 0, 1.5134e-09, 1, 0, -9.31323e-10, 0, 1, 0, 0, 0)
 
-[node name="Minigame6" type="StaticBody3D" parent="passengers"]
-transform = Transform3D(0.828856, 0.0124534, 0.559323, -0.000200079, 0.999759, -0.0219633, -0.559461, 0.0180925, 0.828659, -3.09562, 0.0171631, -1.3754)
-script = ExtResource("13_v3sfv")
+[node name="Minigame4" type="StaticBody3D" parent="passengers"]
+transform = Transform3D(-0.870416, 0.0386585, -0.490797, 0.0146471, 0.998505, 0.0526728, 0.492099, 0.0386585, -0.86968, 2.20503, 0.545429, 1.86131)
+script = ExtResource("12_41skd")
 minigame_scene = "res://scenes/ticket_checking.tscn"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/Minigame6"]
-transform = Transform3D(1, 1.86264e-09, 1.19209e-07, -1.86265e-09, 1, 1.86265e-09, -1.19209e-07, -1.86265e-09, 1, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/Minigame4"]
+transform = Transform3D(1, -7.45058e-09, 5.96046e-08, 7.45058e-09, 1, 3.72529e-09, -5.96046e-08, -3.72529e-09, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_gsxvb")
 
-[node name="InteractionReceiverComponent" parent="passengers/Minigame6" instance=ExtResource("14_xup4s")]
+[node name="InteractionReceiverComponent" parent="passengers/Minigame4" instance=ExtResource("13_y54n5")]
+transform = Transform3D(1, 0, 0, 3.72529e-09, 1, 3.72529e-09, -2.98023e-08, -3.72529e-09, 1, 0, 0, 0)
 
-[node name="outline" parent="passengers/Minigame6" instance=ExtResource("15_g60mq")]
-transform = Transform3D(1, 9.31323e-10, 0, 9.31323e-10, 1, 9.31323e-10, -5.96046e-08, 1.86265e-09, 1, 0, 0, 0)
+[node name="outline" parent="passengers/Minigame4" instance=ExtResource("17_54guu")]
+transform = Transform3D(1, -1.86265e-09, 2.98023e-08, -3.72529e-09, 1, -7.45058e-09, -2.98023e-08, -3.72529e-09, 1, 0, 0, 0)
 
-[node name="cat_3" parent="passengers/Minigame6" instance=ExtResource("13_e6xkr")]
-transform = Transform3D(1, 9.31323e-10, 0, 9.31323e-10, 1, 9.31323e-10, -5.96046e-08, 1.86265e-09, 1, 0, 0, 0)
+[node name="cat_sit2" parent="passengers/Minigame4" instance=ExtResource("18_ib3f0")]
+transform = Transform3D(1, -1.86265e-09, 2.98023e-08, -3.72529e-09, 1, -7.45058e-09, -2.98023e-08, -3.72529e-09, 1, 0, 0, 0)
 
-[node name="doorwayOpen" parent="." instance=ExtResource("18_popj8")]
+[node name="doorwayOpen" parent="." instance=ExtResource("20_knxpl")]
 transform = Transform3D(-1.1337e-07, 0, 1.68367, 0, 2.04754, 0, -2.59361, 0, -7.35958e-08, -4.23469, -0.307606, 1.0185)
 
-[node name="doorwayOpen2" parent="." instance=ExtResource("18_popj8")]
+[node name="doorwayOpen2" parent="." instance=ExtResource("20_knxpl")]
 transform = Transform3D(-1.1337e-07, 0, 1.68367, 0, 2.04754, 0, -2.59361, 0, -7.35958e-08, 4.36478, -0.307606, 1.0185)
 
 [editable path="hanging_plant"]

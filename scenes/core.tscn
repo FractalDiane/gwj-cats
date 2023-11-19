@@ -1,11 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvb1xdcuq73m6"]
+[gd_scene load_steps=22 format=3 uid="uid://cvb1xdcuq73m6"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_5ow53"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_rxfd0"]
+[ext_resource type="AudioStream" uid="uid://c3n8pkhe5y8lw" path="res://audio/meows/meow1.wav" id="2_vesn4"]
 [ext_resource type="PackedScene" uid="uid://bk4008dytdk5b" path="res://prefabs/trans_volume.tscn" id="3_lpfbe"]
-[ext_resource type="Script" path="res://scripts/minigame_object.gd" id="4_gyg1b"]
-[ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="5_soni8"]
+[ext_resource type="AudioStream" uid="uid://ckhcx6wyrj3e3" path="res://audio/meows/meow2.wav" id="3_m06bk"]
+[ext_resource type="AudioStream" uid="uid://gfuh1v6jt4ss" path="res://audio/meows/meow3.wav" id="4_urd30"]
+[ext_resource type="AudioStream" uid="uid://bo30htbm7cwet" path="res://audio/meows/meow4.wav" id="5_s6nlk"]
+[ext_resource type="AudioStream" uid="uid://brtir5kojclg1" path="res://audio/meows/meow5.wav" id="6_h82mk"]
+[ext_resource type="AudioStream" uid="uid://dbapvuuqi3if0" path="res://audio/meows/meow6.wav" id="7_ej0ep"]
 [ext_resource type="PackedScene" uid="uid://c2kexkbdwxc0c" path="res://prefabs/managers/level_manager.tscn" id="8_o7icn"]
+[ext_resource type="AudioStream" uid="uid://b1x6refrewddf" path="res://audio/meows/meow7.wav" id="8_s6its"]
+[ext_resource type="AudioStream" uid="uid://chcubpvln4ya6" path="res://audio/meows/meow8.wav" id="9_cdd0k"]
 [ext_resource type="Resource" uid="uid://bmcktg2k4adnv" path="res://scripts/resources/level_1.tres" id="9_ku8m6"]
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="10_0m2yd"]
 [ext_resource type="Script" path="res://scripts/managers/environment_manager.gd" id="11_0vtgq"]
@@ -16,19 +22,15 @@
 
 [sub_resource type="GDScript" id="GDScript_k7ncy"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_jm3yc"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qh3qs"]
-points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
-
 [sub_resource type="QuadMesh" id="QuadMesh_kvy7g"]
 
 [node name="Test" type="Node3D"]
 script = SubResource("GDScript_k7ncy")
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_5ow53")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera", "train_manager") instance=ExtResource("1_5ow53")]
 camera = NodePath("../PlayerCamera")
+train_manager = NodePath("../TrainManager")
+meows = Array[AudioStreamWAV]([ExtResource("2_vesn4"), ExtResource("3_m06bk"), ExtResource("4_urd30"), ExtResource("5_s6nlk"), ExtResource("6_h82mk"), ExtResource("7_ej0ep"), ExtResource("8_s6its"), ExtResource("9_cdd0k")])
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
@@ -43,29 +45,15 @@ direction = 1
 transform = Transform3D(0.999976, -2.32831e-10, 0.00698126, 0.00550131, 0.615661, -0.787992, -0.00429809, 0.788011, 0.615646, -5.2, 0.034, -6.269)
 train_manager = NodePath("../../TrainManager")
 
-[node name="TestThingy" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63606, 0.573184, -0.953491)
-visible = false
-script = ExtResource("4_gyg1b")
-minigame_scene = "res://scenes/coal_minigame.tscn"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TestThingy"]
-mesh = SubResource("BoxMesh_jm3yc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestThingy"]
-shape = SubResource("ConvexPolygonShape3D_qh3qs")
-
-[node name="InteractionReceiverComponent" parent="TestThingy" instance=ExtResource("5_soni8")]
-
 [node name="LevelManager" parent="." node_paths=PackedStringArray("train_manager") instance=ExtResource("8_o7icn")]
 current_level = ExtResource("9_ku8m6")
 train_manager = NodePath("../TrainManager")
-normalTaskBaseFrequency = 0.1
-engineTaskBaseFrequency = 0.1
-taskTimeRandomnessMultiplier = 0.1
-normalTaskWindow = 0.1
-engineTaskWindow = 0.1
-difficultyScaling = 0.1
+normalTaskBaseFrequency = 10.0
+engineTaskBaseFrequency = 20.0
+taskTimeRandomnessMultiplier = 2.0
+normalTaskWindow = 30.0
+engineTaskWindow = 20.0
+difficultyScaling = 0.3
 
 [node name="ShadingContainer" parent="." instance=ExtResource("10_0m2yd")]
 

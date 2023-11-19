@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b32h13egroexw"]
+[gd_scene load_steps=15 format=3 uid="uid://b32h13egroexw"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_ktr3f"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_pte4c"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scripts/paws_chair.gd" id="6_7pda8"]
 [ext_resource type="PackedScene" path="res://prefabs/components/jump_point.tscn" id="7_713q4"]
 [ext_resource type="PackedScene" uid="uid://c2kexkbdwxc0c" path="res://prefabs/managers/level_manager.tscn" id="8_7gl0w"]
-[ext_resource type="Texture2D" uid="uid://knncb840uvf5" path="res://sprites/minigame_overlay.png" id="9_5j5pq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
 size = Vector3(10, 1, 6)
@@ -55,15 +54,28 @@ transform = Transform3D(0.262694, 0.577851, -0.77271, 1.19632e-10, 0.800836, 0.5
 shadow_enabled = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_ktr3f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3962, 0.75, -0.930698)
 camera = NodePath("../PlayerCamera")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
 script = ExtResource("2_pte4c")
 
+[node name="TestThingy2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98463, 0.573184, 2.45242)
+script = ExtResource("3_oy6oi")
+minigame_scene = "res://scenes/ticket_checking.tscn"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestThingy2"]
+mesh = SubResource("BoxMesh_jm3yc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestThingy2"]
+shape = SubResource("ConvexPolygonShape3D_qh3qs")
+
+[node name="InteractionReceiverComponent" parent="TestThingy2" instance=ExtResource("4_85vu7")]
+
 [node name="TestThingy" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63606, 0.573184, -0.953491)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13189, 0.573184, -2.07158)
 script = ExtResource("3_oy6oi")
 minigame_scene = "res://scenes/coal_minigame.tscn"
 
@@ -74,6 +86,32 @@ mesh = SubResource("BoxMesh_jm3yc")
 shape = SubResource("ConvexPolygonShape3D_qh3qs")
 
 [node name="InteractionReceiverComponent" parent="TestThingy" instance=ExtResource("4_85vu7")]
+
+[node name="TestThingy3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34569, 0.573184, -2.4341)
+script = ExtResource("3_oy6oi")
+minigame_scene = "res://scenes/train_control_minigame.tscn"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestThingy3"]
+mesh = SubResource("BoxMesh_jm3yc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestThingy3"]
+shape = SubResource("ConvexPolygonShape3D_qh3qs")
+
+[node name="InteractionReceiverComponent" parent="TestThingy3" instance=ExtResource("4_85vu7")]
+
+[node name="TestThingy4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39211, 0.573184, 2.06086)
+script = ExtResource("3_oy6oi")
+minigame_scene = "res://scenes/cargo_minigame.tscn"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestThingy4"]
+mesh = SubResource("BoxMesh_jm3yc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestThingy4"]
+shape = SubResource("ConvexPolygonShape3D_qh3qs")
+
+[node name="InteractionReceiverComponent" parent="TestThingy4" instance=ExtResource("4_85vu7")]
 
 [node name="TransVolume" parent="." instance=ExtResource("5_rwsqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5075, 0, 0)
@@ -98,28 +136,3 @@ shape = SubResource("ConvexPolygonShape3D_81eac")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113867, 0)
 
 [node name="LevelManager" parent="." instance=ExtResource("8_7gl0w")]
-
-[node name="MinigameOverlay" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="MinigameOverlay"]
-layout_mode = 0
-offset_left = 261.0
-offset_top = 191.0
-offset_right = 1659.0
-offset_bottom = 977.0
-
-[node name="SubViewport" type="SubViewport" parent="MinigameOverlay/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(1398, 786)
-size_2d_override = Vector2i(1920, 1080)
-size_2d_override_stretch = true
-render_target_update_mode = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="MinigameOverlay"]
-texture = ExtResource("9_5j5pq")
-centered = false

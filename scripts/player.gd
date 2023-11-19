@@ -6,18 +6,20 @@ signal jump_point_exited()
 @export var camera: PlayerCamera = null
 @export var train_manager: TrainManager = null
 @export var rot_threshold: float = 0.45
+@export var meows: Array[AudioStreamWAV]
 
 const SPEED := 3.0
 
 @onready var ground_position := $GroundPosition as Marker3D
 @onready var interaction_component := $InteractionActivatorComponent as InteractionActivatorComponent
+@onready var audio_player := $AudioStreamPlayer2D as AudioStreamPlayer2D
 
 var block_movement := false
 var on_jump_point := false
 var pre_jump_location := Vector3()
 
 var last_rot_location := Vector3()
-var cat_node : Node3D
+var cat_node: Node3D
 
 # ==================================================================================================
 
@@ -29,6 +31,10 @@ func _ready():
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		interaction_component.try_interact(self)
+	if Input.is_action_just_pressed("meow"):
+		audio_player.stream = meows.pick_random()
+		audio_player.pitch_scale = randf_range(0.95, 1.05)
+		audio_player.play()
 
 func move_car(tween: Tween, direction: Statics.Direction) -> void:
 	var dir := 1 if direction == Statics.Direction.Right else -1

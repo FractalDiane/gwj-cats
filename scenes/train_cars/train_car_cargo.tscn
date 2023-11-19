@@ -322,12 +322,6 @@ mesh = SubResource("BoxMesh_o3eur")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_gg8im")
 
-[node name="outline" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1.02208, 0, 0, 0, 1.06134, 0, 5.96046e-08, 0, 1.06134, 0, 0, 0)
-material_override = ExtResource("12_48mhb")
-mesh = SubResource("BoxMesh_o3eur")
-skeleton = NodePath("../..")
-
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.66424, 0, 0.581325, 0, 1.21984, 0, -1.44422, 0, 1.07241, 0.955698, 0.277778, 0.264155)
 material_override = ExtResource("17_ds8mc")
@@ -338,22 +332,10 @@ mesh = SubResource("BoxMesh_o3eur")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
 shape = SubResource("BoxShape3D_gg8im")
 
-[node name="outline" type="MeshInstance3D" parent="MeshInstance3D2"]
-transform = Transform3D(1.04643, 0, 1.49012e-08, 0, 1.04643, 0, 1.19209e-07, 0, 1.04643, 0, 0, 0)
-material_override = ExtResource("12_48mhb")
-mesh = SubResource("BoxMesh_o3eur")
-skeleton = NodePath("../..")
-
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.05919, 0.361956, 0.818517, -1.3887, 1.08063, 0.0881795, -1.73643, -0.434995, 0.900141, 1.03711, 0.816038, -1.52055)
 material_override = ExtResource("18_3v25u")
 mesh = SubResource("BoxMesh_o3eur")
-
-[node name="outline" type="MeshInstance3D" parent="MeshInstance3D3"]
-transform = Transform3D(1.03179, -7.45058e-09, 0, -5.96046e-08, 1.07843, 0, 0, 0, 1.0495, 0, 0, 0)
-material_override = ExtResource("12_48mhb")
-mesh = SubResource("BoxMesh_o3eur")
-skeleton = NodePath("../..")
 
 [node name="minigames" type="Node3D" parent="."]
 
@@ -364,12 +346,26 @@ minigame_scene = "res://scenes/cargo_minigame.tscn"
 
 [node name="InteractionReceiverComponent" parent="minigames/Minigame" instance=ExtResource("14_kh5sn")]
 
-[node name="Minigame2" type="StaticBody3D" parent="minigames"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83056, 0, 1.01191)
-script = ExtResource("13_85s17")
-minigame_scene = "res://scenes/cargo_minigame.tscn"
+[node name="InteractArea" parent="minigames/Minigame/InteractionReceiverComponent" index="0"]
+transform = Transform3D(2.45794, 0, 0, 0, 1, 0, 0, 0, 1.52699, -1.56286, 0, -0.989627)
 
-[node name="InteractionReceiverComponent" parent="minigames/Minigame2" instance=ExtResource("14_kh5sn")]
+[node name="outline" type="MeshInstance3D" parent="minigames/Minigame"]
+transform = Transform3D(3.00265, 0, 0.317809, 0, 1.29466, 0, -0.760343, 0, 1.25505, -2.79306, 0.277778, -1.38476)
+material_override = ExtResource("12_48mhb")
+mesh = SubResource("BoxMesh_o3eur")
+skeleton = NodePath("../../..")
+
+[node name="outline2" type="MeshInstance3D" parent="minigames/Minigame/outline"]
+transform = Transform3D(0.992316, 0, 0.101448, 0, 0.985952, 0, -0.602986, 0, 0.955613, 0.661059, 0, 0.953404)
+material_override = ExtResource("12_48mhb")
+mesh = SubResource("BoxMesh_o3eur")
+skeleton = NodePath("../../../..")
+
+[node name="outline3" type="MeshInstance3D" parent="minigames/Minigame/outline"]
+transform = Transform3D(0.806945, 0.159344, 0.193983, -1.10673, 0.900143, 0.0714813, -0.938673, -0.277245, 0.870241, 0.827981, 0.415752, -0.367495)
+material_override = ExtResource("12_48mhb")
+mesh = SubResource("BoxMesh_o3eur")
+skeleton = NodePath("../../../..")
 
 [editable path="ShadingContainer"]
 [editable path="minigames/Minigame/InteractionReceiverComponent"]

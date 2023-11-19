@@ -17,12 +17,15 @@ var minigame: Minigame
 var minigame_overlay: Control
 
 func set_active():
-	# TODO: this
-	pass
+	var outline := get_node("outline")
+	outline.set_visible(true)
 
 func set_inactive():
-	# TODO: this
-	pass
+	var outline := get_node("outline")
+	
+	print("here")
+	print(outline)
+	outline.set_visible(false)
 
 func _ready():
 	interaction_component.interacted_with.connect(_on_interacted)

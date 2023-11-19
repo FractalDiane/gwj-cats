@@ -1,6 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://b5o7aeyay2g1l"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_5ow53"]
+[ext_resource type="Script" path="res://scenes/core.gd" id="1_kobu6"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_rxfd0"]
 [ext_resource type="AudioStream" uid="uid://c3n8pkhe5y8lw" path="res://audio/meows/meow1.wav" id="2_tgbnn"]
 [ext_resource type="PackedScene" uid="uid://bk4008dytdk5b" path="res://prefabs/trans_volume.tscn" id="3_lpfbe"]
@@ -39,6 +40,7 @@ points = PackedVector3Array(-0.25, -0.1, -0.25, -0.25, 0.1, -0.25, 0.25, -0.1, -
 [sub_resource type="QuadMesh" id="QuadMesh_kvy7g"]
 
 [node name="Test" type="Node3D"]
+script = ExtResource("1_kobu6")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_5ow53")]
 camera = NodePath("../PlayerCamera")

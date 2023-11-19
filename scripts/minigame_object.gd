@@ -1,7 +1,9 @@
 class_name MinigameObject
 extends Node3D
 
-signal task_done(success: bool, data: int)
+class_name MinigameObject
+
+signal task_done(success: bool, data: int, source: MinigameObject)
 
 signal early_return_request()
 signal early_task_return(success: bool, data: int)
@@ -15,6 +17,13 @@ var minigame: Minigame
 
 var minigame_overlay: Control
 
+func set_active():
+	# TODO: this
+	pass
+
+func set_inactive():
+	# TODO: this
+	pass
 
 func _ready():
 	interaction_component.interacted_with.connect(_on_interacted)
@@ -52,26 +61,7 @@ func _minigame_done(success: bool, data: int):
 	
 	print("minigame success: " + str(success) + ", minigame data: " + str(data))
 	
-	## really dumb but kinda funny, remove later
-	# (spawns a permanent icon.svg at your mouse position if minigame returned with a boiler explosion)
-	
-	if (data == 1):
-		var icon := load("res://icon.svg")
-		var guy := Sprite2D.new()
-		guy.texture = icon
-		get_tree().current_scene.add_child(guy)
-		guy.position = get_viewport().get_mouse_position()
-		guy.scale.x = 20
-		guy.scale.y = 4
-		
-		var ydntym := load("res://audio/you_did_not_take_your_meds.wav")
-		var papyrus := AudioStreamPlayer.new()
-		get_tree().current_scene.add_child(papyrus)
-		papyrus.stream = ydntym
-		papyrus.play()
-	
-	
-	task_done.emit(success, data)
+	task_done.emit(success, data, self)
 
 
 func _early_return_sent(success: bool, data: int):

@@ -6,3 +6,7 @@
 script = ExtResource("1_a5ur5")
 
 [node name="LevelTimer" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="LevelTimer2" type="Timer" parent="."]
+wait_time = 60.0

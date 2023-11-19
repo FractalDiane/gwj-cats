@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ba7ywxh0mgexs"]
+[gd_scene load_steps=45 format=3 uid="uid://ba7ywxh0mgexs"]
 
 [ext_resource type="Script" path="res://scripts/passenger_train_car.gd" id="1_elpio"]
 [ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_qb1e3"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" path="res://scripts/minigame_object.gd" id="13_v3sfv"]
 [ext_resource type="PackedScene" uid="uid://l7o118kxm6u8" path="res://meshes/cat_sit_2.glb" id="14_gn4jj"]
 [ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="14_xup4s"]
+[ext_resource type="PackedScene" uid="uid://npguh02b7h8x" path="res://meshes/cat_inflated.glb" id="15_g60mq"]
+[ext_resource type="PackedScene" uid="uid://5qooy2en2as8" path="res://meshes/cat_inflated_2.glb" id="18_leq0p"]
 [ext_resource type="PackedScene" uid="uid://bdlmopw28yf6m" path="res://kenney_assets/furniture/doorwayOpen.glb" id="18_popj8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_givah"]
@@ -282,6 +284,21 @@ passenger_possibilities = [NodePath("passengers/cat1"), NodePath("passengers/cat
 [node name="hanging_plant" parent="." instance=ExtResource("1_qb1e3")]
 transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, 3.87244, 2.09901, -1.70461)
 
+[node name="Plant1" parent="hanging_plant/Hanging Pot" index="0"]
+transform = Transform3D(0.998044, 0.0210942, -0.0588542, -0.0188069, 0.999056, 0.0391509, 0.0596245, -0.0379675, 0.997499, 0.000998311, -0.438903, -0.000219071)
+
+[node name="Plant2" parent="hanging_plant/Hanging Pot" index="1"]
+transform = Transform3D(0.997874, 0.0213387, -0.0615833, -0.0188649, 0.999002, 0.0404756, 0.0623855, -0.0392278, 0.997281, -0.0242648, -0.437188, -0.0835934)
+
+[node name="Plant3" parent="hanging_plant/Hanging Pot" index="2"]
+transform = Transform3D(0.999318, 0.0175543, 0.0324965, -0.0188649, 0.999002, 0.0404756, -0.0317535, -0.041061, 0.998652, 0.0643862, -0.437188, -0.00164018)
+
+[node name="Plant4" parent="hanging_plant/Hanging Pot" index="3"]
+transform = Transform3D(0.999134, 0.0173351, 0.037821, -0.018865, 0.999002, 0.0404756, -0.0370816, -0.0411541, 0.998465, 0, -0.433921, 0)
+
+[node name="AnimationPlayer" parent="hanging_plant" index="1"]
+autoplay = "Animation"
+
 [node name="hanging_plant2" parent="." instance=ExtResource("1_qb1e3")]
 transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, -3.19264, 2.47447, -1.70461)
 
@@ -289,16 +306,19 @@ transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0,
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 3.57628e-07, -0.423764, 0.890021)
 
 [node name="Plant1" parent="hanging_plant2/Hanging Pot" index="0"]
-transform = Transform3D(0.99672, 0.0800608, -0.0117989, -0.0805187, 0.995714, -0.0455099, 0.00810475, 0.0463107, 0.998894, 0.000998378, -0.438903, -0.000218868)
+transform = Transform3D(0.998044, 0.0210942, -0.0588542, -0.0188069, 0.999057, 0.0391509, 0.0596245, -0.0379675, 0.997498, 0.000998378, -0.438903, -0.000218868)
 
 [node name="Plant2" parent="hanging_plant2/Hanging Pot" index="1"]
-transform = Transform3D(0.998434, 0.0173997, 0.0531644, -0.0165441, 0.999727, -0.0164922, -0.0534369, 0.0155869, 0.99845, -0.0242646, -0.437188, -0.0835934)
+transform = Transform3D(0.997874, 0.0213387, -0.0615833, -0.0188649, 0.999002, 0.0404756, 0.0623855, -0.0392278, 0.997281, -0.0242646, -0.437188, -0.0835934)
 
 [node name="Plant3" parent="hanging_plant2/Hanging Pot" index="2"]
-transform = Transform3D(0.999055, 0.0159164, -0.040444, -0.0165718, 0.999736, -0.0159223, 0.0401799, 0.0165775, 0.999055, 0.0643862, -0.437188, -0.00164018)
+transform = Transform3D(0.999318, 0.0175543, 0.0324965, -0.0188649, 0.999003, 0.0404756, -0.0317535, -0.041061, 0.998652, 0.0643862, -0.437188, -0.00164018)
 
 [node name="Plant4" parent="hanging_plant2/Hanging Pot" index="3"]
-transform = Transform3D(0.99524, -0.0599968, -0.0767951, 0.0557461, 0.996854, -0.0563479, 0.0799341, 0.0517987, 0.995453, 0, -0.433921, 0)
+transform = Transform3D(0.999134, 0.0173351, 0.037821, -0.0188649, 0.999003, 0.0404756, -0.0370816, -0.0411541, 0.998464, 0, -0.433921, 0)
+
+[node name="AnimationPlayer" parent="hanging_plant2" index="1"]
+autoplay = "Animation"
 
 [node name="cat" parent="." instance=ExtResource("2_8u44m")]
 transform = Transform3D(0.483481, 0, -0.875355, 0, 1, 0, 0.875355, 0, 0.483481, 0, 0, 0.498)
@@ -474,7 +494,6 @@ shape = SubResource("BoxShape3D_ra1fp")
 
 [node name="cat1" parent="passengers" instance=ExtResource("12_v1oct")]
 transform = Transform3D(-0.0348644, -0.988557, 0.146765, 0.99935, -0.0358238, -0.00389828, 0.0091114, 0.146534, 0.989164, -1.48729, -0.00754231, -0.863291)
-visible = false
 
 [node name="Minigame" type="StaticBody3D" parent="passengers/cat1"]
 script = ExtResource("13_v3sfv")
@@ -486,9 +505,10 @@ shape = SubResource("ConvexPolygonShape3D_gsxvb")
 
 [node name="InteractionReceiverComponent" parent="passengers/cat1/Minigame" instance=ExtResource("14_xup4s")]
 
+[node name="outline" parent="passengers/cat1" instance=ExtResource("15_g60mq")]
+
 [node name="cat2" parent="passengers" instance=ExtResource("12_v1oct")]
 transform = Transform3D(-0.866945, 0.0366609, 0.497054, 0.0357777, 0.999296, -0.0113021, -0.497118, 0.00798513, -0.867646, -3.21686, 0.0115525, 2.68198)
-visible = false
 
 [node name="cat_3" parent="passengers/cat2" instance=ExtResource("13_e6xkr")]
 transform = Transform3D(0.828856, 0.0124534, 0.559323, -0.000200079, 0.999759, -0.0219633, -0.559461, 0.0180925, 0.828659, -0.438844, 0.0171631, 0.128321)
@@ -503,9 +523,13 @@ shape = SubResource("ConvexPolygonShape3D_gsxvb")
 
 [node name="InteractionReceiverComponent" parent="passengers/cat2/Minigame" instance=ExtResource("14_xup4s")]
 
+[node name="outline" parent="passengers/cat2" instance=ExtResource("15_g60mq")]
+
+[node name="cat_inflated" parent="passengers/cat2/outline" instance=ExtResource("15_g60mq")]
+transform = Transform3D(0.828856, 0.0124534, 0.559323, -0.000200079, 0.999759, -0.0219633, -0.559461, 0.0180925, 0.828659, -0.438844, 0.0171631, 0.128321)
+
 [node name="cat_sit" parent="passengers" instance=ExtResource("13_uqkie")]
 transform = Transform3D(0.963444, 0, -0.267911, 0.0146471, 0.998504, 0.0526728, 0.26751, -0.0546713, 0.962003, 1.82402, 0.121444, -0.630809)
-visible = false
 
 [node name="Minigame" type="StaticBody3D" parent="passengers/cat_sit"]
 script = ExtResource("13_v3sfv")
@@ -517,9 +541,10 @@ shape = SubResource("ConvexPolygonShape3D_gsxvb")
 
 [node name="InteractionReceiverComponent" parent="passengers/cat_sit/Minigame" instance=ExtResource("14_xup4s")]
 
+[node name="outline" parent="passengers/cat_sit" instance=ExtResource("18_leq0p")]
+
 [node name="cat_sit2" parent="passengers" instance=ExtResource("13_uqkie")]
 transform = Transform3D(-0.870416, 0.0386585, -0.490797, 0.0146471, 0.998505, 0.0526728, 0.492099, 0.0386585, -0.86968, 2.20503, 0.545429, 1.86131)
-visible = false
 
 [node name="Minigame" type="StaticBody3D" parent="passengers/cat_sit2"]
 script = ExtResource("13_v3sfv")
@@ -532,9 +557,10 @@ shape = SubResource("ConvexPolygonShape3D_gsxvb")
 [node name="InteractionReceiverComponent" parent="passengers/cat_sit2/Minigame" instance=ExtResource("14_xup4s")]
 transform = Transform3D(1, 0, 0, 3.72529e-09, 1, 3.72529e-09, -2.98023e-08, -3.72529e-09, 1, 0, 0, 0)
 
+[node name="outline" parent="passengers/cat_sit2" instance=ExtResource("18_leq0p")]
+
 [node name="cat_sit_2" parent="passengers" instance=ExtResource("14_gn4jj")]
 transform = Transform3D(-0.838461, 0, 0.544961, 0, 1, 0, -0.544961, 0, -0.838461, 0.145162, 0.538715, -1.57146)
-visible = false
 
 [node name="Minigame" type="StaticBody3D" parent="passengers/cat_sit_2"]
 script = ExtResource("13_v3sfv")
@@ -545,9 +571,10 @@ shape = SubResource("ConvexPolygonShape3D_gsxvb")
 
 [node name="InteractionReceiverComponent" parent="passengers/cat_sit_2/Minigame" instance=ExtResource("14_xup4s")]
 
+[node name="outline" parent="passengers/cat_sit_2" instance=ExtResource("18_leq0p")]
+
 [node name="cat_3" parent="passengers" instance=ExtResource("13_e6xkr")]
 transform = Transform3D(0.828856, 0.0124534, 0.559323, -0.000200079, 0.999759, -0.0219633, -0.559461, 0.0180925, 0.828659, -3.09562, 0.0171631, -1.3754)
-visible = false
 
 [node name="Minigame" type="StaticBody3D" parent="passengers/cat_3"]
 script = ExtResource("13_v3sfv")
@@ -559,12 +586,15 @@ shape = SubResource("ConvexPolygonShape3D_gsxvb")
 
 [node name="InteractionReceiverComponent" parent="passengers/cat_3/Minigame" instance=ExtResource("14_xup4s")]
 
+[node name="outline" parent="passengers/cat_3" instance=ExtResource("15_g60mq")]
+
 [node name="doorwayOpen" parent="." instance=ExtResource("18_popj8")]
 transform = Transform3D(-1.1337e-07, 0, 1.68367, 0, 2.04754, 0, -2.59361, 0, -7.35958e-08, -4.23469, -0.307606, 1.0185)
 
 [node name="doorwayOpen2" parent="." instance=ExtResource("18_popj8")]
 transform = Transform3D(-1.1337e-07, 0, 1.68367, 0, 2.04754, 0, -2.59361, 0, -7.35958e-08, 4.36478, -0.307606, 1.0185)
 
+[editable path="hanging_plant"]
 [editable path="hanging_plant2"]
 [editable path="passenger_cab_shell2"]
 [editable path="ShadingContainer"]

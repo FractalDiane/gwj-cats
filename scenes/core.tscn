@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b5o7aeyay2g1l"]
+[gd_scene load_steps=26 format=3 uid="uid://b5o7aeyay2g1l"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_5ow53"]
 [ext_resource type="Script" path="res://scenes/core.gd" id="1_kobu6"]
@@ -11,9 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bo30htbm7cwet" path="res://audio/meows/meow4.wav" id="5_lakv2"]
 [ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="5_soni8"]
 [ext_resource type="AudioStream" uid="uid://brtir5kojclg1" path="res://audio/meows/meow5.wav" id="6_1el08"]
-[ext_resource type="Script" path="res://scripts/paws_chair.gd" id="6_kkj5n"]
 [ext_resource type="AudioStream" uid="uid://dbapvuuqi3if0" path="res://audio/meows/meow6.wav" id="7_78g83"]
-[ext_resource type="PackedScene" path="res://prefabs/components/jump_point.tscn" id="7_ek35c"]
 [ext_resource type="AudioStream" uid="uid://b1x6refrewddf" path="res://audio/meows/meow7.wav" id="8_5n3qv"]
 [ext_resource type="PackedScene" uid="uid://c2kexkbdwxc0c" path="res://prefabs/managers/level_manager.tscn" id="8_o7icn"]
 [ext_resource type="Resource" uid="uid://bmcktg2k4adnv" path="res://scripts/resources/level_1.tres" id="9_ku8m6"]
@@ -30,12 +28,6 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qh3qs"]
 points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
-
-[sub_resource type="BoxMesh" id="BoxMesh_u5a72"]
-size = Vector3(0.5, 0.2, 0.5)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_81eac"]
-points = PackedVector3Array(-0.25, -0.1, -0.25, -0.25, 0.1, -0.25, 0.25, -0.1, -0.25, -0.25, -0.1, 0.25, -0.25, 0.1, 0.25, 0.25, 0.1, -0.25, 0.25, -0.1, 0.25, 0.25, 0.1, 0.25)
 
 [sub_resource type="QuadMesh" id="QuadMesh_kvy7g"]
 
@@ -72,22 +64,6 @@ mesh = SubResource("BoxMesh_jm3yc")
 shape = SubResource("ConvexPolygonShape3D_qh3qs")
 
 [node name="InteractionReceiverComponent" parent="TestThingy" instance=ExtResource("5_soni8")]
-
-[node name="PawsChair" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40107, 0, -1.11476)
-script = ExtResource("6_kkj5n")
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PawsChair"]
-mesh = SubResource("BoxMesh_u5a72")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PawsChair"]
-shape = SubResource("ConvexPolygonShape3D_81eac")
-
-[node name="InteractionReceiverComponent" parent="PawsChair" instance=ExtResource("5_soni8")]
-
-[node name="JumpPoint" parent="PawsChair" instance=ExtResource("7_ek35c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113867, 0)
 
 [node name="LevelManager" parent="." node_paths=PackedStringArray("train_manager") instance=ExtResource("8_o7icn")]
 current_level = ExtResource("9_ku8m6")

@@ -30,13 +30,17 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Material": {
-"use_external/enabled": true,
-"use_external/path": "res://materials/wallpaper.tres"
-},
 "flooring": {
 "use_external/enabled": true,
 "use_external/path": "res://materials/wood_flooring.tres"
+},
+"header_wallpaper": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/wallpaper.tres"
+},
+"wall": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/wall.tres"
 },
 "window_cloth_covered_glass": {
 "use_external/enabled": true,

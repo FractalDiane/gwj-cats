@@ -185,6 +185,7 @@ shadow_mesh = SubResource("ArrayMesh_aytgc")
 
 [node name="train_car_engine" type="Node3D" node_paths=PackedStringArray("available_minigames")]
 script = ExtResource("1_me214")
+car_type = 1
 available_minigames = [NodePath("minigames/Minigame"), NodePath("minigames/Minigame2")]
 
 [node name="ShadingContainer" parent="." instance=ExtResource("5_xiks4")]

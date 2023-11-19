@@ -1,6 +1,6 @@
-[gd_scene load_steps=45 format=3 uid="uid://ba7ywxh0mgexs"]
+[gd_scene load_steps=43 format=3 uid="uid://ba7ywxh0mgexs"]
 
-[ext_resource type="Script" path="res://scripts/passenger_train_car.gd" id="1_elpio"]
+[ext_resource type="Script" path="res://scripts/train_car.gd" id="1_avy2t"]
 [ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_qb1e3"]
 [ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_8u44m"]
 [ext_resource type="PackedScene" uid="uid://sc2gp24ugjve" path="res://meshes/passenger_cab_shell.glb" id="3_dapsf"]
@@ -11,9 +11,7 @@
 [ext_resource type="Material" uid="uid://dbk4762cwse3u" path="res://materials/wood_flooring.tres" id="7_kbix3"]
 [ext_resource type="Material" uid="uid://dbtmswntjoiuh" path="res://materials/wall_alpha.tres" id="11_iro36"]
 [ext_resource type="PackedScene" uid="uid://dj1asdrlonvrq" path="res://meshes/static_body_bench.tscn" id="11_oec7y"]
-[ext_resource type="PackedScene" uid="uid://vau41rythufu" path="res://meshes/cat_2.glb" id="12_v1oct"]
 [ext_resource type="PackedScene" uid="uid://bm02sgkftlal4" path="res://meshes/cat_3.glb" id="13_e6xkr"]
-[ext_resource type="PackedScene" uid="uid://eai728f3x684" path="res://meshes/cat_sit.glb" id="13_uqkie"]
 [ext_resource type="Script" path="res://scripts/minigame_object.gd" id="13_v3sfv"]
 [ext_resource type="PackedScene" uid="uid://l7o118kxm6u8" path="res://meshes/cat_sit_2.glb" id="14_gn4jj"]
 [ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="14_xup4s"]
@@ -276,10 +274,9 @@ size = Vector3(2.34313, 1, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gsxvb"]
 points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
 
-[node name="train_car_passenger" type="Node3D" node_paths=PackedStringArray("anim", "available_minigames")]
-script = ExtResource("1_elpio")
-anim = NodePath("Obstructor/AnimationPlayer")
-available_minigames = [NodePath("passengers/Minigame"), NodePath("passengers/Minigame2"), NodePath("passengers/Minigame3"), NodePath("passengers/Minigame4"), NodePath("passengers/Minigame5"), NodePath("passengers/Minigame6")]
+[node name="train_car_passenger" type="Node3D" node_paths=PackedStringArray("available_minigames")]
+script = ExtResource("1_avy2t")
+available_minigames = [NodePath("passengers/Minigame5"), NodePath("passengers/Minigame6")]
 
 [node name="hanging_plant" parent="." instance=ExtResource("1_qb1e3")]
 transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, 3.87244, 2.09901, -1.70461)
@@ -491,81 +488,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.709
 shape = SubResource("BoxShape3D_ra1fp")
 
 [node name="passengers" type="Node3D" parent="."]
-
-[node name="Minigame" type="StaticBody3D" parent="passengers"]
-transform = Transform3D(-0.0348644, -0.988557, 0.146765, 0.99935, -0.0358238, -0.00389828, 0.0091114, 0.146534, 0.989164, -1.48729, -0.00754231, -0.863291)
-script = ExtResource("13_v3sfv")
-minigame_scene = "res://scenes/ticket_checking.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/Minigame"]
-transform = Transform3D(1, -6.98492e-10, -1.86265e-09, 6.98492e-10, 1, 1.49012e-08, 1.86265e-09, -1.49012e-08, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_gsxvb")
-
-[node name="InteractionReceiverComponent" parent="passengers/Minigame" instance=ExtResource("14_xup4s")]
-
-[node name="outline" parent="passengers/Minigame" instance=ExtResource("15_g60mq")]
-transform = Transform3D(1, 1.04774e-09, 0, 1.5134e-09, 1, 0, -9.31323e-10, 0, 1, 0, 0, 0)
-
-[node name="cat1" parent="passengers/Minigame" instance=ExtResource("12_v1oct")]
-transform = Transform3D(1, 1.04774e-09, 0, 1.5134e-09, 1, 0, -9.31323e-10, 0, 1, 0, 0, 0)
-
-[node name="Minigame2" type="StaticBody3D" parent="passengers"]
-transform = Transform3D(-0.866945, 0.0366609, 0.497054, 0.0357777, 0.999296, -0.0113021, -0.497118, 0.00798513, -0.867646, -3.21686, 0.0115525, 2.68198)
-script = ExtResource("13_v3sfv")
-minigame_scene = "res://scenes/ticket_checking.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/Minigame2"]
-transform = Transform3D(1, 6.0536e-09, -2.18427e-24, -6.0536e-09, 1, 0, 2.18427e-24, 1.32227e-32, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_gsxvb")
-
-[node name="InteractionReceiverComponent" parent="passengers/Minigame2" instance=ExtResource("14_xup4s")]
-
-[node name="outline" parent="passengers/Minigame2" instance=ExtResource("15_g60mq")]
-transform = Transform3D(1, 2.79397e-09, 0, 4.19095e-09, 1, 9.31323e-10, 2.98023e-08, -2.32831e-09, 1, 0, 0, 0)
-
-[node name="cat_inflated" parent="passengers/Minigame2/outline" instance=ExtResource("15_g60mq")]
-transform = Transform3D(0.828856, 0.0124534, 0.559323, -0.000200079, 0.999759, -0.0219633, -0.559461, 0.0180925, 0.828659, -0.438844, 0.0171631, 0.128321)
-
-[node name="cat2" parent="passengers/Minigame2" instance=ExtResource("12_v1oct")]
-transform = Transform3D(1, 2.79397e-09, 0, 4.19095e-09, 1, 9.31323e-10, 2.98023e-08, -2.32831e-09, 1, 0, 0, 0)
-
-[node name="cat_3" parent="passengers/Minigame2/cat2" instance=ExtResource("13_e6xkr")]
-transform = Transform3D(0.828856, 0.0124534, 0.559323, -0.000200079, 0.999759, -0.0219633, -0.559461, 0.0180925, 0.828659, -0.438844, 0.0171631, 0.128321)
-
-[node name="Minigame3" type="StaticBody3D" parent="passengers"]
-transform = Transform3D(0.963444, 0, -0.267911, 0.0146471, 0.998504, 0.0526728, 0.26751, -0.0546713, 0.962003, 1.82402, 0.121444, -0.630809)
-script = ExtResource("13_v3sfv")
-minigame_scene = "res://scenes/ticket_checking.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/Minigame3"]
-transform = Transform3D(1, 1.86265e-09, 5.96047e-08, -1.86265e-09, 1, 0, -5.96046e-08, -1.11022e-16, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_gsxvb")
-
-[node name="InteractionReceiverComponent" parent="passengers/Minigame3" instance=ExtResource("14_xup4s")]
-
-[node name="outline" parent="passengers/Minigame3" instance=ExtResource("18_leq0p")]
-transform = Transform3D(1, 9.31323e-10, -2.98023e-08, 0, 1, -3.72529e-09, -2.98023e-08, -3.72529e-09, 1, 0, 0, 0)
-
-[node name="cat_sit" parent="passengers/Minigame3" instance=ExtResource("13_uqkie")]
-transform = Transform3D(1, 9.31323e-10, -2.98023e-08, 0, 1, -3.72529e-09, -2.98023e-08, -3.72529e-09, 1, 0, 0, 0)
-
-[node name="Minigame4" type="StaticBody3D" parent="passengers"]
-transform = Transform3D(-0.870416, 0.0386585, -0.490797, 0.0146471, 0.998505, 0.0526728, 0.492099, 0.0386585, -0.86968, 2.20503, 0.545429, 1.86131)
-script = ExtResource("13_v3sfv")
-minigame_scene = "res://scenes/ticket_checking.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/Minigame4"]
-transform = Transform3D(1, -7.45058e-09, 5.96046e-08, 7.45058e-09, 1, 3.72529e-09, -5.96046e-08, -3.72529e-09, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_gsxvb")
-
-[node name="InteractionReceiverComponent" parent="passengers/Minigame4" instance=ExtResource("14_xup4s")]
-transform = Transform3D(1, 0, 0, 3.72529e-09, 1, 3.72529e-09, -2.98023e-08, -3.72529e-09, 1, 0, 0, 0)
-
-[node name="outline" parent="passengers/Minigame4" instance=ExtResource("18_leq0p")]
-transform = Transform3D(1, -1.86265e-09, 2.98023e-08, -3.72529e-09, 1, -7.45058e-09, -2.98023e-08, -3.72529e-09, 1, 0, 0, 0)
-
-[node name="cat_sit2" parent="passengers/Minigame4" instance=ExtResource("13_uqkie")]
-transform = Transform3D(1, -1.86265e-09, 2.98023e-08, -3.72529e-09, 1, -7.45058e-09, -2.98023e-08, -3.72529e-09, 1, 0, 0, 0)
 
 [node name="Minigame5" type="StaticBody3D" parent="passengers"]
 transform = Transform3D(-0.838461, 0, 0.544961, 0, 1, 0, -0.544961, 0, -0.838461, 0.145162, 0.538715, -1.57146)

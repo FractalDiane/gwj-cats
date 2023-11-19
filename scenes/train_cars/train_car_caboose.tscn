@@ -274,6 +274,7 @@ points = PackedVector3Array(-0.25, -0.1, -0.25, -0.25, 0.1, -0.25, 0.25, -0.1, -
 
 [node name="train_car_caboose" type="Node3D"]
 script = ExtResource("1_xeqb3")
+car_type = 3
 
 [node name="hanging_plant" parent="." instance=ExtResource("2_svmla")]
 transform = Transform3D(-3.72629e-08, 0, -0.852476, 0, 0.852476, 0, 0.852476, 0, -3.72629e-08, 3.87244, 2.09901, -1.70461)

@@ -10,6 +10,8 @@ signal early_task_return(success: bool, data: int)
 
 @onready var interaction_component := $InteractionReceiverComponent as InteractionReceiverComponent
 
+var is_active = false
+
 # minigame ref
 var minigame: Minigame
 
@@ -20,20 +22,25 @@ var player: Player
 func set_active():
 	var outline := get_node("outline")
 	outline.set_visible(true)
+	is_active = true
 
 func set_inactive():
 	var outline := get_node("outline")
 	
-	print("here")
-	print(outline)
+	#print("here")
+	#print(outline)
 	outline.set_visible(false)
+	is_active = false
 
 func _ready():
 	interaction_component.interacted_with.connect(_on_interacted)
 	minigame_overlay = HUD.hud_root.get_node("MinigameOverlay")
+	set_inactive()
 
 
 func _on_interacted(player: Player) -> void:
+	if is_active == false:
+		return
 	self.player = player
 	player.set_block_movement(true)
 	player.set_block_interaction(true)

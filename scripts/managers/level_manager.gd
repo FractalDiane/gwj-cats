@@ -34,8 +34,6 @@ func _process(delta):
 func start_level(level: Level) -> void:
 	current_level = level
 	train_manager.instantiate_trains(level.train_cars)
-	
-
 
 func push_time_pause_source() -> void:
 	sources_pausing_time += 1
@@ -54,8 +52,6 @@ func pop_time_pause_source() -> void:
 			level_timer.paused = false
 			level_timer2.paused = false
 			pause_text.queue_free()
-			
-			
 
 @export var normalTaskCandidates: Array[Node3D]
 @export var leverTask: Node3D

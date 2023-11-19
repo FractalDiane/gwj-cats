@@ -1,8 +1,6 @@
 class_name MinigameObject
 extends Node3D
 
-class_name MinigameObject
-
 signal task_done(success: bool, data: int, source: MinigameObject)
 
 signal early_return_request()
@@ -16,6 +14,8 @@ signal early_task_return(success: bool, data: int)
 var minigame: Minigame
 
 var minigame_overlay: Control
+
+var player: Player
 
 func set_active():
 	var outline := get_node("outline")
@@ -34,6 +34,7 @@ func _ready():
 
 
 func _on_interacted(player: Player) -> void:
+	self.player = player
 	player.set_block_movement(true)
 	player.set_block_interaction(true)
 	if (!task_done.is_connected(player.on_task_done)):
@@ -65,11 +66,17 @@ func _minigame_done(success: bool, data: int):
 	print("minigame success: " + str(success) + ", minigame data: " + str(data))
 	
 	task_done.emit(success, data, self)
+	
+	player.set_block_movement(false)
+	player.set_block_interaction(false)
 
 
 func _early_return_sent(success: bool, data: int):
 	print("minigame early return: " + str(success) + ", minigame data: " + str(data))
 	early_task_return.emit(success, data)
+	
+	player.set_block_movement(false)
+	player.set_block_interaction(false)
 	
 
 # to be connected to signal from task manager for when it wants 

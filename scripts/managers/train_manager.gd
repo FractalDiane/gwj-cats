@@ -10,10 +10,6 @@ var active_train_cars: Array = []
 @export var player_camera : PlayerCamera
 @export var player : Player
 
-func _ready():
-	if (Globals.minigame_overlay_ref == null):
-		Globals.minigame_overlay_ref = get_tree().current_scene.find_child("MinigameOverlay")
-
 
 func _process(_delta):
 	if Input.is_action_just_pressed(&"debug_left"):

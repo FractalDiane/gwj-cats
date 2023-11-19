@@ -1,6 +1,6 @@
 [gd_scene load_steps=42 format=3 uid="uid://ba7ywxh0mgexs"]
 
-[ext_resource type="Script" path="res://scripts/train_car.gd" id="1_fuqrq"]
+[ext_resource type="Script" path="res://scripts/passenger_train_car.gd" id="1_elpio"]
 [ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_qb1e3"]
 [ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_8u44m"]
 [ext_resource type="PackedScene" uid="uid://sc2gp24ugjve" path="res://meshes/passenger_cab_shell.glb" id="3_dapsf"]
@@ -274,7 +274,7 @@ size = Vector3(2.34313, 1, 1)
 points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
 
 [node name="train_car_passenger" type="Node3D" node_paths=PackedStringArray("anim")]
-script = ExtResource("1_fuqrq")
+script = ExtResource("1_elpio")
 anim = NodePath("Obstructor/AnimationPlayer")
 passenger_possibilities = [NodePath("passengers/cat1"), NodePath("passengers/cat2"), NodePath("passengers/cat_sit"), NodePath("passengers/cat_sit2"), NodePath("passengers/cat_sit_2"), NodePath("passengers/cat_3")]
 

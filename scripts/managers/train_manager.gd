@@ -24,9 +24,9 @@ func move_direction(d: Statics.Direction):
 	player_camera.move_car(tween, d)
 	player.move_car(tween, d)
 	tween.finished.connect(_on_move_finished)
-	active_train_cars[active_car_index].fade_in_obstructor()
+	#active_train_cars[active_car_index].fade_in_obstructor()
 	active_car_index = active_car_index + (1 if d == Statics.Direction.Right else -1)
-	active_train_cars[active_car_index].fade_out_obstructor()
+	#active_train_cars[active_car_index].fade_out_obstructor()
 	
 func _on_move_finished() -> void:
 	move_finished.emit()
@@ -36,7 +36,7 @@ func instantiate_trains(train_cars: Array) -> void:
 		var c = train_cars[i].instantiate()
 		add_child(c)
 		c.position = Vector3.RIGHT * i * 11
-		if i == active_car_index:
-			c.set_obstructor_off()
+		#if i == active_car_index:
+		#	c.set_obstructor_off()
 		active_train_cars.append(c)
 	

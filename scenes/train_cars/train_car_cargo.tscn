@@ -1,30 +1,22 @@
-[gd_scene load_steps=28 format=3 uid="uid://dpq8y2fpg03x6"]
+[gd_scene load_steps=24 format=3 uid="uid://dpq8y2fpg03x6"]
 
-[ext_resource type="Script" path="res://scripts/train_car.gd" id="1_ea2qp"]
+[ext_resource type="Material" uid="uid://b0qjvbpb1o5iq" path="res://materials/wallpaper2.tres" id="4_aq8ya"]
+[ext_resource type="Material" uid="uid://bwyhxqwclcs44" path="res://materials/wallpaper3.tres" id="4_j3x8j"]
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="5_jxr1q"]
 [ext_resource type="Texture2D" uid="uid://bcxqsep7o0ayg" path="res://sprites/funky_rug.png" id="6_rom60"]
-[ext_resource type="Texture2D" uid="uid://dc7hgcmdxtno0" path="res://sprites/tiling_carpet.png" id="7_gy68y"]
 [ext_resource type="Material" uid="uid://c4mxrt6e8gxt6" path="res://materials/metal_grate.tres" id="8_an2w2"]
 [ext_resource type="Material" uid="uid://dp5ij7v0l2o1d" path="res://materials/star.tres" id="8_ybldo"]
 [ext_resource type="Material" uid="uid://d00wriixirgpr" path="res://materials/metal_siding.tres" id="9_a2r6e"]
 [ext_resource type="Material" uid="uid://dbk4762cwse3u" path="res://materials/wood_flooring.tres" id="9_gnwxu"]
 [ext_resource type="Material" uid="uid://dbtmswntjoiuh" path="res://materials/wall_alpha.tres" id="11_uiq48"]
-[ext_resource type="PackedScene" uid="uid://vau41rythufu" path="res://meshes/cat_2.glb" id="12_y4hju"]
-[ext_resource type="Script" path="res://scripts/minigame_object.gd" id="13_85s17"]
-[ext_resource type="PackedScene" uid="uid://du61pco7ebt12" path="res://prefabs/components/interaction_receiver_component.tscn" id="14_kh5sn"]
-[ext_resource type="PackedScene" uid="uid://bm02sgkftlal4" path="res://meshes/cat_3.glb" id="15_e225g"]
-[ext_resource type="PackedScene" uid="uid://eai728f3x684" path="res://meshes/cat_sit.glb" id="16_1fwmn"]
-[ext_resource type="PackedScene" uid="uid://l7o118kxm6u8" path="res://meshes/cat_sit_2.glb" id="17_gx1u5"]
+[ext_resource type="Material" uid="uid://cy5qw3r7dba1u" path="res://materials/crate.tres" id="16_sdl0t"]
+[ext_resource type="Material" uid="uid://bpqeekn0djs5i" path="res://materials/crate2.tres" id="17_ds8mc"]
+[ext_resource type="Material" uid="uid://bepfnewf74n1e" path="res://materials/crate3.tres" id="18_3v25u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdlxv"]
 albedo_texture = ExtResource("6_rom60")
 
 [sub_resource type="QuadMesh" id="QuadMesh_fuq0v"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4vb0"]
-albedo_color = Color(0.85, 0.799, 0.799, 1)
-albedo_texture = ExtResource("7_gy68y")
-uv1_scale = Vector3(2.36, 1.298, 1.18)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ljugx"]
 
@@ -105,13 +97,9 @@ size = Vector3(8.96531, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ra1fp"]
 size = Vector3(2.34313, 1, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gsxvb"]
-points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
+[sub_resource type="BoxMesh" id="BoxMesh_o3eur"]
 
-[node name="train_car_cargo" type="Node3D" node_paths=PackedStringArray("anim")]
-script = ExtResource("1_ea2qp")
-anim = NodePath("Obstructor/AnimationPlayer")
-passenger_possibilities = [NodePath("passengers/cat1"), NodePath("passengers/cat2"), NodePath("passengers/cat_sit"), NodePath("passengers/cat_sit2"), NodePath("passengers/cat_sit_2"), NodePath("passengers/cat_3")]
+[node name="train_car_cargo" type="Node3D"]
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
@@ -125,8 +113,18 @@ material_override = SubResource("StandardMaterial3D_mdlxv")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.85034, 0, 0, 0, -1.38947e-07, 2, 0, -3.17873, -8.74228e-08, -0.0273442, -0.305119, 0.606315)
-material_override = SubResource("StandardMaterial3D_r4vb0")
+transform = Transform3D(5.92239, 0, 0, 0, -1.58523e-07, 2.02463, 0, -3.62659, -8.84995e-08, -0.0273442, -0.305119, -0.036949)
+material_override = ExtResource("4_aq8ya")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet14" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.23055e-07, 9.34688e-08, -2.02463, 2.81517, 4.08565e-15, -8.84995e-08, 0, -2.13832, -8.84995e-08, -4.86556, 0.553641, 0.463319)
+material_override = ExtResource("4_j3x8j")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet15" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.23055e-07, 9.40853e-08, 2.02463, 2.81517, 4.1126e-15, -8.84994e-08, -1.07578e-14, 2.15242, -8.84995e-08, 4.83382, 0.553641, 0.463319)
+material_override = ExtResource("4_j3x8j")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet6" type="MeshInstance3D" parent="."]
@@ -141,6 +139,26 @@ mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet8" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.59047e-07, 1.17927e-14, -2.33751, -5.91997e-22, 0.567132, 1.42109e-14, 5.40073, -8.47033e-22, 1.78814e-07, -4.30944, -0.592629, 0.66529)
+material_override = ExtResource("9_a2r6e")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.22193e-07, 0.567132, -3.06528e-07, -2.79545, 2.47901e-08, -1.78814e-07, 2.37605e-07, 7.43704e-08, 2.33751, -4.58751, 0.56925, 1.54353)
+material_override = ExtResource("9_a2r6e")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet11" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.55647e-08, 0.567132, -3.06528e-07, 2.81391e-07, 7.43704e-08, 2.33751, 2.18627, -2.47902e-08, 7.66379e-08, -4.58751, 1.96927, 0.451418)
+material_override = ExtResource("9_a2r6e")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.22193e-07, -0.567132, -3.06528e-07, -2.79545, -2.47901e-08, -1.78814e-07, 2.37605e-07, -7.43704e-08, 2.33752, 4.55474, 0.56925, 1.54353)
+material_override = ExtResource("9_a2r6e")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet13" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.55647e-08, -0.567132, -3.06528e-07, 2.81391e-07, -7.43704e-08, 2.33752, 2.18627, 2.47902e-08, 7.66379e-08, 4.55474, 1.96927, 0.451418)
 material_override = ExtResource("9_a2r6e")
 mesh = SubResource("QuadMesh_fuq0v")
 
@@ -212,94 +230,19 @@ shape = SubResource("BoxShape3D_ra1fp")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.7096, 0, 2.24009)
 shape = SubResource("BoxShape3D_ra1fp")
 
-[node name="passengers" type="Node3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.93778, 0, 0.299441, 0, 1.21984, 0, -0.743917, 0, 1.18251, -1.33223, 0.277778, -0.429778)
+material_override = ExtResource("16_sdl0t")
+mesh = SubResource("BoxMesh_o3eur")
 
-[node name="cat1" parent="passengers" instance=ExtResource("12_y4hju")]
-transform = Transform3D(-0.0348644, -0.988557, 0.146765, 0.99935, -0.0358238, -0.00389828, 0.0091114, 0.146534, 0.989164, -1.48729, -0.00754231, -0.863291)
-visible = false
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.66424, 0, 0.581325, 0, 1.21984, 0, -1.44422, 0, 1.07241, 0.955698, 0.277778, 0.264155)
+material_override = ExtResource("17_ds8mc")
+mesh = SubResource("BoxMesh_o3eur")
 
-[node name="Minigame" type="StaticBody3D" parent="passengers/cat1"]
-transform = Transform3D(1, -4.19095e-09, 0, 5.82077e-10, 1, 0, 9.31323e-10, 0, 1, 0, 0, 0)
-script = ExtResource("13_85s17")
-minigame_scene = "res://scenes/ticket_checking.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/cat1/Minigame"]
-transform = Transform3D(1, -6.98492e-10, -1.86265e-09, 6.98492e-10, 1, 1.49012e-08, 1.86265e-09, -1.49012e-08, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_gsxvb")
-
-[node name="InteractionReceiverComponent" parent="passengers/cat1/Minigame" instance=ExtResource("14_kh5sn")]
-
-[node name="cat2" parent="passengers" instance=ExtResource("12_y4hju")]
-transform = Transform3D(-0.866945, 0.0366609, 0.497054, 0.0357777, 0.999296, -0.0113021, -0.497118, 0.00798513, -0.867646, -3.21686, 0.0115525, 2.68198)
-visible = false
-
-[node name="cat_3" parent="passengers/cat2" instance=ExtResource("15_e225g")]
-transform = Transform3D(0.828856, 0.0124534, 0.559323, -0.000200079, 0.999759, -0.0219633, -0.559461, 0.0180925, 0.828659, -0.438844, 0.0171631, 0.128321)
-
-[node name="Minigame" type="StaticBody3D" parent="passengers/cat2"]
-script = ExtResource("13_85s17")
-minigame_scene = "res://scenes/ticket_checking.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/cat2/Minigame"]
-transform = Transform3D(1, 6.0536e-09, -2.18427e-24, -6.0536e-09, 1, 0, 2.18427e-24, 1.32227e-32, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_gsxvb")
-
-[node name="InteractionReceiverComponent" parent="passengers/cat2/Minigame" instance=ExtResource("14_kh5sn")]
-
-[node name="cat_sit" parent="passengers" instance=ExtResource("16_1fwmn")]
-transform = Transform3D(0.963444, 0, -0.267911, 0.0146471, 0.998504, 0.0526728, 0.26751, -0.0546713, 0.962003, 1.82402, 0.121444, -0.630809)
-visible = false
-
-[node name="Minigame" type="StaticBody3D" parent="passengers/cat_sit"]
-script = ExtResource("13_85s17")
-minigame_scene = "res://scenes/ticket_checking.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/cat_sit/Minigame"]
-transform = Transform3D(1, 1.86265e-09, 5.96047e-08, -1.86265e-09, 1, 0, -5.96046e-08, -1.11022e-16, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_gsxvb")
-
-[node name="InteractionReceiverComponent" parent="passengers/cat_sit/Minigame" instance=ExtResource("14_kh5sn")]
-
-[node name="cat_sit2" parent="passengers" instance=ExtResource("16_1fwmn")]
-transform = Transform3D(-0.870416, 0.0386585, -0.490797, 0.0146471, 0.998505, 0.0526728, 0.492099, 0.0386585, -0.86968, 2.20503, 0.545429, 1.86131)
-visible = false
-
-[node name="Minigame" type="StaticBody3D" parent="passengers/cat_sit2"]
-script = ExtResource("13_85s17")
-minigame_scene = "res://scenes/ticket_checking.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/cat_sit2/Minigame"]
-transform = Transform3D(1, -7.45058e-09, 5.96046e-08, 7.45058e-09, 1, 3.72529e-09, -5.96046e-08, -3.72529e-09, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_gsxvb")
-
-[node name="InteractionReceiverComponent" parent="passengers/cat_sit2/Minigame" instance=ExtResource("14_kh5sn")]
-transform = Transform3D(1, 0, 0, 3.72529e-09, 1, 3.72529e-09, -2.98023e-08, -3.72529e-09, 1, 0, 0, 0)
-
-[node name="cat_sit_2" parent="passengers" instance=ExtResource("17_gx1u5")]
-transform = Transform3D(-0.838461, 0, 0.544961, 0, 1, 0, -0.544961, 0, -0.838461, 0.145162, 0.538715, -1.57146)
-visible = false
-
-[node name="Minigame" type="StaticBody3D" parent="passengers/cat_sit_2"]
-script = ExtResource("13_85s17")
-minigame_scene = "res://scenes/ticket_checking.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/cat_sit_2/Minigame"]
-shape = SubResource("ConvexPolygonShape3D_gsxvb")
-
-[node name="InteractionReceiverComponent" parent="passengers/cat_sit_2/Minigame" instance=ExtResource("14_kh5sn")]
-
-[node name="cat_3" parent="passengers" instance=ExtResource("15_e225g")]
-transform = Transform3D(0.828856, 0.0124534, 0.559323, -0.000200079, 0.999759, -0.0219633, -0.559461, 0.0180925, 0.828659, -3.09562, 0.0171631, -1.3754)
-visible = false
-
-[node name="Minigame" type="StaticBody3D" parent="passengers/cat_3"]
-script = ExtResource("13_85s17")
-minigame_scene = "res://scenes/ticket_checking.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="passengers/cat_3/Minigame"]
-transform = Transform3D(1, 1.86264e-09, 1.19209e-07, -1.86265e-09, 1, 1.86265e-09, -1.19209e-07, -1.86265e-09, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_gsxvb")
-
-[node name="InteractionReceiverComponent" parent="passengers/cat_3/Minigame" instance=ExtResource("14_kh5sn")]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.05919, 0.361956, 0.818517, -1.3887, 1.08063, 0.0881795, -1.73643, -0.434995, 0.900141, 1.03711, 0.816038, -1.52055)
+material_override = ExtResource("18_3v25u")
+mesh = SubResource("BoxMesh_o3eur")
 
 [editable path="ShadingContainer"]

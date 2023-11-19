@@ -294,6 +294,11 @@ size = Vector3(1.63027, 0.858146, 1.7739)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gsxvb"]
 points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
 
+[sub_resource type="SphereMesh" id="SphereMesh_2jems"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_606cr"]
+points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e87y2"]
 resource_name = "stone"
 vertex_color_use_as_albedo = true
@@ -349,11 +354,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_aytgc")
-
-[sub_resource type="SphereMesh" id="SphereMesh_2jems"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_606cr"]
-points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
 
 [node name="train_car_passenger" type="Node3D" node_paths=PackedStringArray("anim")]
 script = ExtResource("1_k6a6l")
@@ -648,25 +648,6 @@ transform = Transform3D(2.27542, -0.292699, 1.27943e-08, 0, -1.00281e-07, -2.294
 [node name="lever" parent="." instance=ExtResource("23_e8fsd")]
 transform = Transform3D(2.19267, -0.246482, -1.17545, 0.940082, -1.17056, 1.99907, -0.747456, -2.19529, -0.933957, 3.21804, 0.915955, 2.25846)
 
-[node name="outline" type="Node3D" parent="lever"]
-transform = Transform3D(0.350814, 0.150407, -0.119588, -0.0394357, -0.187282, -0.351232, -0.188065, 0.319839, -0.149427, -0.0127664, 0.0118591, -0.288125)
-
-[node name="shovel2" parent="lever/outline" instance=ExtResource("23_e8fsd")]
-transform = Transform3D(2.29152, -0.257594, -1.22844, 0.982463, -1.22333, 2.08919, -0.781152, -2.29425, -0.976061, -0.298237, 0.585666, -0.245037)
-
-[node name="shovel2" parent="lever/outline/shovel2" index="0"]
-transform = Transform3D(1.2234, 0, -1.93715e-07, 8.9407e-08, 1.37319, -1.49012e-07, -4.47035e-08, -2.98023e-08, 1.2234, 1.01328e-06, -0.00607181, -0.0403616)
-material_override = ExtResource("26_24rj8")
-mesh = SubResource("ArrayMesh_xe8bf")
-
-[node name="shovel3" parent="lever/outline" instance=ExtResource("23_e8fsd")]
-transform = Transform3D(3.06252, -0.257594, -1.22844, 1.31302, -1.22333, 2.08919, -1.04398, -2.29425, -0.976061, 0.158486, -0.191073, 0.117853)
-
-[node name="shovel2" parent="lever/outline/shovel3" index="0"]
-transform = Transform3D(-0.888059, 1.49012e-08, 4.47035e-08, 5.96046e-08, 1.16399, -2.98023e-08, -1.49012e-08, 2.98023e-08, -1.03702, 7.7486e-07, -0.00602543, -0.121464)
-material_override = ExtResource("26_24rj8")
-mesh = SubResource("ArrayMesh_xe8bf")
-
 [node name="bookcaseClosedWide" parent="." instance=ExtResource("25_kssyc")]
 transform = Transform3D(2.92788, 0, 0, 0, 1.31753, 0, 0, 0, 1.43441, 1.10281, 0.677866, -1.73489)
 
@@ -690,12 +671,6 @@ light_indirect_energy = 16.0
 light_size = 1.0
 omni_range = 5.8639
 
-[node name="outline" type="MeshInstance3D" parent="furnace"]
-transform = Transform3D(0.834002, -2.98023e-08, 8.9407e-08, -5.21541e-08, 0.834002, -1.49012e-08, 5.96046e-08, 0, 0.834002, -0.240012, 0.293671, 0.354133)
-material_override = ExtResource("26_24rj8")
-mesh = SubResource("SphereMesh_2jems")
-skeleton = NodePath("../../coal_pile/campfire_logs4/tmpParent/campfire_logs2")
-
 [node name="minigames" type="Node3D" parent="."]
 
 [node name="Minigame" type="StaticBody3D" parent="minigames"]
@@ -709,6 +684,12 @@ shape = SubResource("ConvexPolygonShape3D_606cr")
 
 [node name="InteractionReceiverComponent" parent="minigames/Minigame" instance=ExtResource("14_nva8m")]
 
+[node name="outline" type="MeshInstance3D" parent="minigames/Minigame"]
+transform = Transform3D(1.3243, 0.20017, -0.631633, -0.310871, 1.43431, -0.197232, 0.585139, 0.308988, 1.32473, 0.275221, 0.276989, 0.053263)
+material_override = ExtResource("26_24rj8")
+mesh = SubResource("SphereMesh_2jems")
+skeleton = NodePath("../../../coal_pile/campfire_logs4/tmpParent/campfire_logs2")
+
 [node name="Minigame2" type="StaticBody3D" parent="minigames"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23792, 0, 2.83307)
 script = ExtResource("13_wlbqo")
@@ -719,6 +700,25 @@ transform = Transform3D(1, 1.86264e-09, 1.19209e-07, -1.86265e-09, 1, 1.86265e-0
 shape = SubResource("ConvexPolygonShape3D_606cr")
 
 [node name="InteractionReceiverComponent" parent="minigames/Minigame2" instance=ExtResource("14_nva8m")]
+
+[node name="outline" type="Node3D" parent="minigames/Minigame2"]
+transform = Transform3D(1, -1.49012e-07, -7.15256e-07, 6.85453e-07, 1, 5.66244e-07, -6.4075e-07, -1.78814e-07, 1, 0.287881, 0.31409, -0.322006)
+
+[node name="shovel2" parent="minigames/Minigame2/outline" instance=ExtResource("23_e8fsd")]
+transform = Transform3D(2.29152, -0.257594, -1.22844, 0.982463, -1.22333, 2.08919, -0.781152, -2.29425, -0.976061, -0.298237, 0.585666, -0.245037)
+
+[node name="shovel2" parent="minigames/Minigame2/outline/shovel2" index="0"]
+transform = Transform3D(1.2234, 0, -1.93715e-07, 8.9407e-08, 1.37319, -1.49012e-07, -4.47035e-08, -2.98023e-08, 1.2234, 1.01328e-06, -0.00607181, -0.0403616)
+material_override = ExtResource("26_24rj8")
+mesh = SubResource("ArrayMesh_xe8bf")
+
+[node name="shovel3" parent="minigames/Minigame2/outline" instance=ExtResource("23_e8fsd")]
+transform = Transform3D(3.06252, -0.257594, -1.22844, 1.31302, -1.22333, 2.08919, -1.04398, -2.29425, -0.976061, 0.158486, -0.191073, 0.117853)
+
+[node name="shovel2" parent="minigames/Minigame2/outline/shovel3" index="0"]
+transform = Transform3D(-0.888059, 1.49012e-08, 4.47035e-08, 5.96046e-08, 1.16399, -2.98023e-08, -1.49012e-08, 2.98023e-08, -1.03702, 7.7486e-07, -0.00602543, -0.121464)
+material_override = ExtResource("26_24rj8")
+mesh = SubResource("ArrayMesh_xe8bf")
 
 [node name="coal_pile" type="Node3D" parent="."]
 
@@ -803,8 +803,8 @@ material_override = ExtResource("31_kevxl")
 [editable path="passenger_cab_shell2"]
 [editable path="engine_cab_shell"]
 [editable path="ShadingContainer"]
-[editable path="lever/outline/shovel2"]
-[editable path="lever/outline/shovel3"]
+[editable path="minigames/Minigame2/outline/shovel2"]
+[editable path="minigames/Minigame2/outline/shovel3"]
 [editable path="coal_pile/campfire_logs"]
 [editable path="coal_pile/campfire_logs2"]
 [editable path="coal_pile/campfire_logs6"]

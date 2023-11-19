@@ -24,12 +24,6 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qh3qs"]
 points = PackedVector3Array(0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25)
 
-[sub_resource type="BoxMesh" id="BoxMesh_u5a72"]
-size = Vector3(0.5, 0.2, 0.5)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_81eac"]
-points = PackedVector3Array(-0.25, -0.1, -0.25, -0.25, 0.1, -0.25, 0.25, -0.1, -0.25, -0.25, -0.1, 0.25, -0.25, 0.1, 0.25, 0.25, 0.1, -0.25, 0.25, -0.1, 0.25, 0.25, 0.1, 0.25)
-
 [sub_resource type="QuadMesh" id="QuadMesh_kvy7g"]
 
 [node name="Test" type="Node3D"]
@@ -64,22 +58,6 @@ mesh = SubResource("BoxMesh_jm3yc")
 shape = SubResource("ConvexPolygonShape3D_qh3qs")
 
 [node name="InteractionReceiverComponent" parent="TestThingy" instance=ExtResource("5_soni8")]
-
-[node name="PawsChair" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40107, 0, -1.11476)
-script = ExtResource("6_kkj5n")
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PawsChair"]
-mesh = SubResource("BoxMesh_u5a72")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PawsChair"]
-shape = SubResource("ConvexPolygonShape3D_81eac")
-
-[node name="InteractionReceiverComponent" parent="PawsChair" instance=ExtResource("5_soni8")]
-
-[node name="JumpPoint" parent="PawsChair" instance=ExtResource("7_ek35c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113867, 0)
 
 [node name="LevelManager" parent="." node_paths=PackedStringArray("train_manager") instance=ExtResource("8_o7icn")]
 current_level = ExtResource("9_ku8m6")

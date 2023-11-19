@@ -6,6 +6,7 @@ var sources_pausing_time := 0
 var pause_text: Node2D = null
 
 @onready var level_timer := $LevelTimer as Timer
+@onready var level_timer2 := $LevelTimer2 as Timer
 @export var train_manager: TrainManager
 
 func _ready():
@@ -21,6 +22,7 @@ func start_level(level: Level) -> void:
 func push_time_pause_source() -> void:
 	sources_pausing_time += 1
 	level_timer.paused = true
+	level_timer2.paused = true
 	pause_text = preload("res://scenes/pawsed_text.tscn").instantiate() as Node2D
 	pause_text.position = Vector2(960, 540)
 	pause_text.scale = Vector2(0.5, 0.5)
@@ -32,4 +34,5 @@ func pop_time_pause_source() -> void:
 		sources_pausing_time -= 1
 		if sources_pausing_time == 0:
 			level_timer.paused = false
+			level_timer2.paused = false
 			pause_text.queue_free()

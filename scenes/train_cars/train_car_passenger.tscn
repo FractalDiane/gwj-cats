@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ba7ywxh0mgexs"]
+[gd_scene load_steps=28 format=3 uid="uid://ba7ywxh0mgexs"]
 
 [ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_qb1e3"]
 [ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_8u44m"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dc7hgcmdxtno0" path="res://sprites/tiling_carpet.png" id="6_n3ruj"]
 [ext_resource type="PackedScene" uid="uid://besabvjbrc8eh" path="res://meshes/bench.glb" id="7_76r4c"]
 [ext_resource type="Material" uid="uid://dbk4762cwse3u" path="res://materials/wood_flooring.tres" id="7_kbix3"]
+[ext_resource type="Material" uid="uid://coqcdw6elgmsj" path="res://materials/outline.tres" id="7_t08oi"]
 
 [sub_resource type="Shader" id="Shader_8qn7n"]
 code = "// Sobel Edge Detection Shader written by absentSpaghetti
@@ -362,6 +363,16 @@ mesh = SubResource("QuadMesh_fuq0v")
 [node name="carpet" type="MeshInstance3D" parent="."]
 transform = Transform3D(7.2, 0, 0, 0, -9.61651e-08, 2, 0, -2.2, -8.74228e-08, -0.0273442, 0.00248695, 0.606315)
 material_override = SubResource("StandardMaterial3D_r4vb0")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.09908e-07, -9.61651e-08, 2, -2.5144, 4.20351e-15, -8.74228e-08, 0, -2.2, -8.74228e-08, -4.45507, 1.02399, 0.441167)
+material_override = ExtResource("7_t08oi")
+mesh = SubResource("QuadMesh_fuq0v")
+
+[node name="carpet3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.09908e-07, 2.88495e-07, -2, -2.5144, 4.20351e-15, -8.74228e-08, -9.60846e-15, 2.2, 2.62268e-07, 4.38001, 1.02399, 0.441167)
+material_override = ExtResource("7_t08oi")
 mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="wood_flooring" type="MeshInstance3D" parent="."]

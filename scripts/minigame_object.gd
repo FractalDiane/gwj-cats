@@ -1,3 +1,4 @@
+class_name MinigameObject
 extends Node3D
 
 signal task_done(success: bool, data: int)

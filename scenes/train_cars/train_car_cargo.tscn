@@ -1,9 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://dpq8y2fpg03x6"]
+[gd_scene load_steps=29 format=3 uid="uid://dpq8y2fpg03x6"]
 
+[ext_resource type="Script" path="res://scripts/train_car.gd" id="1_50hpj"]
 [ext_resource type="Material" uid="uid://b0qjvbpb1o5iq" path="res://materials/wallpaper2.tres" id="4_aq8ya"]
 [ext_resource type="Material" uid="uid://bwyhxqwclcs44" path="res://materials/wallpaper3.tres" id="4_j3x8j"]
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="5_jxr1q"]
-[ext_resource type="Texture2D" uid="uid://bcxqsep7o0ayg" path="res://sprites/funky_rug.png" id="6_rom60"]
 [ext_resource type="Material" uid="uid://x0ckqq366k5g" path="res://materials/crate_wall.tres" id="7_fjt2t"]
 [ext_resource type="Material" uid="uid://c4nxh36nb33pj" path="res://materials/crate_wall_2.tres" id="8_8tl6u"]
 [ext_resource type="Material" uid="uid://c4mxrt6e8gxt6" path="res://materials/metal_grate.tres" id="8_an2w2"]
@@ -17,9 +17,6 @@
 [ext_resource type="Material" uid="uid://cy5qw3r7dba1u" path="res://materials/crate.tres" id="16_sdl0t"]
 [ext_resource type="Material" uid="uid://bpqeekn0djs5i" path="res://materials/crate2.tres" id="17_ds8mc"]
 [ext_resource type="Material" uid="uid://bepfnewf74n1e" path="res://materials/crate3.tres" id="18_3v25u"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdlxv"]
-albedo_texture = ExtResource("6_rom60")
 
 [sub_resource type="QuadMesh" id="QuadMesh_fuq0v"]
 
@@ -106,18 +103,16 @@ size = Vector3(2.34313, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gg8im"]
 
-[node name="train_car_cargo" type="Node3D"]
+[node name="train_car_cargo" type="Node3D" node_paths=PackedStringArray("available_minigames")]
+script = ExtResource("1_50hpj")
+available_minigames = [NodePath("minigames/Minigame")]
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.999976, 0.00550131, -0.00429809, 0, 0.615661, 0.78801, 0.00698126, -0.787991, 0.615646, -0.0534222, 4.91945, 3.92424)
+visible = false
 
 [node name="ShadingContainer" parent="." instance=ExtResource("5_jxr1q")]
-
-[node name="rug" type="MeshInstance3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.00652909, -0.300808, 0.53988)
 visible = false
-material_override = SubResource("StandardMaterial3D_mdlxv")
-mesh = SubResource("QuadMesh_fuq0v")
 
 [node name="carpet" type="MeshInstance3D" parent="."]
 transform = Transform3D(5.92239, 0, 0, 0, -1.58523e-07, 2.02463, 0, -3.62659, -8.84995e-08, -0.0273442, -0.305119, -0.036949)

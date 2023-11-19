@@ -36,6 +36,7 @@ subdivide_depth = 40
 [node name="environment_forest" type="Node3D"]
 
 [node name="train_car_passenger" parent="." instance=ExtResource("13_npl06")]
+visible = false
 
 [node name="ground_grass" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 22.9104, -0.748015, -2.19129)

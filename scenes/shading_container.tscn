@@ -42,9 +42,9 @@ volumetric_fog_anisotropy = 0.4
 environment = SubResource("Environment_tsshv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.971291, 0.0969461, -0.217246, 0.237836, -0.416049, 0.877689, -0.0052963, -0.90416, -0.427162, 0.0170121, 0.00665426, -0.205514)
-light_color = Color(1, 0.929412, 0.901961, 1)
-light_energy = 0.7
+transform = Transform3D(0.730876, 0.652813, 0.199137, 0.5001, -0.710791, 0.494648, 0.464457, -0.261938, -0.845972, 0.0170121, 0.00665426, -0.205514)
+light_color = Color(0.988235, 0.482353, 0.356863, 1)
+light_energy = 3.753
 shadow_enabled = true
 shadow_opacity = 0.49
 shadow_blur = 2.5

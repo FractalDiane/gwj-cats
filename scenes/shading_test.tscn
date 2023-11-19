@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://coi1d2u0wj34n"]
+[gd_scene load_steps=19 format=3 uid="uid://coi1d2u0wj34n"]
 
 [ext_resource type="PackedScene" uid="uid://dmnk2nko6unu3" path="res://meshes/hanging_plant.glb" id="1_revxj"]
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="1_uv1hc"]
 [ext_resource type="PackedScene" uid="uid://b6120kuynkwk2" path="res://meshes/cat.glb" id="2_gojjk"]
 [ext_resource type="PackedScene" uid="uid://dlrdmtqyyn0qb" path="res://meshes/main_size_reference.glb" id="3_6we1g"]
 [ext_resource type="Material" uid="uid://cos3t0crjaocc" path="res://materials/rug.tres" id="5_x61tm"]
+[ext_resource type="PackedScene" uid="uid://bph0qxrxuewr7" path="res://meshes/SSS_test.glb" id="6_h0b62"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wev3h"]
 albedo_color = Color(0.6, 0.537255, 0.505882, 1)
@@ -197,9 +198,9 @@ light_energy = 0.845
 omni_range = 2.28692
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175968, 1.47798, 2.75013)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0434271, 1.1338, 2.56655)
 light_color = Color(0.219608, 0.545098, 0.85098, 1)
-light_energy = 0.69
+light_energy = 1.642
 omni_range = 1.86887
 
 [node name="ShadingContainer" parent="." instance=ExtResource("1_uv1hc")]
@@ -208,3 +209,6 @@ omni_range = 1.86887
 transform = Transform3D(-1.74846e-07, -2, -8.74228e-08, 0, -8.74228e-08, 2, -4, 8.74228e-08, 3.82137e-15, 0.30741, 0.0377438, 0.221757)
 material_override = ExtResource("5_x61tm")
 mesh = SubResource("QuadMesh_l8gjk")
+
+[node name="SSS_test" parent="." instance=ExtResource("6_h0b62")]
+transform = Transform3D(-0.553947, 0, 0.14843, 0, 0.573488, 0, -0.14843, 0, -0.553947, 0.743582, 0.746202, 2.43788)

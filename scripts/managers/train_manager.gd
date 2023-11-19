@@ -9,7 +9,7 @@ var active_car_index: int = 1
 @export var player : Player
 
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 func _process(_delta):
@@ -29,3 +29,9 @@ func move_direction(d: Statics.Direction):
 	
 func _on_move_finished() -> void:
 	move_finished.emit()
+	
+func instantiate_trains(train_cars: Array) -> void:
+	for i in range(train_cars.size()):
+		var c = train_cars[i].instantiate()
+		add_child(c)
+		c.position = Vector3.RIGHT * i * 11

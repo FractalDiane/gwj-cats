@@ -4,12 +4,12 @@
 
 [resource]
 diffuse_mode = 2
-albedo_color = Color(0.458824, 0.34902, 0.329412, 1)
+albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.58
 roughness = 0.83
 emission_enabled = true
-emission = Color(0.380392, 0.176471, 0.352941, 1)
-emission_energy_multiplier = 0.35
+emission = Color(0.470588, 0.207843, 0.337255, 1)
+emission_energy_multiplier = 1.91
 emission_texture = ExtResource("1_g7set")
 subsurf_scatter_strength = 1.0
 subsurf_scatter_transmittance_enabled = true

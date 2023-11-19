@@ -33,7 +33,8 @@ func _process(_delta: float) -> void:
 func move_car(tween: Tween, direction: Statics.Direction) -> void:
 	var dir := 1 if direction == Statics.Direction.Right else -1
 	tween.parallel().tween_property(self, ^"position:x", position.x + dir * 2.5, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUINT)
-	block_movement = true
+	set_block_movement(true)
+	set_block_interaction(true)
 	tween.finished.connect(_on_move_finished)
 
 
@@ -97,21 +98,31 @@ func jump_to_jump_point(jump_point: JumpPoint, jump_away: bool) -> void:
 	tween_y.tween_property(self, ^"position:y", target.y + 0.5 - ground_position.position.y, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween_y.tween_property(self, ^"position:y", target.y - y_add, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	
-	block_movement = true
+	set_block_movement(true)
+	set_block_interaction(true)
 	tween_xz.finished.connect(_on_jump_finished.bind(jump_away))
+	
+func set_block_movement(block: bool) -> void:
+	block_movement = block
+	
+func set_block_interaction(block: bool) -> void:
+	interaction_component.enabled = not block
 
 # ==================================================================================================
 
 func _on_move_finished() -> void:
-	block_movement = false
+	set_block_movement(false)
+	set_block_interaction(false)
 	
 	
 func _on_jump_finished(ending_jump: bool) -> void:
-	block_movement = false
+	set_block_movement(false)
 	on_jump_point = not ending_jump
+	set_block_interaction(on_jump_point)
 	if ending_jump:
 		jump_point_exited.emit()
 
 
 func on_task_done(_success: bool, _data: int):
-	block_movement = false
+	set_block_movement(false)
+	set_block_interaction(false)

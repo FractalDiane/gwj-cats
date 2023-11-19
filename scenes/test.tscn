@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b5o7aeyay2g1l"]
+[gd_scene load_steps=18 format=3 uid="uid://b5o7aeyay2g1l"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_2huee"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_mdwb4"]
@@ -9,15 +9,10 @@
 [ext_resource type="Script" path="res://scripts/paws_chair.gd" id="6_83pfg"]
 [ext_resource type="PackedScene" uid="uid://c2kexkbdwxc0c" path="res://prefabs/managers/level_manager.tscn" id="8_crm2y"]
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="9_oadbs"]
+[ext_resource type="Resource" uid="uid://bmcktg2k4adnv" path="res://scripts/resources/level_1.tres" id="9_rck6a"]
 [ext_resource type="Script" path="res://scripts/managers/environment_manager.gd" id="10_2kigv"]
 [ext_resource type="AudioStream" uid="uid://dbw0xitjj3ot5" path="res://audio/fast-jazz-143910.mp3" id="11_47cgh"]
 [ext_resource type="Script" path="res://scripts/managers/train_manager.gd" id="11_caop5"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
-size = Vector3(10, 1, 6)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adj7c"]
-albedo_color = Color(0.184314, 0.184314, 0.184314, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jm3yc"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -33,28 +28,7 @@ points = PackedVector3Array(-0.25, -0.1, -0.25, -0.25, 0.1, -0.25, 0.25, -0.1, -
 
 [node name="Test" type="Node3D"]
 
-[node name="Floor" type="StaticBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-mesh = SubResource("BoxMesh_tc1sk")
-surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
-
-[node name="Floor2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor2"]
-mesh = SubResource("BoxMesh_tc1sk")
-surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
-
-[node name="Floor3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor3"]
-mesh = SubResource("BoxMesh_tc1sk")
-surface_material_override/0 = SubResource("StandardMaterial3D_adj7c")
-
 [node name="Player" parent="." node_paths=PackedStringArray("camera", "train_manager") instance=ExtResource("1_2huee")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 camera = NodePath("../PlayerCamera")
 train_manager = NodePath("../TrainManager")
 
@@ -100,7 +74,9 @@ shape = SubResource("ConvexPolygonShape3D_81eac")
 [node name="JumpPoint" parent="PawsChair" instance=ExtResource("6_7g1dt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113867, 0)
 
-[node name="LevelManager" parent="." instance=ExtResource("8_crm2y")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("train_manager") instance=ExtResource("8_crm2y")]
+current_level = ExtResource("9_rck6a")
+train_manager = NodePath("../TrainManager")
 
 [node name="ShadingContainer" parent="." instance=ExtResource("9_oadbs")]
 

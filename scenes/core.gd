@@ -22,6 +22,10 @@ var engineTaskFrequency: float = engineTaskBaseFrequency
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for task in normalTaskCandidates:
+		task.set_inactive()
+	leverTask.set_inactive()
+	boilerTask.set_inactive()
 	taskWindows.resize(normalTaskCandidates.size() + 2)
 	taskWindows.fill(0 as float)
 	hasTask.resize(normalTaskCandidates.size() + 2)
@@ -82,7 +86,7 @@ func addTask(index: int) -> void:
 	minigame_object.task_done.connect(_on_task_done)
 
 
-func _on_task_done(success: bool, data: int):
+func _on_task_done(success: bool, data: int, source: MinigameObject):
 	# yeah so i didnt think this through enough and theres no way to tell which minigame object sent this i think?
 	if (!success):
 		set_task_text("wuh-oh,,")

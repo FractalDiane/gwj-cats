@@ -2,7 +2,7 @@ extends Node3D
 
 class_name MinigameObject
 
-signal task_done(success: bool, data: int)
+signal task_done(success: bool, data: int, source: MinigameObject)
 
 signal early_return_request()
 signal early_task_return(success: bool, data: int)
@@ -16,6 +16,13 @@ var minigame: Minigame
 
 var minigame_overlay: Control
 
+func set_active():
+	# TODO: this
+	pass
+
+func set_inactive():
+	# TODO: this
+	pass
 
 func _ready():
 	interaction_component.interacted_with.connect(_on_interacted)
@@ -53,7 +60,7 @@ func _minigame_done(success: bool, data: int):
 	
 	print("minigame success: " + str(success) + ", minigame data: " + str(data))
 	
-	task_done.emit(success, data)
+	task_done.emit(success, data, self)
 
 
 func _early_return_sent(success: bool, data: int):

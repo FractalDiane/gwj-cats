@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5o7aeyay2g1l"]
+[gd_scene load_steps=18 format=3 uid="uid://b5o7aeyay2g1l"]
 
 [ext_resource type="PackedScene" uid="uid://chy3lw67e8wwc" path="res://prefabs/player.tscn" id="1_2huee"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="2_mdwb4"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c2kexkbdwxc0c" path="res://prefabs/managers/level_manager.tscn" id="8_crm2y"]
 [ext_resource type="PackedScene" uid="uid://bmkn64bwcg6ii" path="res://scenes/shading_container.tscn" id="9_oadbs"]
 [ext_resource type="Script" path="res://scripts/managers/environment_manager.gd" id="10_2kigv"]
+[ext_resource type="AudioStream" uid="uid://dbw0xitjj3ot5" path="res://audio/fast-jazz-143910.mp3" id="11_47cgh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tc1sk"]
 size = Vector3(10, 1, 6)
@@ -101,3 +102,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113867, 0)
 [node name="EnvironmentManager" type="Node3D" parent="."]
 script = ExtResource("10_2kigv")
 environment_speed = 5.0
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_47cgh")
+autoplay = true
+bus = &"Music"

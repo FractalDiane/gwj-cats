@@ -6,7 +6,7 @@ signal jump_point_exited()
 @export var camera: PlayerCamera = null
 @export var rot_threshold: float = 0.45
 
-const SPEED := 2.5
+const SPEED := 3.0
 
 @onready var ground_position := $GroundPosition as Marker3D
 @onready var interaction_component := $InteractionActivatorComponent as InteractionActivatorComponent
